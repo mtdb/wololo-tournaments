@@ -1,0 +1,41 @@
+.transition-group {
+  flex: 1;
+  position: relative;
+}
+
+.fade-enter .route {
+  opacity: 0;
+  z-index: 1;
+}
+
+.fade-enter.fade-enter-active .route {
+  opacity: 1;
+  z-index: 1;
+  transition: opacity 450ms ease-in-out;
+}
+.fade-exit {
+  z-index: -1;
+  position: absolute;
+}
+
+.router {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.route {
+  display: flex;
+  min-height: var(--containerSize);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  & > div {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+  }
+}
