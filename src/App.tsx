@@ -8,7 +8,11 @@ import {
 
 import TopBar from "./components/TopBar";
 
-import Upcoming from "./scenes/Upcoming";
+import Game from "./scenes/Game";
+import Games from "./scenes/Games";
+import Leaderboard from "./scenes/Leaderboard";
+import Predictions from "./scenes/Predictions";
+import Tournaments from "./scenes/Tournaments";
 
 import { bindActions } from "./contrib/store";
 import { IStore, Provider, store } from "./store";
@@ -29,7 +33,7 @@ const theme = createMuiTheme({
 });
 
 export const routes = {
-  upcoming: () => "/",
+  games: () => "/",
   tournaments: () => "/tournaments",
   tournamentsDetails: (slug = ":slug") => `/tournaments/${slug}`,
   game: (slug = ":slug", game = ":game") => `/tournaments/${slug}/${game}`,
@@ -52,13 +56,13 @@ class App extends Component<{}, IStore> {
         <MuiThemeProvider theme={theme}>
           <TopBar />
           <Router>
-            <Scene path={routes.upcoming()} component={Upcoming} />
-            <Scene path={routes.tournaments()} component={Upcoming} />
-            <Scene path={routes.tournamentsDetails()} component={Upcoming} />
-            <Scene path={routes.game()} component={Upcoming} />
-            <Scene path={routes.gamePredictions()} component={Upcoming} />
-            <Scene path={routes.leaderboard()} component={Upcoming} />
-            <Scene path={routes.leaderboardGroup()} component={Upcoming} />
+            <Scene path={routes.games()} component={Games} />
+            <Scene path={routes.tournaments()} component={Tournaments} />
+            <Scene path={routes.tournamentsDetails()} component={Games} />
+            <Scene path={routes.game()} component={Game} />
+            <Scene path={routes.gamePredictions()} component={Predictions} />
+            <Scene path={routes.leaderboard()} component={Leaderboard} />
+            <Scene path={routes.leaderboardGroup()} component={Leaderboard} />
           </Router>
         </MuiThemeProvider>
       </Provider>

@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Upcoming } from "../Upcoming";
+import { Predictions } from "../Predictions";
 
-describe("Upcoming Scene", () => {
+describe("Predictions Scene", () => {
   it("renders without crashing", () => {
     const div = document.createElement("div");
-    ReactDOM.render(<Upcoming />, div);
+    ReactDOM.render(<Predictions />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });
