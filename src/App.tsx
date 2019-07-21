@@ -6,10 +6,14 @@ import {
   AnimatedRouter as Router
 } from "./components/AnimatedRouter";
 
+import TopBar from "./components/TopBar";
+
 import Upcoming from "./scenes/Upcoming";
 
 import { bindActions } from "./contrib/store";
 import { IStore, Provider, store } from "./store";
+
+import "./assets/fontawesome/css/all.css";
 
 const egyptianBlue = "#1034a6";
 
@@ -24,12 +28,20 @@ const theme = createMuiTheme({
   }
 });
 
+export const routes = {
+  upcoming: () => "/",
+  tournaments: () => "/tournaments",
+  tournamentsDetails: (slug = ":slug") => `/tournaments/${slug}`,
+  game: (slug = ":slug", game = ":game") => `/tournaments/${slug}/${game}`,
+  gamePredictions: (slug = ":slug", game = ":game") =>
+    `/tournaments/${slug}/${game}/predictions`,
+  leaderboard: () => "/leaderboard/",
+  leaderboardGroup: (group = ":group") => `/leaderboard/${group}`
+};
+
 class App extends Component<{}, IStore> {
   constructor(props: any) {
     super(props);
-
-    // this.customFetch = this.customFetch.bind(this)
-
     const actions = bindActions(this);
     this.state = { ...store, actions };
   }
@@ -38,9 +50,15 @@ class App extends Component<{}, IStore> {
     return (
       <Provider value={this.state}>
         <MuiThemeProvider theme={theme}>
+          <TopBar />
           <Router>
-            <Scene path="/" component={Upcoming} />
-            <Scene path="/home" component={Upcoming} />
+            <Scene path={routes.upcoming()} component={Upcoming} />
+            <Scene path={routes.tournaments()} component={Upcoming} />
+            <Scene path={routes.tournamentsDetails()} component={Upcoming} />
+            <Scene path={routes.game()} component={Upcoming} />
+            <Scene path={routes.gamePredictions()} component={Upcoming} />
+            <Scene path={routes.leaderboard()} component={Upcoming} />
+            <Scene path={routes.leaderboardGroup()} component={Upcoming} />
           </Router>
         </MuiThemeProvider>
       </Provider>

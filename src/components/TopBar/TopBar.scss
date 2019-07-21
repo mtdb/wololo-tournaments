@@ -1,0 +1,9 @@
+#TopBar {
+  background-color: grey;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  .user-icon {
+    padding: 0 5px;
+  }
+}
