@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=MedievalSharp&display=swap');
-@import './assets/fonts/old-london/stylesheet.css';
-
+@font-face {
+    font-family: 'Old-London';
+    src: url('./assets/fonts/old-london/Olondon_.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 :root {
   --bg1: #D6C499cc;
   --dark-text: #19100B;
@@ -8,7 +12,6 @@
   --gold: #f0a429;
   --red: #cc3939;
 }
-
 html {
   height: 100%;
 }
@@ -27,22 +30,17 @@ body {
   background-position: 50% 50%;
   height: 100%;
 }
-
 a {
   color: var(--red);
   text-decoration: none;
 }
-
 h1, h2, h3, h4, h5 {
   font-family: 'Old-London', 'MedievalSharp', cursive;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-
 .wooden-bg {
   background: #2d2a23 url('./assets/wood.jpg') repeat top;
 }

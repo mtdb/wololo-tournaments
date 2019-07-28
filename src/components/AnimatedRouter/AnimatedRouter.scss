@@ -16,6 +16,8 @@
 .fade-exit {
   z-index: -1;
   position: absolute;
+  transition: opacity 450ms ease-in-out;
+  opacity: 0;
 }
 
 .router {

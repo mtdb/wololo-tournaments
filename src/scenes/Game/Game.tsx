@@ -4,9 +4,6 @@ import Navbar from "../../components/Navbar";
 import { routes } from "../../App";
 import "./Game.scss";
 
-const slug = "king-of-the-desert";
-const web = "https://challonge.com/kotdaoc";
-
 const Game = () => (
   <div id="Game">
     <Navbar />

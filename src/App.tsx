@@ -1,4 +1,4 @@
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import React, { Component } from "react";
 
 import {
@@ -6,6 +6,7 @@ import {
   AnimatedRouter as Router
 } from "./components/AnimatedRouter";
 
+import Navbar from "./components/Navbar";
 import TopBar from "./components/TopBar";
 
 import Game from "./scenes/Game";
@@ -19,18 +20,7 @@ import { IStore, Provider, store } from "./store";
 
 import "./assets/fontawesome/css/all.css";
 
-const egyptianBlue = "#1034a6";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: egyptianBlue
-    },
-    secondary: {
-      main: "#A68210"
-    }
-  }
-});
+import theme from './theme';
 
 export const routes = {
   games: () => "/",
@@ -55,6 +45,7 @@ class App extends Component<{}, IStore> {
       <Provider value={this.state}>
         <MuiThemeProvider theme={theme}>
           <TopBar />
+          <Navbar />
           <Router>
             <Scene path={routes.games()} component={Games} />
             <Scene path={routes.tournaments()} component={Tournaments} />

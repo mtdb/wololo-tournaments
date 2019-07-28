@@ -1,14 +1,54 @@
+
 #Tournaments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;;
+
   .tournament-summary {
     text-align: center;
-    width: 95%;
-    background-color: darkgray;
-    margin: 10px auto;
-    padding: 5px;
+    width: calc(100% - 20px);
+    background-color: var(--bg1);
+    margin: 10px auto 0;
+    border: 2px solid var(--wood);
+    height: 15vh;
+    box-sizing: border-box;
+    display: flex;
+
+    .logo {
+      width: 30%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+
+    .content {
+      padding: 5px;
+      display: flex;
+      width: 70%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      .title {
+        margin-top: 5px;
+        font-family: Old-London;
+        font-size: 22px;
+
+        color: var(--dark-text);
+        width: 100%;
+      }
+    }
+
     ul {
       margin: 0;
       padding: 0;
       list-style: none;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
       li {
         display: inline-block;
         a {

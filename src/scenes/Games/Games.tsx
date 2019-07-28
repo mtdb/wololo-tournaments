@@ -1,15 +1,13 @@
 import React from "react";
 import { navigate } from "@reach/router";
-import Navbar from "../../components/Navbar";
 import "./Games.scss";
 import { routes } from "../../App";
 
 const Games = () => (
   <div id="Games">
-    <Navbar />
-    {[1, 2, 3].map(() => (
+    {[1, 2, 3].map((k) => (
       <div
-        className="game-summary"
+        className="game-summary" key={`game-${k}`}
         onClick={() => {
           navigate(routes.game("king-of-the-desert", "nicov"));
         }}
