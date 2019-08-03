@@ -1,11 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Leaderboard } from "../Leaderboard";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Game } from '../Game';
 
-describe("Leaderboard Scene", () => {
-  it("renders without crashing", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(<Leaderboard />, div);
+describe('Game Scene', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Game />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

@@ -9,7 +9,7 @@
     "tslint:latest"
   ],
   "linterOptions": {
-    "exclude": ["src/serviceWorker.js", "**/**.json"]
+    "exclude": ["src/serviceWorker.ts", "**/**.json"]
   },
   "jsRules": {},
   "rules": {

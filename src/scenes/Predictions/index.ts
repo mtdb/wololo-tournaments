@@ -1,3 +1,3 @@
-import { Predictions } from "./Predictions";
+import { Predictions } from './Predictions';
 
 export default Predictions;

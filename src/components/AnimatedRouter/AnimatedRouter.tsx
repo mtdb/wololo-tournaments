@@ -1,6 +1,6 @@
-import { Location, Router } from "@reach/router";
-import React from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { Location, Router } from '@reach/router';
+import React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import './AnimatedRouter.scss';
 

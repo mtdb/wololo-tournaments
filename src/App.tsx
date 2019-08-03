@@ -1,36 +1,32 @@
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import React, { Component } from "react";
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 
-import {
-  AnimatedRoute as Scene,
-  AnimatedRouter as Router
-} from "./components/AnimatedRouter";
+import { AnimatedRoute as Scene, AnimatedRouter as Router } from './components/AnimatedRouter';
 
-import Navbar from "./components/Navbar";
-import TopBar from "./components/TopBar";
+import Navbar from './components/Navbar';
+import TopBar from './components/TopBar';
 
-import Game from "./scenes/Game";
-import Games from "./scenes/Games";
-import Leaderboard from "./scenes/Leaderboard";
-import Predictions from "./scenes/Predictions";
-import Tournaments from "./scenes/Tournaments";
+import Game from './scenes/Game';
+import Games from './scenes/Games';
+import Leaderboard from './scenes/Leaderboard';
+import Predictions from './scenes/Predictions';
+import Tournaments from './scenes/Tournaments';
 
-import { bindActions } from "./contrib/store";
-import { IStore, Provider, store } from "./store";
+import { bindActions } from './contrib/store';
+import { IStore, Provider, store } from './store';
 
-import "./assets/fontawesome/css/all.css";
+import './assets/fontawesome/css/all.css';
 
 import theme from './theme';
 
 export const routes = {
-  games: () => "/",
-  tournaments: () => "/tournaments",
-  tournamentsDetails: (slug = ":slug") => `/tournaments/${slug}`,
-  game: (slug = ":slug", game = ":game") => `/tournaments/${slug}/${game}`,
-  gamePredictions: (slug = ":slug", game = ":game") =>
-    `/tournaments/${slug}/${game}/predictions`,
-  leaderboard: () => "/leaderboard/",
-  leaderboardGroup: (group = ":group") => `/leaderboard/${group}`
+  game: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}`,
+  gamePredictions: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}/predictions`,
+  games: () => '/',
+  leaderboard: () => '/leaderboard/',
+  leaderboardGroup: (group = ':group') => `/leaderboard/${group}`,
+  tournaments: () => '/tournaments',
+  tournamentsDetails: (slug = ':slug') => `/tournaments/${slug}`
 };
 
 class App extends Component<{}, IStore> {

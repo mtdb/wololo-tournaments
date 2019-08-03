@@ -1,9 +1,8 @@
-import React from "react";
-import { Link } from "@reach/router";
-import Navbar from "../../components/Navbar";
-import { routes } from "../../App";
-import "./Predictions.scss";
-
+import { Link } from '@reach/router';
+import React from 'react';
+import { routes } from '../../App';
+import Navbar from '../../components/Navbar';
+import './Predictions.scss';
 
 const Predictions = () => (
   <div id="Predictions">
@@ -22,7 +21,9 @@ const Predictions = () => (
       </li>
     </ul>
     {[1, 2, 3].map(i => (
-      <div className="match">Prediction {i}</div>
+      <div className="match" key={`prediction-#{i}`}>
+        Prediction {i}
+      </div>
     ))}
   </div>
 );

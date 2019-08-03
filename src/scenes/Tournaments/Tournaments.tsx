@@ -1,48 +1,51 @@
-import React from "react";
-import { Link } from "@reach/router";
-import { routes } from "../../App";
-import "./Tournaments.scss";
+import { Link } from '@reach/router';
+import React from 'react';
+import { routes } from '../../App';
+import './Tournaments.scss';
 
 const tournaments = [
   {
-    name: 'King of the Desert 2',
-    web: 'https://challonge.com/kotdaoc',
-    slug: 'king-of-the-desert',
-    prize: 15000,
+    banner: '',
     logo: '/assets/img/kotd2.jpg',
-    banner: ''
+    name: 'King of the Desert 2',
+    prize: 15000,
+    slug: 'king-of-the-desert',
+    web: 'https://challonge.com/kotdaoc'
   },
   {
-    name: 'T90`s Hidden Cup 2',
-    web: '',
-    slug: 't90',
-    prize: 10800,
+    banner: '/assets/img/hidden.jpg',
     logo: '/assets/img/hidden.png',
-    banner: '/assets/img/hidden.jpg'
+    name: 'T90`s Hidden Cup 2',
+    prize: 10800,
+    slug: 't90',
+    web: ''
   },
   {
-    name: 'Mangroove Shallows Cup',
-    web: '',
-    slug: 'msc',
-    prize: 9800,
+    banner: '/assets/img/msc.jpg',
     logo: '/assets/img/msc.jpg',
-    banner: '/assets/img/msc.jpg'
+    name: 'Mangroove Shallows Cup',
+    prize: 9800,
+    slug: 'msc',
+    web: ''
   },
   {
-    name: 'Mario Ovalle`s Mancos Cup',
-    web: '',
-    slug: 'mario',
-    prize: 17000,
+    banner: '/assets/img/mario.jpg',
     logo: '/assets/img/mario.jpg',
-    banner: '/assets/img/mario.jpg'
-  },
-]
+    name: 'Mario Ovalle`s Mancos Cup',
+    prize: 17000,
+    slug: 'mario',
+    web: ''
+  }
+];
 
 const Tournaments = () => (
   <div id="Tournaments">
-    {tournaments.map((tournament) => (
+    {tournaments.map(tournament => (
       <div className="tournament-summary" key={tournament.slug}>
-        <div className="logo" style={{backgroundImage: `url(${tournament.logo})`, backgroundColor: 'green'}}></div>
+        <div
+          className="logo"
+          style={{ backgroundImage: `url(${tournament.logo})`, backgroundColor: 'green' }}
+        />
         <div className="content">
           <div className="title">{tournament.name}</div>
           <div>${tournament.prize}</div>

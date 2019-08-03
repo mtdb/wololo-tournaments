@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "@reach/router";
-import Navbar from "../../components/Navbar";
-import { routes } from "../../App";
-import "./Game.scss";
+import { Link } from '@reach/router';
+import React from 'react';
+import { routes } from '../../App';
+import Navbar from '../../components/Navbar';
+import './Game.scss';
 
 const Game = () => (
   <div id="Game">
@@ -21,7 +21,9 @@ const Game = () => (
       </li>
     </ul>
     {[1, 2, 3].map(i => (
-      <div className="match">Match {i}</div>
+      <div className="match" key={`game-${i}`}>
+        Match {i}
+      </div>
     ))}
   </div>
 );

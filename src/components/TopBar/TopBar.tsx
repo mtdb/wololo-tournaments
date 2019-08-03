@@ -1,5 +1,5 @@
-import React from "react";
-import "./TopBar.scss";
+import React from 'react';
+import './TopBar.scss';
 
 const TopBar = () => (
   <header id="TopBar">
