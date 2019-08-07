@@ -59,6 +59,8 @@
     "start": "npm-run-all -p watch:css start-js",
     "build": "npm-run-all build:css build-js",
     "build:css": "postcss src/index.css -o src/__index.css",
+    "deploy": "npm-run-all build:css build-js sync-s3",
+    "sync-s3": "aws s3 sync build/ s3://wololo-app",
     "watch:css": "postcss src/index.css -o src/__index.css -w",
     "start-js": "react-scripts start",
     "build-js": "react-scripts build",
