@@ -23,8 +23,8 @@ export const routes = {
   game: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}`,
   gamePredictions: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}/predictions`,
   games: () => '/',
-  leaderboard: () => '/leaderboard/',
-  leaderboardGroup: (group = ':group') => `/leaderboard/${group}`,
+  globalLeaderboard: () => '/leaderboard/',
+  leaderboard: (name = ':name') => `/leaderboard/${name}`,
   tournaments: () => '/tournaments',
   tournamentsDetails: (slug = ':slug') => `/tournaments/${slug}`
 };
@@ -48,8 +48,8 @@ class App extends Component<{}, IStore> {
             <Scene path={routes.tournamentsDetails()} component={Games} />
             <Scene path={routes.game()} component={Game} />
             <Scene path={routes.gamePredictions()} component={Predictions} />
+            <Scene path={routes.globalLeaderboard()} component={Leaderboard} />
             <Scene path={routes.leaderboard()} component={Leaderboard} />
-            <Scene path={routes.leaderboardGroup()} component={Leaderboard} />
           </Router>
         </MuiThemeProvider>
       </Provider>

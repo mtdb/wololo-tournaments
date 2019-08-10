@@ -1,7 +1,9 @@
 import React from 'react';
+import leaderboardsActions from './leaderboards/actions';
 import tournamentsActions from './tournaments/actions';
-import { ITournamentsStore, tournamentsStore } from './tournaments/store';
 import userActions from './user/actions';
+import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
+import { ITournamentsStore, tournamentsStore } from './tournaments/store';
 import { IUserStore, userStore } from './user/store';
 
 export interface IActionGroup {
@@ -14,15 +16,18 @@ export interface IActions {
 
 export interface IStore {
   actions: IActions;
-  user: IUserStore;
+  leaderboards: ILeaderboardsStore;
   tournaments: ITournamentsStore;
+  user: IUserStore;
 }
 
 const store: IStore = {
   actions: {
+    leaderboards: leaderboardsActions,
     tournaments: tournamentsActions,
     user: userActions
   },
+  leaderboards: leaderboardsStore,
   tournaments: tournamentsStore,
   user: userStore
 };
