@@ -14,7 +14,7 @@ export const useLocation = () => {
   };
 
   const [state, setState] = useState(newState);
-  useEffect(() => setState(newState), [newState.location]);
+  useEffect(() => setState(newState), [newState, newState.location]);
 
   return state;
 };

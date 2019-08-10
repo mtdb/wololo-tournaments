@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Tangerine');
 
-.main-modal> div {
-  background-color: rgba(0,0,0,0.95);
+.main-modal > div {
+  background-color: rgba(0, 0, 0, 0.95);
   transition: opacity 1s ease-in-out;
 
   .title {
@@ -10,7 +10,7 @@
     font-size: 28px;
     span {
       display: inline-block;
-      margin: 0 5px  ;
+      margin: 0 5px;
     }
   }
 
@@ -24,11 +24,13 @@
     .row {
       display: flex;
       margin: 8px 0;
-      .score, .chance {
+      .score,
+      .chance {
         width: 50%;
         text-align: center;
         font-size: 30px;
-        .p1, .p2 {
+        .p1,
+        .p2 {
           margin: 0 5px;
         }
       }
@@ -124,8 +126,8 @@ $paper-color: #dac48b;
       position: absolute;
       top: 2px;
       width: 7px;
-      background-color: #4A2B11;
-      background-image: linear-gradient(to bottom, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
+      background-color: #4a2b11;
+      background-image: linear-gradient(to bottom, #4a2b11 5%, #cd9e53 55%, #cd9e53, #4a2b11);
     }
 
     &:after {
@@ -135,14 +137,14 @@ $paper-color: #dac48b;
       position: absolute;
       top: 2px;
       width: 7px;
-      background-color: #4A2B11;
-      background-image: linear-gradient(to bottom, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
+      background-color: #4a2b11;
+      background-image: linear-gradient(to bottom, #4a2b11 5%, #cd9e53 55%, #cd9e53, #4a2b11);
     }
   }
 
   &__knob {
-    background-color: #CD9E53;
-    background-image: linear-gradient(to right, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
+    background-color: #cd9e53;
+    background-image: linear-gradient(to right, #4a2b11 5%, #cd9e53 55%, #cd9e53, #4a2b11);
     box-shadow: inset 0 6px 32px rgba(74, 43, 17, 1);
     border-radius: 15px/30px;
     height: $knob-height;
@@ -161,7 +163,6 @@ $paper-color: #dac48b;
   }
 
   &__text {
-
   }
 
   &__heading {
@@ -175,7 +176,7 @@ $paper-color: #dac48b;
 
 .c-scroll__knob--small {
   position: absolute;
-  transform: scale(.5);
+  transform: scale(0.5);
 }
 
 .c-scroll__knob--left {
@@ -199,12 +200,20 @@ $paper-color: #dac48b;
     transform: rotate(-90deg);
 
     .c-scroll__paper {
-      background-image: linear-gradient(to bottom, #c19b5d 0%,#d9ba7e 3%,#ebd095 10%,#ebd095 89%,#e5c78b 91%,#8e662f + 20 100%);
+      background-image: linear-gradient(
+        to bottom,
+        #c19b5d 0%,
+        #d9ba7e 3%,
+        #ebd095 10%,
+        #ebd095 89%,
+        #e5c78b 91%,
+        #8e662f + 20 100%
+      );
       box-shadow: inset 0 0 32px #c19b5d;
     }
 
     .c-scroll__roll {
-      background-image: linear-gradient(to bottom, #98743C, #EED89F 60%, #98743C);
+      background-image: linear-gradient(to bottom, #98743c, #eed89f 60%, #98743c);
     }
 
     .c-scroll__roll--bottom {
@@ -225,17 +234,25 @@ $paper-color: #dac48b;
     }
 
     .c-scroll__paper {
-      background-image: linear-gradient(to top, #c19b5d + 10 0%,#d9ba7e + 10 3%,#ebd095 10%,#ebd095 89%,#e5c78b 91%,#c19b5d + 20 100%);
+      background-image: linear-gradient(
+        to top,
+        #c19b5d + 10 0%,
+        #d9ba7e + 10 3%,
+        #ebd095 10%,
+        #ebd095 89%,
+        #e5c78b 91%,
+        #c19b5d + 20 100%
+      );
       box-shadow: inset 0 0 32px #c19b5d;
     }
 
     .c-scroll__roll--bottom {
-      background-image: linear-gradient(to top, #98743C + 60, #EED89F 30%, #98743C);
+      background-image: linear-gradient(to top, #98743c + 60, #eed89f 30%, #98743c);
       transform: rotate(180deg);
     }
 
     .c-scroll__roll--top {
-      background-image: linear-gradient(to bottom, #98743C, #EED89F 70%, #98743C + 30);
+      background-image: linear-gradient(to bottom, #98743c, #eed89f 70%, #98743c + 30);
     }
   }
 }
@@ -271,7 +288,7 @@ $yellow-grey: #58523a;
   }
 }
 
-.c-candle__wick{
+.c-candle__wick {
   position: absolute;
   width: 6px;
   height: $wick-height;
@@ -282,32 +299,31 @@ $yellow-grey: #58523a;
   border-radius: 10%;
   box-shadow: 0 0 2px 0 black;
 
-  &:before{
+  &:before {
     content: '';
     position: absolute;
     width: 0;
     left: 50%;
     height: 10px;
-    box-shadow:
-      0 -14px 10px 8px white,
-      0 -10px 10px 8px rgba(255,215,0,0.7), //gold
-      0 -3px 10px 8px rgba(255,106,0,0.7),  //orange
-      0 6px 3px 4px black;
+    box-shadow: 0 -14px 10px 8px white, 0 -10px 10px 8px rgba(255, 215, 0, 0.7),
+      //gold
+        0 -3px 10px 8px rgba(255, 106, 0, 0.7),
+      //orange
+        0 6px 3px 4px black;
   }
 
-  &:after{
+  &:after {
     content: '';
     position: absolute;
     left: 50%;
-    bottom:0;
+    bottom: 0;
     width: 0;
     height: 0;
-    box-shadow:
-      0 5px 2px 3px gold,
-      0 20px 2px 14px gold,
-      0 -6px 4px 5px rgba(98, 33, 27, 0.8),  //dark orange
-      0 0px 1px 4px rgba(255, 106, 0, 0.7),  //orange
-      0 0px 3px 4px $orange,
+    box-shadow: 0 5px 2px 3px gold, 0 20px 2px 14px gold, 0 -6px 4px 5px rgba(98, 33, 27, 0.8),
+      //dark orange
+        0 0px 1px 4px rgba(255, 106, 0, 0.7),
+      //orange
+        0 0px 3px 4px $orange,
       0 5px 3px 4px gold;
   }
 }
@@ -333,13 +349,12 @@ $yellow-grey: #58523a;
     border-top-right-radius: 500%;
     border-bottom-right-radius: 50px;
     transform: skewY(-10deg);
-    box-shadow:
-      0 0 0 3px white,
-      0 -20px 1px 4px white,
-      0 -25px 2px 3px gold,
-      0 -30px 5px 4px $orange,  //top
-      0 0px 150px 10px $orange, //global
-      0 -10px 2px 4px white,
+    box-shadow: 0 0 0 3px white, 0 -20px 1px 4px white, 0 -25px 2px 3px gold,
+      0 -30px 5px 4px $orange,
+      //top
+        0 0px 150px 10px $orange,
+      //global
+        0 -10px 2px 4px white,
       0 -5px 3px 3px white;
     animation: flame-up 4s infinite;
   }
@@ -351,13 +366,8 @@ $yellow-grey: #58523a;
     width: 1px;
     height: 60px;
     border-radius: 50%;
-    box-shadow:
-      0 5px 20px 15px gold,
-      0 0 100px 20px $orange,
-      0 15px 50px 15px $orange,
-      5px 30px 5px 13px $orange,
-      5px 50px 5px 13px $orange,
-      0 75px 50px 30px black;
+    box-shadow: 0 5px 20px 15px gold, 0 0 100px 20px $orange, 0 15px 50px 15px $orange,
+      5px 30px 5px 13px $orange, 5px 50px 5px 13px $orange, 0 75px 50px 30px black;
   }
 
   &__bottom {
@@ -369,17 +379,14 @@ $yellow-grey: #58523a;
     height: 8px;
     border-radius: 1%;
     background: $dark;
-    box-shadow:
-      0 6px 10px 12px rgba(60, 76, 125, 0.3), //dark blue
-      0 0 4px 8px $dark,
-      0 -12px 10px 8px rgba(255,106,0, 0.5),  //orange
-      0 5px 7px 12px $dark,
-      0 -3px 10px 12px $dark,
-      5px -10px 10px 5px red,
-      0 -15px 10px 10px gold,
-      5px -25px 10px 5px gold,
-      0 2px 5px 10px $blue-dark,
-      0 -2px 2px 14px $blue-light,
+    box-shadow: 0 6px 10px 12px rgba(60, 76, 125, 0.3),
+      //dark blue
+        0 0 4px 8px $dark,
+      0 -12px 10px 8px rgba(255, 106, 0, 0.5),
+      //orange
+        0 5px 7px 12px $dark,
+      0 -3px 10px 12px $dark, 5px -10px 10px 5px red, 0 -15px 10px 10px gold,
+      5px -25px 10px 5px gold, 0 2px 5px 10px $blue-dark, 0 -2px 2px 14px $blue-light,
       0 2px 10px 12px $blue-light;
   }
 }
@@ -391,28 +398,29 @@ $yellow-grey: #58523a;
   height: 100%;
   animation: inner-glow 4s infinite;
   background: $orange-yellow;
-  background: linear-gradient(top, rgba(246,169,20,1) 0%,rgba(187,121,16,1) 31%,rgba(41,21,10,1) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(246, 169, 20, 1) 0%,
+    rgba(187, 121, 16, 1) 31%,
+    rgba(41, 21, 10, 1) 100%
+  );
   border-top-left-radius: 34px;
   border-top-right-radius: 14px;
-  box-shadow:
-    inset 0 14px 13px -10px #fbf348,
-    inset 0 26px 123px -31px rgba(255, 0, 0, 0.4),
-    inset 0 2px 2px 0 black,
-    0 0 1px 0 #ff6a00,
-    inset 0 -50px 115px #29150a;
+  box-shadow: inset 0 14px 13px -10px #fbf348, inset 0 26px 123px -31px rgba(255, 0, 0, 0.4),
+    inset 0 2px 2px 0 black, 0 0 1px 0 #ff6a00, inset 0 -50px 115px #29150a;
 }
 
 @keyframes move {
   0% {
-    transform: skewX(2deg) skewY(5deg)
+    transform: skewX(2deg) skewY(5deg);
   }
 
   50% {
-    transform: skewX(-2deg) skewY(-0deg)
+    transform: skewX(-2deg) skewY(-0deg);
   }
 
   100% {
-    transform: skewX(2deg) skewY(5deg)
+    transform: skewX(2deg) skewY(5deg);
   }
 }
 
@@ -424,13 +432,12 @@ $yellow-grey: #58523a;
 
 @keyframes flame-up {
   50% {
-    box-shadow:
-      0 0 0 3px white,
-      0 -38px 1px 2px white,
-      0 -41px 2px 3px gold,
-      0 -50px 5px 4px $orange,  //orange top
-      0 0px 150px 10px $orange, //orange global
-      0 -10px 2px 4px white,
+    box-shadow: 0 0 0 3px white, 0 -38px 1px 2px white, 0 -41px 2px 3px gold,
+      0 -50px 5px 4px $orange,
+      //orange top
+        0 0px 150px 10px $orange,
+      //orange global
+        0 -10px 2px 4px white,
       0 -5px 3px 3px white;
   }
 }
@@ -443,11 +450,7 @@ $yellow-grey: #58523a;
 
 @keyframes inner-glow {
   50% {
-    box-shadow:
-      inset 0 14px 13px -8px #fbf348 + 20,
-      inset 0 26px 123px -31px rgba(255, 0, 0, 0.4),
-      inset 0 2px 2px 0 black,
-      0 0 1px 0 #ff6a00,
-      inset 0 -50px 82px #29150a;
+    box-shadow: inset 0 14px 13px -8px #fbf348 + 20, inset 0 26px 123px -31px rgba(255, 0, 0, 0.4),
+      inset 0 2px 2px 0 black, 0 0 1px 0 #ff6a00, inset 0 -50px 82px #29150a;
   }
 }
