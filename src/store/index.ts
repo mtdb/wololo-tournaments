@@ -1,6 +1,6 @@
 import React from 'react';
 import gamesActions from './games/actions';
-import { IGamesStore, gamesStore } from './games/store';
+import { gamesStore, IGamesStore } from './games/store';
 import leaderboardsActions from './leaderboards/actions';
 import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
 import tournamentsActions from './tournaments/actions';
