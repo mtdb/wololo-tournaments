@@ -1,4 +1,6 @@
 import React from 'react';
+import gamesActions from './games/actions';
+import { IGamesStore, gamesStore } from './games/store';
 import leaderboardsActions from './leaderboards/actions';
 import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
 import tournamentsActions from './tournaments/actions';
@@ -16,6 +18,7 @@ export interface IActions {
 
 export interface IStore {
   actions: IActions;
+  games: IGamesStore;
   leaderboards: ILeaderboardsStore;
   tournaments: ITournamentsStore;
   user: IUserStore;
@@ -23,10 +26,12 @@ export interface IStore {
 
 const store: IStore = {
   actions: {
+    games: gamesActions,
     leaderboards: leaderboardsActions,
     tournaments: tournamentsActions,
     user: userActions
   },
+  games: gamesStore,
   leaderboards: leaderboardsStore,
   tournaments: tournamentsStore,
   user: userStore
