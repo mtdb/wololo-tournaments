@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Cell, Pie, PieChart } from 'recharts';
 import { routes } from '../../App';
 import { Modal } from '../../components/Modal/Modal';
+import Predictions from '../../components/Predictions';
 import { useResizeHandler } from '../../hooks/resizeHandler';
 import './Game.scss';
 
@@ -21,16 +22,31 @@ const Game = () => {
   const { windowWidth } = useResizeHandler();
   const chartSize = Math.floor(windowWidth / 3) - (10 + 20);
 
-  const p1 = 'TheViper';
-  const p2 = 'TaToH';
-
   const predictions = [
-    { p1: 5, p2: 4, chance: 20 },
-    { p1: 5, p2: 3, chance: 20 },
-    { p1: 5, p2: 2, chance: 10 },
-    { p1: 5, p2: 0, chance: 5 },
-    { p1: 4, p2: 5, chance: 30 },
-    { p1: 2, p2: 5, chance: 15 }
+    {
+      chance: 20,
+      result: [{ player: 'TheViper', score: 5 }, { player: 'TaToH', score: 4 }]
+    },
+    {
+      chance: 20,
+      result: [{ player: 'TheViper', score: 5 }, { player: 'TaToH', score: 3 }]
+    },
+    {
+      chance: 10,
+      result: [{ player: 'TheViper', score: 5 }, { player: 'TaToH', score: 2 }]
+    },
+    {
+      chance: 5,
+      result: [{ player: 'TheViper', score: 5 }, { player: 'TaToH', score: 0 }]
+    },
+    {
+      chance: 30,
+      result: [{ player: 'TheViper', score: 4 }, { player: 'TaToH', score: 5 }]
+    },
+    {
+      chance: 15,
+      result: [{ player: 'TheViper', score: 2 }, { player: 'TaToH', score: 5 }]
+    }
   ];
 
   return (
@@ -80,27 +96,7 @@ const Game = () => {
         </div>
       ))}
       <Modal open={modalOpen} onClose={closeModal}>
-        <div>
-          <div className="title">
-            <span className="p1">{p1}</span>
-            <span>vs</span>
-            <span className="p2">{p2}</span>
-            <span>predictions</span>
-          </div>
-          <div className="main-result">
-            55% <span className="p1">{p1}</span> wins
-          </div>
-          <div className="result-table">
-            {predictions.map((p, index) => (
-              <div className="row" key={`p-${index}`}>
-                <div className="score">
-                  <span className="p1">{p.p1}</span>:<span className="p2">{p.p2}</span>
-                </div>
-                <div className="chance">{p.chance}%</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <Predictions predictions={predictions} />
       </Modal>
     </div>
   );
