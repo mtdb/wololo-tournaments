@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css?family=Tangerine');
+
+.main-modal> div {
+  background-color: rgba(0,0,0,0.95);
+  transition: opacity 1s ease-in-out;
+
+  .title {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 28px;
+    span {
+      display: inline-block;
+      margin: 0 5px  ;
+    }
+  }
+
+  .main-result {
+    padding: 1em;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .result-table {
+    .row {
+      display: flex;
+      margin: 8px 0;
+      .score, .chance {
+        width: 50%;
+        text-align: center;
+        font-size: 30px;
+        .p1, .p2 {
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+
+  .p1 {
+    font-weight: bold;
+    color: var(--blue);
+  }
+  .p2 {
+    font-weight: bold;
+
+    color: var(--red);
+  }
+}
+
+.close {
+  background-color: transparent;
+  font-size: 36px;
+  font-family: 'MedievalSharp';
+  color: var(--red);
+  margin-left: auto;
+  margin-right: 0;
+  outline: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid var(--red);
+}
+
+.c-body {
+  font-size: 22px;
+}
+
+.l-scroll {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  &.ready {
+    opacity: 1;
+  }
+}
+
+.c-main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  animation: brighten 4s infinite;
+  opacity: 0.9;
+}
+
+$knob-height: 70px;
+$knob-width: $knob-height / 2.34;
+$scroll-height: 43px;
+$scroll-width: calc(100vw - 100px);
+
+$paper-height: 80vh;
+$paper-color: #dac48b;
+
+.c-scroll {
+  position: relative;
+
+  &__link {
+    color: inherit;
+  }
+
+  &__paper {
+    background-color: $paper-color;
+    height: $paper-height;
+    margin: 0 $knob-height / 2;
+    position: relative;
+    z-index: 0;
+  }
+
+  &__holder {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__roll {
+    background-color: $paper-color;
+    height: $scroll-height;
+    position: relative;
+    width: $scroll-width;
+    margin: 0 5px;
+
+    &:before {
+      content: '';
+      bottom: 2px;
+      left: -7px;
+      position: absolute;
+      top: 2px;
+      width: 7px;
+      background-color: #4A2B11;
+      background-image: linear-gradient(to bottom, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
+    }
+
+    &:after {
+      content: '';
+      bottom: 2px;
+      right: -7px;
+      position: absolute;
+      top: 2px;
+      width: 7px;
+      background-color: #4A2B11;
+      background-image: linear-gradient(to bottom, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
+    }
+  }
+
+  &__knob {
+    background-color: #CD9E53;
+    background-image: linear-gradient(to right, #4A2B11 5%, #CD9E53 55%, #CD9E53, #4A2B11);
+    box-shadow: inset 0 6px 32px rgba(74, 43, 17, 1);
+    border-radius: 15px/30px;
+    height: $knob-height;
+    position: relative;
+    width: $knob-width;
+  }
+
+  .c-scroll__content {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text {
+
+  }
+
+  &__heading {
+    text-align: center;
+  }
+
+  &__paragraph {
+    line-height: 1.3;
+  }
+}
+
+.c-scroll__knob--small {
+  position: absolute;
+  transform: scale(.5);
+}
+
+.c-scroll__knob--left {
+  left: -20px;
+}
+
+.c-scroll__knob--right {
+  right: -20px;
+}
+
+.c-scroll__holder--bottom {
+  margin-top: -20px;
+}
+
+.c-scroll__holder--top {
+  margin-bottom: -20px;
+}
+
+@media screen and (orientation: landscape) {
+  .c-scroll {
+    transform: rotate(-90deg);
+
+    .c-scroll__paper {
+      background-image: linear-gradient(to bottom, #c19b5d 0%,#d9ba7e 3%,#ebd095 10%,#ebd095 89%,#e5c78b 91%,#8e662f + 20 100%);
+      box-shadow: inset 0 0 32px #c19b5d;
+    }
+
+    .c-scroll__roll {
+      background-image: linear-gradient(to bottom, #98743C, #EED89F 60%, #98743C);
+    }
+
+    .c-scroll__roll--bottom {
+      transform: rotate(0deg);
+    }
+
+    .c-scroll__content {
+      padding: 66px 0;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+@media screen and (orientation: portrait) {
+  .c-scroll {
+    .c-scroll__content {
+      padding: 8px;
+    }
+
+    .c-scroll__paper {
+      background-image: linear-gradient(to top, #c19b5d + 10 0%,#d9ba7e + 10 3%,#ebd095 10%,#ebd095 89%,#e5c78b 91%,#c19b5d + 20 100%);
+      box-shadow: inset 0 0 32px #c19b5d;
+    }
+
+    .c-scroll__roll--bottom {
+      background-image: linear-gradient(to top, #98743C + 60, #EED89F 30%, #98743C);
+      transform: rotate(180deg);
+    }
+
+    .c-scroll__roll--top {
+      background-image: linear-gradient(to bottom, #98743C, #EED89F 70%, #98743C + 30);
+    }
+  }
+}
+
+// Animated candle
+// slightly changed adoptation of this great pen by Maria
+// https://codepen.io/Shorina/pen/VbepBe
+$flame-height: 150px;
+$wick-height: 50px;
+$orange: #ff6a00;
+$orange-yellow: #ff9224;
+$dark: #2c2b39;
+$blue-dark: #30537d;
+$blue-light: #76daff;
+$yellow: #fbf348;
+$yellow-grey: #58523a;
+
+.c-candle {
+  bottom: -50px;
+  width: 70px;
+  margin-left: 100px;
+  position: relative;
+  height: 170px;
+
+  @media screen and (orientation: portrait) {
+    bottom: -150px;
+    margin-left: -65px;
+  }
+
+  @media screen and (orientation: landscape) {
+    bottom: -130px;
+    margin-left: 60px;
+  }
+}
+
+.c-candle__wick{
+  position: absolute;
+  width: 6px;
+  height: $wick-height;
+  background: #23161a;
+  top: $flame-height - 0.8 * $wick-height;
+  left: 50%;
+  transform: translateX(-50%) skewX(2deg) scale(0.5);
+  border-radius: 10%;
+  box-shadow: 0 0 2px 0 black;
+
+  &:before{
+    content: '';
+    position: absolute;
+    width: 0;
+    left: 50%;
+    height: 10px;
+    box-shadow:
+      0 -14px 10px 8px white,
+      0 -10px 10px 8px rgba(255,215,0,0.7), //gold
+      0 -3px 10px 8px rgba(255,106,0,0.7),  //orange
+      0 6px 3px 4px black;
+  }
+
+  &:after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom:0;
+    width: 0;
+    height: 0;
+    box-shadow:
+      0 5px 2px 3px gold,
+      0 20px 2px 14px gold,
+      0 -6px 4px 5px rgba(98, 33, 27, 0.8),  //dark orange
+      0 0px 1px 4px rgba(255, 106, 0, 0.7),  //orange
+      0 0px 3px 4px $orange,
+      0 5px 3px 4px gold;
+  }
+}
+
+.c-flame {
+  transform: scale(0.5);
+  width: 20px;
+  height: $flame-height;
+  margin: 0 auto;
+  position: relative;
+  //animation: move 3s infinite, move-left 3s infinite;
+  transform-origin: 50% 90%;
+
+  &__top {
+    width: 20px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    border-top-left-radius: 500%;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 500%;
+    border-bottom-right-radius: 50px;
+    transform: skewY(-10deg);
+    box-shadow:
+      0 0 0 3px white,
+      0 -20px 1px 4px white,
+      0 -25px 2px 3px gold,
+      0 -30px 5px 4px $orange,  //top
+      0 0px 150px 10px $orange, //global
+      0 -10px 2px 4px white,
+      0 -5px 3px 3px white;
+    animation: flame-up 4s infinite;
+  }
+
+  &__shadows {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow:
+      0 5px 20px 15px gold,
+      0 0 100px 20px $orange,
+      0 15px 50px 15px $orange,
+      5px 30px 5px 13px $orange,
+      5px 50px 5px 13px $orange,
+      0 75px 50px 30px black;
+  }
+
+  &__bottom {
+    transform: scale(0.9);
+    position: absolute;
+    bottom: 6px;
+    left: 9px;
+    width: 1px;
+    height: 8px;
+    border-radius: 1%;
+    background: $dark;
+    box-shadow:
+      0 6px 10px 12px rgba(60, 76, 125, 0.3), //dark blue
+      0 0 4px 8px $dark,
+      0 -12px 10px 8px rgba(255,106,0, 0.5),  //orange
+      0 5px 7px 12px $dark,
+      0 -3px 10px 12px $dark,
+      5px -10px 10px 5px red,
+      0 -15px 10px 10px gold,
+      5px -25px 10px 5px gold,
+      0 2px 5px 10px $blue-dark,
+      0 -2px 2px 14px $blue-light,
+      0 2px 10px 12px $blue-light;
+  }
+}
+
+.c-candle__wax {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  animation: inner-glow 4s infinite;
+  background: $orange-yellow;
+  background: linear-gradient(top, rgba(246,169,20,1) 0%,rgba(187,121,16,1) 31%,rgba(41,21,10,1) 100%);
+  border-top-left-radius: 34px;
+  border-top-right-radius: 14px;
+  box-shadow:
+    inset 0 14px 13px -10px #fbf348,
+    inset 0 26px 123px -31px rgba(255, 0, 0, 0.4),
+    inset 0 2px 2px 0 black,
+    0 0 1px 0 #ff6a00,
+    inset 0 -50px 115px #29150a;
+}
+
+@keyframes move {
+  0% {
+    transform: skewX(2deg) skewY(5deg)
+  }
+
+  50% {
+    transform: skewX(-2deg) skewY(-0deg)
+  }
+
+  100% {
+    transform: skewX(2deg) skewY(5deg)
+  }
+}
+
+@keyframes move-left {
+  50% {
+    transform: skewX(3deg);
+  }
+}
+
+@keyframes flame-up {
+  50% {
+    box-shadow:
+      0 0 0 3px white,
+      0 -38px 1px 2px white,
+      0 -41px 2px 3px gold,
+      0 -50px 5px 4px $orange,  //orange top
+      0 0px 150px 10px $orange, //orange global
+      0 -10px 2px 4px white,
+      0 -5px 3px 3px white;
+  }
+}
+
+@keyframes brighten {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes inner-glow {
+  50% {
+    box-shadow:
+      inset 0 14px 13px -8px #fbf348 + 20,
+      inset 0 26px 123px -31px rgba(255, 0, 0, 0.4),
+      inset 0 2px 2px 0 black,
+      0 0 1px 0 #ff6a00,
+      inset 0 -50px 82px #29150a;
+  }
+}

@@ -6,7 +6,9 @@
   --dark-text: #19100B;
   --wood: #563726;
   --gold: #f0a429;
-  --red: #cc3939;
+  --red: #c62828;
+  --blue: #1565c0;
+  --green: #2e7d32;
 }
 
 html {
@@ -30,7 +32,8 @@ body {
 }
 
 a {
-  color: var(--red);
+  font-weight: bold;
+  color: var(--green);
   text-decoration: none;
 }
 
@@ -46,4 +49,13 @@ code {
 
 .wooden-bg {
   background: #2d2a23 url('./assets/wood.jpg') repeat top;
+}
+
+.paper {
+  text-align: center;
+  background-color: var(--bg1);
+  margin: 10px auto 0;
+  border: 2px solid var(--wood);
+  box-sizing: border-box;
+  display: flex;
 }

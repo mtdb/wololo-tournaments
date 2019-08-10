@@ -1,4 +1,41 @@
 #Game {
+  flex-direction: column;
+
+  .top-actions {
+    width: 100%;
+    height: 33.33vw;
+
+    .box {
+      flex: 1;
+      padding: 5px;
+      text-align: center;
+      text-transform: uppercase;
+      &>div{
+        margin: 0 auto;
+      }
+
+      .values {
+        font-family: 'Old-London';
+        display: flex;
+        font-size: 60px;
+        align-items: center;
+        justify-content: center;
+        height: calc(100% - 21px);
+        letter-spacing: 5PX;
+      }
+      button {
+        height: 100%;
+        font-family: 'MedievalSharp', cursive;
+        font-weight: bold;
+        font-size: 19px;
+        span.MuiButton-label{
+          color: var(--green);
+        }
+
+      }
+    }
+  }
+
   ul {
     list-style: none;
     li {
