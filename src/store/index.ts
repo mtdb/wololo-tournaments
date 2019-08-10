@@ -1,4 +1,6 @@
 import React from 'react';
+import tournamentsActions from './tournaments/actions';
+import { ITournamentsStore, tournamentsStore } from './tournaments/store';
 import userActions from './user/actions';
 import { IUserStore, userStore } from './user/store';
 
@@ -13,12 +15,15 @@ export interface IActions {
 export interface IStore {
   actions: IActions;
   user: IUserStore;
+  tournaments: ITournamentsStore;
 }
 
 const store: IStore = {
   actions: {
+    tournaments: tournamentsActions,
     user: userActions
   },
+  tournaments: tournamentsStore,
   user: userStore
 };
 

@@ -9,7 +9,7 @@
     "tslint:latest"
   ],
   "linterOptions": {
-    "exclude": ["src/serviceWorker.ts", "**/**.json"]
+    "exclude": ["src/serviceWorker.ts", "**/**.json", "src/contrib/api/*"]
   },
   "jsRules": {},
   "rules": {
@@ -36,7 +36,7 @@
     ],
     "typedef": [true, "call-signature", "parameter"],
     "variable-name": {
-      "options": ["ban-keywords", "check-format", "allow-pascal-case"]
+      "options": ["ban-keywords", "check-format", "allow-pascal-case", "allow-leading-underscore"]
     }
   }
 }
