@@ -1,6 +1,6 @@
+import api from '../../contrib/api';
 import { IActionGroup, IStore } from '../index';
 import { ITournament } from './store';
-import api from '../../contrib/api';
 
 const tournamentsList = api.tournamentsList();
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import userActions from './user/actions';
 import tournamentsActions from './tournaments/actions';
-import { IUserStore, userStore } from './user/store';
 import { ITournamentsStore, tournamentsStore } from './tournaments/store';
+import userActions from './user/actions';
+import { IUserStore, userStore } from './user/store';
 
 export interface IActionGroup {
   [key: string]: any;
