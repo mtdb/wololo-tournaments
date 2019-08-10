@@ -1,9 +1,9 @@
 import React from 'react';
 import leaderboardsActions from './leaderboards/actions';
-import tournamentsActions from './tournaments/actions';
-import userActions from './user/actions';
 import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
+import tournamentsActions from './tournaments/actions';
 import { ITournamentsStore, tournamentsStore } from './tournaments/store';
+import userActions from './user/actions';
 import { IUserStore, userStore } from './user/store';
 
 export interface IActionGroup {
