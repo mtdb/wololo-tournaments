@@ -100,17 +100,19 @@ const Games = () => (
           navigate(routes.game('king-of-the-desert', 'nicov'));
         }}
       >
+        <div className="header">King of the Desert 3</div>
         <div className="content">
-          <div className={`flag-icon flag-icon-${game[0].country} flag-icon-squared`} />
+          <div className={`flag-icon flag-icon-${game[0].country} left`} />
           <div className="inner-content">
-            <div className="header">King of the Desert 3</div>
-            <div className="player-name">{game[0].name}</div>
-            <div>vs</div>
-            <div className="player-name">{game[1].name}</div>
-            <div className="footer">20/07/2019 12:00</div>
+            <div className="players">
+              <div className="player-name p1">{game[0].name}</div>
+              <div className="vs">vs</div>
+              <div className="player-name p2">{game[1].name}</div>
+            </div>
           </div>
-          <div className={`flag-icon flag-icon-${game[1].country} flag-icon-squared`} />
+          <div className={`flag-icon flag-icon-${game[1].country} right`} />
         </div>
+        <div className="footer">20/07/2019 12:00</div>
       </div>
     ))}
   </div>
