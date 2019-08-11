@@ -20,12 +20,12 @@ import './assets/fontawesome/css/all.css';
 import theme from './theme';
 
 export const routes = {
-  game: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}`,
-  gamePredictions: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}/predictions`,
-  upcoming: () => '/',
+  game: (game = ':game') => `/games/${game}`,
+  gamePredictions: (game = ':game') => `/games/${game}/predictions`,
   leaderboard: (name = ':name') => `/leaderboard/${name}`,
+  tournamentGames: (slug = ':slug') => `/tournaments/${slug}`,
   tournaments: () => '/tournaments',
-  tournamentGames: (slug = ':slug') => `/tournaments/${slug}`
+  upcoming: () => '/'
 };
 
 class App extends Component<{}, IStore> {
