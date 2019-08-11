@@ -29,7 +29,7 @@ export const Modal = ({ children, open, onClose }: IProps) => {
         <div className="c-body">
           <main className="c-main">
             <div className={`l-scroll ${open ? 'ready' : ''}`}>
-              <div className="c-scroll" onClick={onClose}>
+              <div className="c-scroll">
                 <div className="c-scroll__holder c-scroll__holder--top">
                   <div className="c-scroll__knob">
                     <div className="c-scroll__knob c-scroll__knob--small c-scroll__knob--left" />
@@ -47,7 +47,7 @@ export const Modal = ({ children, open, onClose }: IProps) => {
                     {children}
                   </div>
                 </div>
-                <div className="c-scroll__holder c-scroll__holder--bottom" onClick={onClose}>
+                <div className="c-scroll__holder c-scroll__holder--bottom">
                   <div className="c-scroll__knob">
                     <div className="c-scroll__knob c-scroll__knob--small c-scroll__knob--left" />
                   </div>
@@ -58,7 +58,7 @@ export const Modal = ({ children, open, onClose }: IProps) => {
                 </div>
               </div>
             </div>
-            <div className={`c-candle ${open ? 'ready' : ''}`} onClick={onClose}>
+            <div className={`c-candle ${open ? 'ready' : ''}`}>
               <div className="c-flame">
                 <div className="c-flame__shadows" />
                 <div className="c-flame__top" />

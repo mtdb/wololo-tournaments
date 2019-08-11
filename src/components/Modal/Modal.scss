@@ -36,16 +36,6 @@
       }
     }
   }
-
-  .p1 {
-    font-weight: bold;
-    color: var(--blue);
-  }
-  .p2 {
-    font-weight: bold;
-
-    color: var(--red);
-  }
 }
 
 .close {
@@ -307,9 +297,9 @@ $yellow-grey: #58523a;
     height: 10px;
     box-shadow: 0 -14px 10px 8px white, 0 -10px 10px 8px rgba(255, 215, 0, 0.7),
       //gold
-        0 -3px 10px 8px rgba(255, 106, 0, 0.7),
+        0-3px 10px 8px rgba(255, 106, 0, 0.7),
       //orange
-        0 6px 3px 4px black;
+        06px 3px 4px black;
   }
 
   &:after {
@@ -321,9 +311,9 @@ $yellow-grey: #58523a;
     height: 0;
     box-shadow: 0 5px 2px 3px gold, 0 20px 2px 14px gold, 0 -6px 4px 5px rgba(98, 33, 27, 0.8),
       //dark orange
-        0 0px 1px 4px rgba(255, 106, 0, 0.7),
+        00px 1px 4px rgba(255, 106, 0, 0.7),
       //orange
-        0 0px 3px 4px $orange,
+        00px 3px 4px $orange,
       0 5px 3px 4px gold;
   }
 }
@@ -352,9 +342,9 @@ $yellow-grey: #58523a;
     box-shadow: 0 0 0 3px white, 0 -20px 1px 4px white, 0 -25px 2px 3px gold,
       0 -30px 5px 4px $orange,
       //top
-        0 0px 150px 10px $orange,
+        00px 150px 10px $orange,
       //global
-        0 -10px 2px 4px white,
+        0-10px 2px 4px white,
       0 -5px 3px 3px white;
     animation: flame-up 4s infinite;
   }
@@ -381,10 +371,10 @@ $yellow-grey: #58523a;
     background: $dark;
     box-shadow: 0 6px 10px 12px rgba(60, 76, 125, 0.3),
       //dark blue
-        0 0 4px 8px $dark,
+        00 4px 8px $dark,
       0 -12px 10px 8px rgba(255, 106, 0, 0.5),
       //orange
-        0 5px 7px 12px $dark,
+        05px 7px 12px $dark,
       0 -3px 10px 12px $dark, 5px -10px 10px 5px red, 0 -15px 10px 10px gold,
       5px -25px 10px 5px gold, 0 2px 5px 10px $blue-dark, 0 -2px 2px 14px $blue-light,
       0 2px 10px 12px $blue-light;
@@ -435,9 +425,9 @@ $yellow-grey: #58523a;
     box-shadow: 0 0 0 3px white, 0 -38px 1px 2px white, 0 -41px 2px 3px gold,
       0 -50px 5px 4px $orange,
       //orange top
-        0 0px 150px 10px $orange,
+        00px 150px 10px $orange,
       //orange global
-        0 -10px 2px 4px white,
+        0-10px 2px 4px white,
       0 -5px 3px 3px white;
   }
 }

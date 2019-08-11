@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { getScores } from '../../contrib/results';
-
+import VsTitle from '../VsTitle';
 // TODO: move this to the store and import it
 interface IPlayerScore {
   player: string;
@@ -25,15 +25,7 @@ export const Predictions = ({ predictions }: IProps) => {
   return (
     <div>
       <div className="title">
-        {players
-          .map((player, index) => (
-            <span key={`p${index + 1}`} className={`p${index + 1}`}>
-              {player}
-            </span>
-          ))
-          .reduce((accu: any, elem) => {
-            return accu === null ? [elem] : [...accu, <span key={`vs${elem.key}`}>vs</span>, elem];
-          }, null)}
+        <VsTitle players={players} />
         <span>predictions</span>
       </div>
       <div className="main-result">

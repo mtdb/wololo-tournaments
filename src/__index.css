@@ -6,13 +6,18 @@
     font-style: normal;
 }
 :root {
-  --bg1: #D6C499cc;
-  --dark-text: #19100B;
+  --bg1: #d6c499cc;
+  --dark-text: #19100b;
   --wood: #563726;
   --gold: #f0a429;
-  --red: #c62828;
   --blue: #1565c0;
+  --red: #c62828;
   --green: #2e7d32;
+  --yellow: #f9a825;
+  --teal: #009688;
+  --purple: #7b1fa2;
+  --grey: #616161;
+  --orange: #ef6c00;
 }
 html {
   height: 100%;
@@ -38,12 +43,15 @@ a {
   color: var(--green);
   text-decoration: none;
 }
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: 'Old-London', 'MedievalSharp', cursive;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 .wooden-bg {
   background: #2d2a23 url('./assets/wood.jpg') repeat top;
@@ -56,3 +64,69 @@ code {
   box-sizing: border-box;
   display: flex;
 }
+.p1 {
+  font-weight: bold;
+  color: var(--blue);
+}
+.p2 {
+  font-weight: bold;
+  color: var(--red);
+}
+.p3 {
+  font-weight: bold;
+  color: var(--green);
+}
+.p4 {
+  font-weight: bold;
+  color: var(--yellow);
+}
+.p5 {
+  font-weight: bold;
+  color: var(--teal);
+}
+.p6 {
+  font-weight: bold;
+  color: var(--purple);
+}
+.p7 {
+  font-weight: bold;
+  color: var(--grey);
+}
+.p8 {
+  font-weight: bold;
+  color: var(--orange);
+}
+.a {
+  border: 1px solid;
+  border-top-color: #e4b479;
+  border-right-color: #e4b479;
+  border-bottom-color: #6f4f2e;
+  border-left-color: #6f4f2e;
+  height: 3em;
+  width: 10em;
+}
+.a .b {
+    border: 1px solid;
+    border-top-color: #b88851;
+    border-right-color: #b88851;
+    border-bottom-color: #895932;
+    border-left-color: #895932;
+    height: 100%;
+  }
+.a .b .c {
+      border: 1px solid;
+      border-top-color: #a36d3a;
+      border-right-color: #a36d3a;
+      border-bottom-color: #966638;
+      border-left-color: #966638;
+      font-family: Old-London;
+      text-transform: capitalize;
+      height: 100%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      letter-spacing: 2px;
+      background-image: linear-gradient(to bottom, #6f4f2e, #56441a);
+    }

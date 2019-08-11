@@ -1,0 +1,50 @@
+#ScorePicker {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  .score-table {
+    .row {
+      display: flex;
+      margin-top: 10px;
+
+      .player {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        div {
+          width: 100%;
+          text-align: center;
+        }
+      }
+      .MuiTextField-root {
+        margin-left: 1em;
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 3em;
+        input {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .actions {
+    margin-top: auto;
+    text-align: center;
+  }
+
+  .submit {
+    border-radius: 0;
+    color: white;
+    font-family: MedievalSharp;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 10px;
+    width: 180px;
+  }
+}
