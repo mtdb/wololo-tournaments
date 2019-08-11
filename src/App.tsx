@@ -22,11 +22,10 @@ import theme from './theme';
 export const routes = {
   game: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}`,
   gamePredictions: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}/predictions`,
-  games: () => '/',
-  globalLeaderboard: () => '/leaderboard/',
+  upcoming: () => '/',
   leaderboard: (name = ':name') => `/leaderboard/${name}`,
   tournaments: () => '/tournaments',
-  tournamentsDetails: (slug = ':slug') => `/tournaments/${slug}`
+  tournamentGames: (slug = ':slug') => `/tournaments/${slug}`
 };
 
 class App extends Component<{}, IStore> {
@@ -43,12 +42,11 @@ class App extends Component<{}, IStore> {
           <TopBar />
           <Navbar />
           <Router>
-            <Scene path={routes.games()} component={Games} />
+            <Scene path={routes.upcoming()} component={Games} />
             <Scene path={routes.tournaments()} component={Tournaments} />
-            <Scene path={routes.tournamentsDetails()} component={Games} />
+            <Scene path={routes.tournamentGames()} component={Games} />
             <Scene path={routes.game()} component={Game} />
             <Scene path={routes.gamePredictions()} component={Predictions} />
-            <Scene path={routes.globalLeaderboard()} component={Leaderboard} />
             <Scene path={routes.leaderboard()} component={Leaderboard} />
           </Router>
         </MuiThemeProvider>

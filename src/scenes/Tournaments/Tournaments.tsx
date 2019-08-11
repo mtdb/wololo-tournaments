@@ -37,7 +37,7 @@ const TournamentsComponent = ({
                   </a>
                 </li>
                 <li>
-                  <Link to={routes.tournamentsDetails(tournament.slug)}>Games</Link>
+                  <Link to={routes.tournamentGames(tournament.slug)}>Games</Link>
                 </li>
                 <li>
                   <Link to={routes.leaderboard(tournament.slug)}>Leaderboard</Link>
