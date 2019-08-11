@@ -33,7 +33,7 @@ const Navbar = () => {
 
   const handleChange = (_: any, newValue: number) => {
     setValue(newValue);
-    const links = [routes.games(), routes.tournaments(), routes.leaderboard()];
+    const links = [routes.upcoming(), routes.tournaments(), routes.leaderboard('global')];
 
     navigate(links[newValue]);
   };

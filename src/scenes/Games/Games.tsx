@@ -10,25 +10,32 @@ import './Games.scss';
 
 const GamesComponent = ({
   actions: {
-    games: { listUpcoming }
+    games: { listUpcoming, list }
   },
-  games: { upcoming }
+  games,
+  slug: tournament
 }: {
   actions: IActions;
-  games: { upcoming: IGame[] };
+  games: { [key: string]: IGame[] };
+  slug: string;
 }) => {
   useEffect(() => {
-    listUpcoming();
-  }, [listUpcoming]);
+    if (!tournament) {
+      listUpcoming();
+    } else {
+      list(tournament);
+    }
+  }, [listUpcoming, tournament]);
+  const filter = tournament || 'upcoming';
   return (
     <div id="Games">
-      {upcoming &&
-        upcoming.map(game => (
+      {games[filter] &&
+        games[filter].map(game => (
           <div
             className="game-summary"
-            key={game.id}
+            key={game.slug}
             onClick={() => {
-              navigate(routes.game(game.tournament, String(game.id)));
+              navigate(routes.game(game.slug));
             }}
           >
             <div className="header">{game.tournament}</div>
@@ -52,6 +59,7 @@ const GamesComponent = ({
             <div className="footer">{game.date}</div>
           </div>
         ))}
+      {(!games[filter] || !games[filter].length) && <div>loading...</div>}
     </div>
   );
 };

@@ -8,7 +8,7 @@ interface IPlayer {
 }
 
 export interface IGame {
-  id: number;
+  slug: string;
   tournament: string;
   date: string;
   winner: string;
@@ -18,11 +18,9 @@ export interface IGame {
 }
 
 export const gamesStore: IGamesStore = {
-  games: {
-    upcoming: []
-  }
+  upcoming: []
 };
 
 export interface IGamesStore {
-  games: { upcoming: IGame[] };
+  [key: string]: IGame[];
 }

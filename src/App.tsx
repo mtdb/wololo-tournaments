@@ -20,13 +20,12 @@ import './assets/fontawesome/css/all.css';
 import theme from './theme';
 
 export const routes = {
-  game: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}`,
-  gamePredictions: (slug = ':slug', game = ':game') => `/tournaments/${slug}/${game}/predictions`,
-  games: () => '/',
-  globalLeaderboard: () => '/leaderboard/',
+  game: (game = ':game') => `/games/${game}`,
+  gamePredictions: (game = ':game') => `/games/${game}/predictions`,
   leaderboard: (name = ':name') => `/leaderboard/${name}`,
+  tournamentGames: (slug = ':slug') => `/tournaments/${slug}`,
   tournaments: () => '/tournaments',
-  tournamentsDetails: (slug = ':slug') => `/tournaments/${slug}`
+  upcoming: () => '/'
 };
 
 class App extends Component<{}, IStore> {
@@ -43,12 +42,11 @@ class App extends Component<{}, IStore> {
           <TopBar />
           <Navbar />
           <Router>
-            <Scene path={routes.games()} component={Games} />
+            <Scene path={routes.upcoming()} component={Games} />
             <Scene path={routes.tournaments()} component={Tournaments} />
-            <Scene path={routes.tournamentsDetails()} component={Games} />
+            <Scene path={routes.tournamentGames()} component={Games} />
             <Scene path={routes.game()} component={Game} />
             <Scene path={routes.gamePredictions()} component={Predictions} />
-            <Scene path={routes.globalLeaderboard()} component={Leaderboard} />
             <Scene path={routes.leaderboard()} component={Leaderboard} />
           </Router>
         </MuiThemeProvider>
