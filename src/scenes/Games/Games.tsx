@@ -1,11 +1,11 @@
 import { Link } from '@reach/router';
 import 'flag-icon-css/css/flag-icon.css';
+import moment from 'moment';
 import React, { useEffect } from 'react';
 import { routes } from '../../App';
 import { withContext } from '../../contrib/context';
 import { IActions } from '../../store';
 import { IGame } from '../../store/games/store';
-import moment from 'moment';
 
 import './Games.scss';
 
