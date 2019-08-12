@@ -17,8 +17,11 @@ import * as url from 'url';
 import * as portableFetch from 'portable-fetch';
 import { Configuration } from './configuration';
 
-const BASE_PATH = 'http://localhost:8000'.replace(/\/+$/, '');
+let BASE_PATH = 'http://localhost:8000';
 
+if (process.env.NODE_ENV === 'production') {
+  BASE_PATH = 'https://wololo.appjango.com';
+}
 /**
  *
  * @export
