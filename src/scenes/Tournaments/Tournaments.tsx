@@ -29,7 +29,7 @@ const TournamentsComponent = ({
             />
             <div className="content">
               <div className="title">{tournament.name}</div>
-              <div>${tournament.prize}</div>
+              <div>{tournament.prize}</div>
               <ul>
                 <li>
                   <a href={tournament.web} target="blank">

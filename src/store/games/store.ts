@@ -9,7 +9,10 @@ interface IPlayer {
 
 export interface IGame {
   slug: string;
-  tournament: string;
+  tournament: {
+    name: string;
+    slug: string;
+  };
   date: string;
   winner: string;
   players: IPlayer[];
