@@ -1,3 +1,5 @@
+import { IGame } from '../games/store';
+
 export interface ITournament {
   banner: string;
   icon: string;
@@ -7,6 +9,18 @@ export interface ITournament {
   web: string;
 }
 
-export const tournamentsStore: ITournament[] = [];
+export const tournamentsStore: ITournamentsStore = {
+  all: [],
+  games: {},
+  tournament: {}
+};
 
-export interface ITournamentsStore extends Array<ITournament> {}
+export interface ITournamentsStore {
+  games: {
+    [key: string]: IGame[];
+  };
+  tournament: {
+    [key: string]: ITournament;
+  };
+  all: ITournament[];
+}

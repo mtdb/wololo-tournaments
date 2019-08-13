@@ -3,9 +3,9 @@ import { IActionGroup, IStore } from '../index';
 import { IGame } from './store';
 
 const actions: IActionGroup = {
-  list: async (_state: IStore, tournament: string) => {
-    const games: IGame[] = await (await api.gamesList(tournament)()).json();
-    return { games: { [tournament]: games } };
+  get: async (_state: IStore, slug: string) => {
+    const game: IGame = await (await api.gamesRead(slug)()).json();
+    return { game: { [slug]: game } };
   },
   listUpcoming: async (_state: IStore) => {
     const upcoming: IGame[] = await (await api.gamesList('upcoming')()).json();

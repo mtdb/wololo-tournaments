@@ -3,25 +3,25 @@ import React, { useEffect } from 'react';
 import { routes } from '../../App';
 import { withContext } from '../../contrib/context';
 import { IActions } from '../../store';
-import { ITournament } from '../../store/tournaments/store';
+import { ITournamentsStore } from '../../store/tournaments/store';
 import './Tournaments.scss';
 
 const TournamentsComponent = ({
   actions: {
     tournaments: { list: listTournaments }
   },
-  tournaments
+  tournaments: { all: tournamentList }
 }: {
   actions: IActions;
-  tournaments: ITournament[];
+  tournaments: ITournamentsStore;
 }) => {
   useEffect(() => {
     listTournaments();
   }, [listTournaments]);
   return (
     <div id="Tournaments">
-      {tournaments &&
-        tournaments.map(tournament => (
+      {tournamentList &&
+        tournamentList.map(tournament => (
           <div className="tournament-summary" key={tournament.slug}>
             <div
               className="icon"

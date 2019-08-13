@@ -21,9 +21,13 @@ export interface IGame {
 }
 
 export const gamesStore: IGamesStore = {
+  game: {},
   upcoming: []
 };
 
 export interface IGamesStore {
-  [key: string]: IGame[];
+  game: {
+    [key: string]: IGame;
+  };
+  upcoming: IGame[];
 }

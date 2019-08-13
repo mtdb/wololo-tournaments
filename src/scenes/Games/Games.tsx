@@ -5,33 +5,37 @@ import React, { useEffect } from 'react';
 import { routes } from '../../App';
 import { withContext } from '../../contrib/context';
 import { IActions } from '../../store';
-import { IGame } from '../../store/games/store';
+import { IGamesStore } from '../../store/games/store';
+import { ITournamentsStore } from '../../store/tournaments/store';
 
 import './Games.scss';
 
 const GamesComponent = ({
   actions: {
-    games: { listUpcoming, list }
+    games: { listUpcoming },
+    tournaments: { listGames }
   },
-  games,
+  games: { upcoming: upcomingGames },
+  tournaments: { games: tournamentGames },
   slug: tournament
 }: {
   actions: IActions;
-  games: { [key: string]: IGame[] };
+  games: IGamesStore;
+  tournaments: ITournamentsStore;
   slug: string;
 }) => {
   useEffect(() => {
     if (!tournament) {
       listUpcoming();
     } else {
-      list(tournament);
+      listGames(tournament);
     }
-  }, [list, listUpcoming, tournament]);
-  const filter = tournament || 'upcoming';
+  }, [listUpcoming, tournament]);
+  const games = tournament ? tournamentGames[tournament] : upcomingGames;
   return (
     <div id="Games">
-      {games[filter] &&
-        games[filter].map(game => (
+      {games &&
+        games.map(game => (
           <div className="game-summary" key={game.slug}>
             <div className="header">
               <Link to={routes.tournamentGames(game.tournament.slug)}>{game.tournament.name}</Link>
@@ -70,11 +74,11 @@ const GamesComponent = ({
             <div className="footer">{moment(game.date).calendar()}</div>
           </div>
         ))}
-      {(!games[filter] || !games[filter].length) && <div>loading...</div>}
+      {(!games || !games.length) && <div>loading...</div>}
     </div>
   );
 };
 
-const Games = withContext(GamesComponent, 'games', 'actions');
+const Games = withContext(GamesComponent, 'actions', 'games', 'tournaments');
 
 export { Games };
