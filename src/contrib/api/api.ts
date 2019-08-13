@@ -261,7 +261,7 @@ export const ApiApiFetchParamCreator = function(_configuration?: Configuration) 
           'Required parameter tournament was null or undefined when calling gamesList.'
         );
       }
-      const localVarPath = `/api/games/{tournament}/`.replace(
+      const localVarPath = `/api/games/t/{tournament}/`.replace(
         `{${'tournament'}}`,
         encodeURIComponent(String(tournament))
       );

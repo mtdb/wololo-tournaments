@@ -30,7 +30,7 @@ const GamesComponent = ({
     } else {
       listGames(tournament);
     }
-  }, [listUpcoming, tournament]);
+  }, [listGames, listUpcoming, tournament]);
   const games = tournament ? tournamentGames[tournament] : upcomingGames;
   return (
     <div id="Games">

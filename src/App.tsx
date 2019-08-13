@@ -20,7 +20,7 @@ import './assets/fontawesome/css/all.css';
 import theme from './theme';
 
 export const routes = {
-  game: (game = ':game') => `/games/${game}`,
+  game: (slug = ':slug') => `/games/${slug}`,
   gamePredictions: (game = ':game') => `/games/${game}/predictions`,
   leaderboard: (name = ':name') => `/leaderboard/${name}`,
   tournamentGames: (slug = ':slug') => `/tournaments/${slug}`,

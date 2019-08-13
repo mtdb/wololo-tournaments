@@ -1,12 +1,15 @@
 import Button from '@material-ui/core/Button';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CivIcon, CivilizationType } from '../../components/CivIcon/CivIcon';
 import MainChart from '../../components/MainChart';
 import { Modal } from '../../components/Modal/Modal';
 import Predictions from '../../components/Predictions';
 import ScorePicker from '../../components/ScorePicker';
 import VsTitle from '../../components/VsTitle';
+import { withContext } from '../../contrib/context';
 import { useResizeHandler } from '../../hooks/resizeHandler';
+import { IActions } from '../../store';
+import { IGamesStore } from '../../store/games/store';
 import './Game.scss';
 
 const predictions = [
@@ -84,11 +87,17 @@ const civs = [
 
 type ModalState = false | 'predictions' | 'scores';
 
-const player1 = 'Nikov';
-const player2 = 'Daut';
-const players = [player1, player2];
-
-const Game = () => {
+const GameComponent = ({
+  actions: {
+    games: { get: getGame }
+  },
+  games: { game: retrievedGame },
+  slug
+}: {
+  actions: IActions;
+  games: IGamesStore;
+  slug: string;
+}) => {
   const [modal, setModal] = useState<ModalState>(false);
 
   const openPredictions = () => setModal('predictions');
@@ -102,11 +111,22 @@ const Game = () => {
   const chartSizeY = Math.floor(windowWidth / 3) - (10 + 20);
   const chartSizeX = Math.floor(windowWidth / 3) - 10;
 
+  useEffect(() => {
+    getGame(slug);
+  }, [getGame]);
+
+  const game = retrievedGame[slug] || {
+    players: [],
+    tournament: {}
+  };
+
+  const players = game.players.map((a: any) => a.player.name);
+
   return (
     <div id="Game">
       <div className="paper">
         <header>
-          <h2>King of the Desert 3</h2>
+          <h2>{game.tournament.name}</h2>
           <div className="vs-title">
             <VsTitle players={players} />
           </div>
@@ -165,5 +185,7 @@ const Game = () => {
     </div>
   );
 };
+
+const Game = withContext(GameComponent, 'actions', 'games');
 
 export { Game };
