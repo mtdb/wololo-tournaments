@@ -1,5 +1,5 @@
 import Button from '@material-ui/core/Button';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CivIcon, CivilizationType } from '../../components/CivIcon/CivIcon';
 import MainChart from '../../components/MainChart';
 import { Modal } from '../../components/Modal/Modal';
@@ -113,7 +113,7 @@ const GameComponent = ({
 
   useEffect(() => {
     getGame(slug);
-  }, [getGame]);
+  }, [getGame, slug]);
 
   const game = retrievedGame[slug] || {
     players: [],
