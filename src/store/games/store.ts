@@ -1,10 +1,19 @@
-interface IPlayer {
+export interface IPlayer {
   player: {
     country: string;
     name: string;
     slug: string;
   };
   team: string;
+}
+
+interface IMatch {
+  civilizations: Array<{
+    player: string;
+    civilization: string;
+  }>;
+  id: number;
+  winner: string;
 }
 
 export interface IGame {
@@ -17,7 +26,7 @@ export interface IGame {
   winner: string;
   players: IPlayer[];
   number_of_matches: number;
-  matches: any;
+  matches: IMatch[];
 }
 
 export const gamesStore: IGamesStore = {

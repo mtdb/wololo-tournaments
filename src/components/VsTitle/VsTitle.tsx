@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
+import { IPlayer } from '../../store/games/store';
 
 interface IProps {
-  players: string[];
+  players: IPlayer[];
 }
 
 export const VsTitle = ({ players }: IProps) => (
@@ -9,7 +10,7 @@ export const VsTitle = ({ players }: IProps) => (
     {players
       .map((player, index) => (
         <span key={`p${index + 1}`} className={`p${index + 1}`}>
-          {player}
+          {player.player.name}
         </span>
       ))
       .reduce((accu: any, elem) => {

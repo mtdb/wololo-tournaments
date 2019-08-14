@@ -18,14 +18,18 @@ interface IProps {
 }
 
 export const Predictions = ({ predictions }: IProps) => {
+  const vsplayers = predictions[0].result.map(p => ({
+    player: { name: p.player, country: 'ca', slug: 'p1' },
+    team: 'p1'
+  }));
   const players = predictions[0].result.map(p => p.player);
-  const winner = getScores(players, predictions).reduce(
-    (prev, current) => (prev.chance > current.chance ? prev : current)
+  const winner = getScores(players, predictions).reduce((prev, current) =>
+    prev.chance > current.chance ? prev : current
   );
   return (
     <div>
       <div className="title">
-        <VsTitle players={players} />
+        <VsTitle players={vsplayers} />
         <span>predictions</span>
       </div>
       <div className="main-result">

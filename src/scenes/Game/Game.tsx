@@ -50,41 +50,6 @@ const scores = [
   { player: '_TheMax_', score: 0 }
 ];
 
-const civs = [
-  'aztecs',
-  'berbers',
-  'britons',
-  'burmese',
-  'byzantines',
-  'celts',
-  'chinese',
-  'ethiopians',
-  'franks',
-  'goths',
-  'huns',
-  'incas',
-  'indians',
-  'italians',
-  'japanese',
-  'khmer',
-  'koreans',
-  'magyars',
-  'malay',
-  'malians',
-  'mayans',
-  'mongols',
-  'persians',
-  'portuguese',
-  'random',
-  'saracens',
-  'slavs',
-  'spanish',
-  'teutons',
-  'turks',
-  'vietnamese',
-  'vikings'
-];
-
 type ModalState = false | 'predictions' | 'scores';
 
 const GameComponent = ({
@@ -116,11 +81,17 @@ const GameComponent = ({
   }, [getGame, slug]);
 
   const game = retrievedGame[slug] || {
+    matches: [],
+    number_of_matches: 1,
     players: [],
     tournament: {}
   };
 
-  const players = game.players.map((a: any) => a.player.name);
+  const matches = game.matches.concat(
+    Array(game.number_of_matches - game.matches.length).fill({
+      civilizations: []
+    })
+  );
 
   return (
     <div id="Game">
@@ -128,9 +99,9 @@ const GameComponent = ({
         <header>
           <h2>{game.tournament.name}</h2>
           <div className="vs-title">
-            <VsTitle players={players} />
+            <VsTitle players={game.players} />
           </div>
-          <b>best of 5</b>
+          <b>best of {game.number_of_matches}</b>
         </header>
         <div className="top-actions">
           <div className="box">
@@ -159,16 +130,16 @@ const GameComponent = ({
         </div>
 
         <h2>Matches</h2>
-        {[1, 2, 3].map(i => (
+        {matches.map((match, i) => (
           <div className="match" key={`game-${i}`}>
             <div className="left">
               <span>Match</span>
               <div>{i}</div>
             </div>
             <div className="players">
-              {players.map((player, index) => (
+              {match.civilizations.map(({ player, civilization }, index) => (
                 <div className="player-row" key={`${i}-${index}`}>
-                  <CivIcon type={civs[i * (index + 1)] as CivilizationType} /> {player}
+                  <CivIcon type={civilization as CivilizationType} /> {player}
                 </div>
               ))}
             </div>
