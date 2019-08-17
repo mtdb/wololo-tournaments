@@ -39,17 +39,6 @@ const predictions = [
   }
 ];
 
-const scores = [
-  { player: 'TheViper', score: 0 },
-  { player: 'TaToH', score: 0 },
-  { player: 'Mr. Yo', score: 0 },
-  { player: 'Leerey', score: 0 },
-  { player: 'Nikov', score: 0 },
-  { player: 'Vivi', score: 0 },
-  { player: 'DauT', score: 0 },
-  { player: '_TheMax_', score: 0 }
-];
-
 type ModalState = false | 'predictions' | 'scores';
 
 const GameComponent = ({
@@ -93,6 +82,16 @@ const GameComponent = ({
     })
   );
 
+  const scores: { [key: string]: number } = {};
+
+  game.matches.map(x => {
+    if (scores[x.winner]) {
+      scores[x.winner] += 1;
+    } else if (x.winner) {
+      scores[x.winner] = 1;
+    }
+  });
+
   return (
     <div id="Game">
       <div className="paper">
@@ -115,7 +114,14 @@ const GameComponent = ({
           </div>
           <div className="box score">
             <div className="head">score</div>
-            <div className="values">0:0</div>
+            <div className="values">
+              {Object.keys(scores).map((key, i) => (
+                <span key={key}>
+                  {i !== 0 && ':'}
+                  {scores[key]}
+                </span>
+              ))}
+            </div>
           </div>
           <div className="box button">
             <Button

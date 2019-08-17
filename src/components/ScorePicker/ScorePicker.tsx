@@ -5,18 +5,12 @@ import React from 'react';
 import './ScorePicker.scss';
 // import { getScores } from '../../contrib/results';
 
-// TODO: move this to the store and import it
-interface IPlayerScore {
-  player: string;
-  score: number;
-}
-
 interface IProps {
-  scores: IPlayerScore[];
+  scores: { [key: string]: number };
 }
 
 export const ScorePicker = ({ scores }: IProps) => {
-  const players = scores.map(s => s.player);
+  const players = Object.keys(scores);
 
   return (
     <div id="ScorePicker">
@@ -34,11 +28,10 @@ export const ScorePicker = ({ scores }: IProps) => {
       </div>
 
       <div className="score-table">
-        {scores.map((item, index) => (
+        {players.map((player, index) => (
           <div className="row" key={`score-${index}`}>
             <div className={`player`}>
-              <div className={`p${index + 1}`}>{item.player}</div>
-              :
+              <div className={`p${index + 1}`}>{player}</div>:
             </div>
             <TextField
               id="outlined-bare"
