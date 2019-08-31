@@ -15,21 +15,26 @@ const LeaderboardComponent = ({
   leaderboards: ILeaderboardsStore;
   name: string;
 }) => {
-  useEffect(() => {
-    getLeaderboard(name);
-  }, [getLeaderboard, name]);
+  useEffect(
+    () => {
+      getLeaderboard(name);
+    },
+    [getLeaderboard, name]
+  );
   return (
     <div id="Leaderboard">
-      <div className="table">
+      <div className="table paper">
         <div className="row header">
-          <div>User</div>
-          <div>Collected Gold</div>
+          <div className="number">#</div>
+          <div className="name">User</div>
+          <div className="gold">Collected Gold</div>
         </div>
         {leaderboards[name] &&
-          leaderboards[name].map(player => (
+          leaderboards[name].map((player, index) => (
             <div className="row" key={player.username}>
-              <div>{player.username}</div>
-              <div>{player.gold}</div>
+              <div className="number">{index + 1}</div>
+              <div className="name">{player.username}</div>
+              <div className="gold">{player.gold}</div>
             </div>
           ))}
       </div>

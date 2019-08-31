@@ -2,15 +2,26 @@
   .table {
     display: flex;
     flex-direction: column;
-    background-color: white;
-    width: calc(100% - 50px);
+    width: calc(100% - 20px);
     margin: 30px auto 0 auto;
     .row {
       display: flex;
-      margin: 15px 0;
-      padding-left: 30px;
-      > div {
+      height: 3em;
+      align-items: center;
+
+      &:nth-child(even) {
+        background-color: var(--bg1);
+      }
+
+      .number {
+        width: 3em;
+      }
+      .name {
         flex: 1;
+      }
+
+      .gold {
+        width: 5em;
       }
     }
   }
