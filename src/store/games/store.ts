@@ -29,6 +29,14 @@ export interface IGame {
   matches: IMatch[];
 }
 
+interface IPlayerScore extends IPlayer {
+  score: number;
+}
+
+export interface IGameScores {
+  [playerTeam: string]: IPlayerScore;
+}
+
 export const gamesStore: IGamesStore = {
   game: {},
   upcoming: []

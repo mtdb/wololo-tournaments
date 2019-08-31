@@ -2,11 +2,12 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
 
+import { IGameScores } from '../../store/games/store';
 import './ScorePicker.scss';
 // import { getScores } from '../../contrib/results';
 
 interface IProps {
-  scores: { [key: string]: number };
+  scores: IGameScores;
 }
 
 export const ScorePicker = ({ scores }: IProps) => {
@@ -18,7 +19,7 @@ export const ScorePicker = ({ scores }: IProps) => {
         {players
           .map((player, index) => (
             <span key={`p${index + 1}`} className={`p${index + 1}`}>
-              {player}
+              {scores[player].player.name}
             </span>
           ))
           .reduce((accu: any, elem) => {
@@ -31,7 +32,7 @@ export const ScorePicker = ({ scores }: IProps) => {
         {players.map((player, index) => (
           <div className="row" key={`score-${index}`}>
             <div className={`player`}>
-              <div className={`p${index + 1}`}>{player}</div>:
+              <div className={`p${index + 1}`}>{scores[player].player.name}</div>:
             </div>
             <TextField
               id="outlined-bare"

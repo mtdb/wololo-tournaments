@@ -9,7 +9,7 @@ import VsTitle from '../../components/VsTitle';
 import { withContext } from '../../contrib/context';
 import { useResizeHandler } from '../../hooks/resizeHandler';
 import { IActions } from '../../store';
-import { IGamesStore } from '../../store/games/store';
+import { IGameScores, IGamesStore } from '../../store/games/store';
 import './Game.scss';
 
 const predictions = [
@@ -65,9 +65,12 @@ const GameComponent = ({
   const chartSizeY = Math.floor(windowWidth / 3) - (10 + 20);
   const chartSizeX = Math.floor(windowWidth / 3) - 10;
 
-  useEffect(() => {
-    getGame(slug);
-  }, [getGame, slug]);
+  useEffect(
+    () => {
+      getGame(slug);
+    },
+    [getGame, slug]
+  );
 
   const game = retrievedGame[slug] || {
     matches: [],
@@ -82,14 +85,25 @@ const GameComponent = ({
     })
   );
 
-  const scores: { [key: string]: number } = {};
+  let scores: IGameScores = game.players.reduce(
+    (sc, player) => ({
+      ...sc,
+      [player.team]: {
+        player,
+        score: 0
+      }
+    }),
+    {}
+  );
 
-  game.matches.map(x => {
-    if (scores[x.winner]) {
-      scores[x.winner] += 1;
-    } else if (x.winner) {
-      scores[x.winner] = 1;
-    }
+  game.matches.map(match => {
+    scores = {
+      ...scores,
+      [match.winner]: {
+        ...scores[match.winner],
+        score: scores[match.winner].score + 1
+      }
+    };
   });
 
   return (
@@ -118,7 +132,7 @@ const GameComponent = ({
               {Object.keys(scores).map((key, i) => (
                 <span key={key}>
                   {i !== 0 && ':'}
-                  {scores[key]}
+                  {scores[key].player.name}
                 </span>
               ))}
             </div>
@@ -140,7 +154,7 @@ const GameComponent = ({
           <div className="match" key={`game-${i}`}>
             <div className="left">
               <span>Match</span>
-              <div>{i}</div>
+              <div>{i + 1}</div>
             </div>
             <div className="players">
               {match.civilizations.map(({ player, civilization }, index) => (
