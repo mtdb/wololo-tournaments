@@ -19,6 +19,8 @@
   --purple: #7b1fa2;
   --grey: #616161;
   --orange: #ef6c00;
+
+  --px: 0.24vw;
 }
 html {
   height: 100%;

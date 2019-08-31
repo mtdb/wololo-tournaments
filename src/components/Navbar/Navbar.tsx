@@ -27,7 +27,11 @@ const getActiveTab = (path: string) => {
   return match >= 0 ? match : 0;
 };
 
-const Navbar = () => {
+interface IProps {
+  excludes: string[];
+}
+
+const Navbar = ({ excludes }: IProps) => {
   const { location, navigate } = useLocation();
   const [value, setValue] = React.useState(getActiveTab(location.pathname));
 
@@ -38,7 +42,9 @@ const Navbar = () => {
     navigate(links[newValue]);
   };
 
-  return (
+  return excludes.indexOf(location.pathname) >= 0 ? (
+    <div />
+  ) : (
     <div id="Navbar">
       <AppBar position="static" color="default">
         <Tabs
