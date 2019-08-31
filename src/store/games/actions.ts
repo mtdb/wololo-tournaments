@@ -8,7 +8,7 @@ const actions: IActionGroup = {
     return { games: { game: { [slug]: game } } };
   },
   listUpcoming: async (_state: IStore) => {
-    const upcoming: IGame[] = await (await api.gamesList('upcoming')()).json();
+    const upcoming: IGame[] = await (await api.gamesTList('upcoming')()).json();
     return { games: { upcoming } };
   }
 };

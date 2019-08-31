@@ -9,7 +9,7 @@ const actions: IActionGroup = {
     return { tournaments: { all } };
   },
   listGames: async (_state: IStore, tournament: string) => {
-    const games: IGame[] = await (await api.gamesList(tournament)()).json();
+    const games: IGame[] = await (await api.gamesTList(tournament)()).json();
     return { tournaments: { games: { [tournament]: games } } };
   }
 };
