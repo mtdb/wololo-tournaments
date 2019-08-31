@@ -12,7 +12,6 @@ interface IProps {
 
 export const ScorePicker = ({ scores }: IProps) => {
   const players = Object.keys(scores);
-
   return (
     <div id="ScorePicker">
       <div className="title">

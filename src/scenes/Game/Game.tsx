@@ -65,12 +65,9 @@ const GameComponent = ({
   const chartSizeY = Math.floor(windowWidth / 3) - (10 + 20);
   const chartSizeX = Math.floor(windowWidth / 3) - 10;
 
-  useEffect(
-    () => {
-      getGame(slug);
-    },
-    [getGame, slug]
-  );
+  useEffect(() => {
+    getGame(slug);
+  }, [getGame, slug]);
 
   const game = retrievedGame[slug] || {
     matches: [],
@@ -89,7 +86,7 @@ const GameComponent = ({
     (sc, player) => ({
       ...sc,
       [player.team]: {
-        player,
+        ...player,
         score: 0
       }
     }),
@@ -132,7 +129,7 @@ const GameComponent = ({
               {Object.keys(scores).map((key, i) => (
                 <span key={key}>
                   {i !== 0 && ':'}
-                  {scores[key].player.name}
+                  {scores[key].score}
                 </span>
               ))}
             </div>
