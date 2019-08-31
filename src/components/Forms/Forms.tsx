@@ -121,7 +121,7 @@ class FormProvider extends Component<IFormProps, IFormState> {
     Object.keys(this.props.validations).map(field => {
       errors[field] = !this.isValid(field);
     });
-    errors.FORM = Object.keys(errors).reduce((value, field) => {
+    errors.FORM = Object.keys(errors).reduce((value: boolean, field) => {
       return value || errors[field];
     }, false);
 
