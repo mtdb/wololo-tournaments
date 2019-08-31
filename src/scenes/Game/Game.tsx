@@ -43,7 +43,8 @@ type ModalState = false | 'predictions' | 'scores';
 
 const GameComponent = ({
   actions: {
-    games: { get: getGame }
+    games: { get: getGame },
+    predictions: { post: postPrediction }
   },
   games: { game: retrievedGame },
   slug
@@ -167,7 +168,7 @@ const GameComponent = ({
         {modal === 'predictions' ? (
           <Predictions predictions={predictions} />
         ) : (
-          <ScorePicker scores={scores} />
+          <ScorePicker scores={scores} onSave={postPrediction} />
         )}
       </Modal>
     </div>

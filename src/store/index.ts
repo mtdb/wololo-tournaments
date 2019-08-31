@@ -3,6 +3,7 @@ import gamesActions from './games/actions';
 import { gamesStore, IGamesStore } from './games/store';
 import leaderboardsActions from './leaderboards/actions';
 import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
+import predictionssActions from './predictions/actions';
 import tournamentsActions from './tournaments/actions';
 import { ITournamentsStore, tournamentsStore } from './tournaments/store';
 import userActions from './user/actions';
@@ -28,6 +29,7 @@ const store: IStore = {
   actions: {
     games: gamesActions,
     leaderboards: leaderboardsActions,
+    predictions: predictionssActions,
     tournaments: tournamentsActions,
     user: userActions
   },

@@ -8,9 +8,10 @@ import './ScorePicker.scss';
 
 interface IProps {
   scores: IGameScores;
+  onSave: (data: any) => void;
 }
 
-export const ScorePicker = ({ scores }: IProps) => {
+export const ScorePicker = ({ scores, onSave }: IProps) => {
   const players = Object.keys(scores);
   return (
     <div id="ScorePicker">
@@ -46,7 +47,8 @@ export const ScorePicker = ({ scores }: IProps) => {
       </div>
 
       <div className="actions">
-        <Button variant="contained" color="primary" className="submit">
+        {/* TODO: Save the form values and pass them to the onSave function */}
+        <Button variant="contained" color="primary" className="submit" onClick={onSave}>
           Save
         </Button>
       </div>
