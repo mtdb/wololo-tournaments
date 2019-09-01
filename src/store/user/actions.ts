@@ -1,13 +1,20 @@
-import { IActionGroup, IStore } from '../index';
+import { auth } from '../../contrib/api';
+import { IStore } from '../index';
 import { IUserStore } from './store';
 
-const actions: IActionGroup = {
-  increment: (state: IStore): { user: IUserStore } => {
-    const { user } = state;
+export interface IUserActions {
+  login(username: string, password: string): Promise<{ user: IUserStore }>;
+}
 
-    user.likes = user.likes + 1;
+const actions: any = {
+  login: async (_state: IStore, username: string, password: string) => {
+    const user = await (await auth.loginCreate({
+      username,
+      password
+    })()).json();
+
     return { user };
   }
 };
 
-export default actions;
+export default actions as IUserActions;

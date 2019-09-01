@@ -4,41 +4,36 @@ import React, { Component } from 'react';
 import logo from '../../assets/logo.png';
 import { FormConsumer, FormProvider, IFormAttributes } from '../../components/Forms';
 import Input from '../../components/Input';
+import { withContext } from '../../contrib/context';
+import { IActions } from '../../store';
 import './Login.scss';
 
 interface IProps extends RouteComponentProps {
-  actions: any;
+  actions: IActions;
 }
 
-class Login extends Component<IProps, {}> {
+class LoginComponent extends Component<IProps, {}> {
   constructor(props: IProps) {
     super(props);
   }
 
-  public onSubmit = async () => {
-    // const { actions, location } = this.props;
-    // const response = await actions.auth.login(data);
-
-    // if (response.errors) {
-    // TODO: Manage notifications
-    // await actions.notifications.push(({
-    //   status: 'unread',
-    //   text: response.errors.login.msg,
-    //   type: 'error'
-    // } as unknown) as IMessageNotification);
-    // } else {
-    // if (response.auth && response.auth.isAuthenticated) {
-    navigate(`/tournaments`);
-    // }
-    // }
+  public onSubmit = async ({ username, password }: { username: string; password: string }) => {
+    const {
+      actions: {
+        user: { login }
+      }
+    } = this.props;
+    login(username, password);
+    if (false) navigate(`/tournaments`);
   };
+
   public render(): JSX.Element {
     return (
       <FormProvider
-        defaultValues={{ email: '', password: '' }}
+        defaultValues={{ username: '', password: '' }}
         onSubmit={this.onSubmit}
         validations={{
-          email: 'required',
+          username: 'required',
           password: 'required'
         }}
       >
@@ -53,12 +48,12 @@ class Login extends Component<IProps, {}> {
                 <h1>Welcome</h1>
 
                 <Input
-                  label="EMAIL"
-                  id="email"
-                  type="email"
-                  onChange={setValue('email')}
-                  hasError={errors.email}
-                  errorMessage="You must provide a valid email"
+                  label="USERNAME"
+                  id="username"
+                  type="text"
+                  onChange={setValue('username')}
+                  hasError={errors.username}
+                  errorMessage="You must provide a valid username"
                   fullWidth={true}
                 />
 
@@ -90,5 +85,7 @@ class Login extends Component<IProps, {}> {
     );
   }
 }
+
+const Login = withContext(LoginComponent, 'actions');
 
 export { Login };

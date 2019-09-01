@@ -1,19 +1,18 @@
 import React from 'react';
-import gamesActions from './games/actions';
+import gamesActions, { IGamesActions } from './games/actions';
 import { gamesStore, IGamesStore } from './games/store';
-import leaderboardsActions from './leaderboards/actions';
+import leaderboardsActions, { ILeaderboardsActions } from './leaderboards/actions';
 import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
-import tournamentsActions from './tournaments/actions';
+import tournamentsActions, { ITournamentsActions } from './tournaments/actions';
 import { ITournamentsStore, tournamentsStore } from './tournaments/store';
-import userActions from './user/actions';
+import userActions, { IUserActions } from './user/actions';
 import { IUserStore, userStore } from './user/store';
 
-export interface IActionGroup {
-  [key: string]: any;
-}
-
 export interface IActions {
-  [key: string]: IActionGroup;
+  games: IGamesActions;
+  leaderboards: ILeaderboardsActions;
+  tournaments: ITournamentsActions;
+  user: IUserActions;
 }
 
 export interface IStore {
