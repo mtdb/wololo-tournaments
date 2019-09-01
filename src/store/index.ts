@@ -6,7 +6,11 @@ import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
 import tournamentsActions, { ITournamentsActions } from './tournaments/actions';
 import { ITournamentsStore, tournamentsStore } from './tournaments/store';
 import userActions, { IUserActions } from './user/actions';
-import { IUserStore, userStore } from './user/store';
+import { IAuthStore, IUserStore, authStore, userStore } from './user/store';
+
+export interface IErrorsStore {
+  [key: string]: string[];
+}
 
 export interface IActions {
   games: IGamesActions;
@@ -17,6 +21,7 @@ export interface IActions {
 
 export interface IStore {
   actions: IActions;
+  auth: IAuthStore;
   games: IGamesStore;
   leaderboards: ILeaderboardsStore;
   tournaments: ITournamentsStore;
@@ -30,6 +35,7 @@ const store: IStore = {
     tournaments: tournamentsActions,
     user: userActions
   },
+  auth: authStore,
   games: gamesStore,
   leaderboards: leaderboardsStore,
   tournaments: tournamentsStore,
