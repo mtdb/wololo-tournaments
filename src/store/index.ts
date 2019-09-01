@@ -6,7 +6,7 @@ import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
 import tournamentsActions, { ITournamentsActions } from './tournaments/actions';
 import { ITournamentsStore, tournamentsStore } from './tournaments/store';
 import userActions, { IUserActions } from './user/actions';
-import { IAuthStore, IUserStore, authStore, userStore } from './user/store';
+import { authStore, IAuthStore, IUserStore, userStore } from './user/store';
 
 export interface IErrorsStore {
   [key: string]: string[];

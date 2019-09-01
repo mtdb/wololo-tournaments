@@ -1,6 +1,6 @@
+import { IErrorsStore } from '..';
 import { auth } from '../../contrib/api';
 import { IStore } from '../index';
-import { IErrorsStore } from '..';
 import { IAuthStore } from './store';
 
 export interface IUserActions {
