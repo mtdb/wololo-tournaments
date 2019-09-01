@@ -13,18 +13,16 @@ interface IProps extends RouteComponentProps {
 }
 
 class LoginComponent extends Component<IProps, {}> {
-  constructor(props: IProps) {
-    super(props);
-  }
-
   public onSubmit = async ({ username, password }: { username: string; password: string }) => {
     const {
       actions: {
         user: { login }
       }
     } = this.props;
-    login(username, password);
-    if (false) navigate(`/tournaments`);
+    void login(username, password);
+    if (false) {
+      navigate(`/tournaments`);
+    }
   };
 
   public render(): JSX.Element {
@@ -33,8 +31,8 @@ class LoginComponent extends Component<IProps, {}> {
         defaultValues={{ username: '', password: '' }}
         onSubmit={this.onSubmit}
         validations={{
-          username: 'required',
-          password: 'required'
+          password: 'required',
+          username: 'required'
         }}
       >
         <FormConsumer>

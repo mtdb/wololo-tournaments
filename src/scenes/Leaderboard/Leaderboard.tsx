@@ -15,12 +15,9 @@ const LeaderboardComponent = ({
   leaderboards: ILeaderboardsStore;
   name: string;
 }) => {
-  useEffect(
-    () => {
-      getLeaderboard(name);
-    },
-    [getLeaderboard, name]
-  );
+  useEffect(() => {
+    void getLeaderboard(name);
+  }, [getLeaderboard, name]);
   return (
     <div id="Leaderboard">
       <div className="table paper">

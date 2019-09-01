@@ -1,6 +1,6 @@
 import api from '../../contrib/api';
-import { ILeaderboardsStore } from './store';
 import { IStore } from '../index';
+import { ILeaderboardsStore } from './store';
 
 export interface ILeaderboardsActions {
   get(key: string): Promise<{ leaderboards: ILeaderboardsStore }>;

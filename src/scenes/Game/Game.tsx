@@ -66,7 +66,7 @@ const GameComponent = ({
   const chartSizeX = Math.floor(windowWidth / 3) - 10;
 
   useEffect(() => {
-    getGame(slug);
+    void getGame(slug);
   }, [getGame, slug]);
 
   const game = retrievedGame[slug] || {
@@ -93,7 +93,7 @@ const GameComponent = ({
     {}
   );
 
-  game.matches.map(match => {
+  game.matches.forEach(match => {
     scores = {
       ...scores,
       [match.winner]: {

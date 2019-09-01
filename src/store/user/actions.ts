@@ -9,8 +9,8 @@ export interface IUserActions {
 const actions: any = {
   login: async (_state: IStore, username: string, password: string) => {
     const user = await (await auth.loginCreate({
-      username,
-      password
+      password,
+      username
     })()).json();
 
     return { user };

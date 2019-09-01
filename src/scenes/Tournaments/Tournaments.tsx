@@ -16,7 +16,7 @@ const TournamentsComponent = ({
   tournaments: ITournamentsStore;
 }) => {
   useEffect(() => {
-    listTournaments();
+    void listTournaments();
   }, [listTournaments]);
   return (
     <div id="Tournaments">
