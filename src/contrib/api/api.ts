@@ -22,6 +22,7 @@ let BASE_PATH = 'http://localhost:8000';
 if (process.env.NODE_ENV === 'production') {
   BASE_PATH = 'https://wololo.appjango.com';
 }
+
 /**
  *
  * @export
@@ -140,6 +141,124 @@ export interface Data1 {
 /**
  *
  * @export
+ * @interface Data10
+ */
+export interface Data10 {
+  /**
+   *
+   * @type {string}
+   * @memberof Data10
+   */
+  newPassword1: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data10
+   */
+  newPassword2: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data11
+ */
+export interface Data11 {
+  /**
+   *
+   * @type {string}
+   * @memberof Data11
+   */
+  email: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data12
+ */
+export interface Data12 {
+  /**
+   *
+   * @type {string}
+   * @memberof Data12
+   */
+  newPassword1: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data12
+   */
+  newPassword2: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data12
+   */
+  uid: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data12
+   */
+  token: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data13
+ */
+export interface Data13 {
+  /**
+   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+   * @type {string}
+   * @memberof Data13
+   */
+  username: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data13
+   */
+  firstName?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data13
+   */
+  lastName?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data14
+ */
+export interface Data14 {
+  /**
+   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+   * @type {string}
+   * @memberof Data14
+   */
+  username?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data14
+   */
+  firstName?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data14
+   */
+  lastName?: string;
+}
+
+/**
+ *
+ * @export
  * @interface Data2
  */
 export interface Data2 {
@@ -248,11 +367,11 @@ export interface Data5 {
  */
 export interface Data6 {
   /**
-   *
+   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
    * @type {string}
    * @memberof Data6
    */
-  username?: string;
+  username: string;
   /**
    *
    * @type {string}
@@ -264,7 +383,31 @@ export interface Data6 {
    * @type {string}
    * @memberof Data6
    */
-  password: string;
+  icon?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data6
+   */
+  backgroundColor?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data6
+   */
+  dateJoined?: string;
+  /**
+   * Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+   * @type {boolean}
+   * @memberof Data6
+   */
+  isActive?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof Data6
+   */
+  lastLogin?: string;
 }
 
 /**
@@ -274,11 +417,47 @@ export interface Data6 {
  */
 export interface Data7 {
   /**
+   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+   * @type {string}
+   * @memberof Data7
+   */
+  username: string;
+  /**
    *
    * @type {string}
    * @memberof Data7
    */
-  email: string;
+  email?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data7
+   */
+  icon?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data7
+   */
+  backgroundColor?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data7
+   */
+  dateJoined?: string;
+  /**
+   * Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+   * @type {boolean}
+   * @memberof Data7
+   */
+  isActive?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof Data7
+   */
+  lastLogin?: string;
 }
 
 /**
@@ -288,29 +467,73 @@ export interface Data7 {
  */
 export interface Data8 {
   /**
-   *
+   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
    * @type {string}
    * @memberof Data8
    */
-  newPassword1: string;
+  username?: string;
   /**
    *
    * @type {string}
    * @memberof Data8
    */
-  newPassword2: string;
+  email?: string;
   /**
    *
    * @type {string}
    * @memberof Data8
    */
-  uid: string;
+  icon?: string;
   /**
    *
    * @type {string}
    * @memberof Data8
    */
-  token: string;
+  backgroundColor?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data8
+   */
+  dateJoined?: string;
+  /**
+   * Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+   * @type {boolean}
+   * @memberof Data8
+   */
+  isActive?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof Data8
+   */
+  lastLogin?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data9
+ */
+export interface Data9 {
+  /**
+   *
+   * @type {string}
+   * @memberof Data9
+   */
+  username?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data9
+   */
+  email?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data9
+   */
+  password: string;
 }
 
 /**
@@ -978,6 +1201,260 @@ export const ApiApiFetchParamCreator = function(_configuration?: Configuration) 
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions
       };
+    },
+    /**
+     *
+     * @param {Data6} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersCreate(data?: Data6, options: any = {}): FetchArgs {
+      const localVarPath = `/api/users/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data6' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersDelete(username: string, options: any = {}): FetchArgs {
+      // verify required parameter 'username' is not null or undefined
+      if (username === null || username === undefined) {
+        throw new RequiredError(
+          'username',
+          'Required parameter username was null or undefined when calling usersDelete.'
+        );
+      }
+      const localVarPath = `/api/users/{username}/`.replace(
+        `{${'username'}}`,
+        encodeURIComponent(String(username))
+      );
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersList(options: any = {}): FetchArgs {
+      const localVarPath = `/api/users/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersMe(options: any = {}): FetchArgs {
+      const localVarPath = `/api/users/me/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {Data8} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersPartialUpdate(username: string, data?: Data8, options: any = {}): FetchArgs {
+      // verify required parameter 'username' is not null or undefined
+      if (username === null || username === undefined) {
+        throw new RequiredError(
+          'username',
+          'Required parameter username was null or undefined when calling usersPartialUpdate.'
+        );
+      }
+      const localVarPath = `/api/users/{username}/`.replace(
+        `{${'username'}}`,
+        encodeURIComponent(String(username))
+      );
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data8' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersRead(username: string, options: any = {}): FetchArgs {
+      // verify required parameter 'username' is not null or undefined
+      if (username === null || username === undefined) {
+        throw new RequiredError(
+          'username',
+          'Required parameter username was null or undefined when calling usersRead.'
+        );
+      }
+      const localVarPath = `/api/users/{username}/`.replace(
+        `{${'username'}}`,
+        encodeURIComponent(String(username))
+      );
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {Data7} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersUpdate(username: string, data?: Data7, options: any = {}): FetchArgs {
+      // verify required parameter 'username' is not null or undefined
+      if (username === null || username === undefined) {
+        throw new RequiredError(
+          'username',
+          'Required parameter username was null or undefined when calling usersUpdate.'
+        );
+      }
+      const localVarPath = `/api/users/{username}/`.replace(
+        `{${'username'}}`,
+        encodeURIComponent(String(username))
+      );
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data7' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
     }
   };
 };
@@ -1388,6 +1865,160 @@ export const ApiApiFp = function(configuration?: Configuration) {
           }
         });
       };
+    },
+    /**
+     *
+     * @param {Data6} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersCreate(
+      data?: Data6,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).usersCreate(data, options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersDelete(
+      username: string,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).usersDelete(
+        username,
+        options
+      );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersList(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).usersList(options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersMe(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).usersMe(options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {Data8} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersPartialUpdate(
+      username: string,
+      data?: Data8,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).usersPartialUpdate(
+        username,
+        data,
+        options
+      );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersRead(
+      username: string,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).usersRead(username, options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {Data7} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersUpdate(
+      username: string,
+      data?: Data7,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).usersUpdate(
+        username,
+        data,
+        options
+      );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
     }
   };
 };
@@ -1563,6 +2194,69 @@ export const ApiApiFactory = function(
      */
     tournamentsRead(slug: string, options?: any) {
       return ApiApiFp(configuration).tournamentsRead(slug, options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {Data6} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersCreate(data?: Data6, options?: any) {
+      return ApiApiFp(configuration).usersCreate(data, options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersDelete(username: string, options?: any) {
+      return ApiApiFp(configuration).usersDelete(username, options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersList(options?: any) {
+      return ApiApiFp(configuration).usersList(options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersMe(options?: any) {
+      return ApiApiFp(configuration).usersMe(options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {Data8} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersPartialUpdate(username: string, data?: Data8, options?: any) {
+      return ApiApiFp(configuration).usersPartialUpdate(username, data, options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersRead(username: string, options?: any) {
+      return ApiApiFp(configuration).usersRead(username, options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {string} username
+     * @param {Data7} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    usersUpdate(username: string, data?: Data7, options?: any) {
+      return ApiApiFp(configuration).usersUpdate(username, data, options)(fetch, basePath);
     }
   };
 };
@@ -1786,6 +2480,89 @@ export class ApiApi extends BaseAPI {
   public tournamentsRead(slug: string, options?: any) {
     return ApiApiFp(this.configuration).tournamentsRead(slug, options)(this.fetch, this.basePath);
   }
+
+  /**
+   *
+   * @param {Data6} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiApi
+   */
+  public usersCreate(data?: Data6, options?: any) {
+    return ApiApiFp(this.configuration).usersCreate(data, options)(this.fetch, this.basePath);
+  }
+
+  /**
+   *
+   * @param {string} username
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiApi
+   */
+  public usersDelete(username: string, options?: any) {
+    return ApiApiFp(this.configuration).usersDelete(username, options)(this.fetch, this.basePath);
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiApi
+   */
+  public usersList(options?: any) {
+    return ApiApiFp(this.configuration).usersList(options)(this.fetch, this.basePath);
+  }
+
+  /**
+   *
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiApi
+   */
+  public usersMe(options?: any) {
+    return ApiApiFp(this.configuration).usersMe(options)(this.fetch, this.basePath);
+  }
+
+  /**
+   *
+   * @param {string} username
+   * @param {Data8} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiApi
+   */
+  public usersPartialUpdate(username: string, data?: Data8, options?: any) {
+    return ApiApiFp(this.configuration).usersPartialUpdate(username, data, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   *
+   * @param {string} username
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiApi
+   */
+  public usersRead(username: string, options?: any) {
+    return ApiApiFp(this.configuration).usersRead(username, options)(this.fetch, this.basePath);
+  }
+
+  /**
+   *
+   * @param {string} username
+   * @param {Data7} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiApi
+   */
+  public usersUpdate(username: string, data?: Data7, options?: any) {
+    return ApiApiFp(this.configuration).usersUpdate(username, data, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
 }
 
 /**
@@ -1797,11 +2574,11 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
     /**
      * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
      * @summary Check the credentials and return the REST Token
-     * @param {Data6} [data]
+     * @param {Data9} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    loginCreate(data?: Data6, options: any = {}): FetchArgs {
+    loginCreate(data?: Data9, options: any = {}): FetchArgs {
       const localVarPath = `/auth/login/`;
       const localVarUrlObj = url.parse(localVarPath, true);
       const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -1820,7 +2597,7 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'Data6' !== 'string' ||
+        <any>'Data9' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
 
@@ -1886,13 +2663,48 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
       };
     },
     /**
-     * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
-     * @summary Password reset e-mail link is confirmed, therefore
-     * @param {Data8} [data]
+     * Calls Django Auth SetPasswordForm save method.  Accepts the following POST parameters: new_password1, new_password2 Returns the success/fail message.
+     * @summary Calls Django Auth SetPasswordForm save method.
+     * @param {Data10} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    passwordResetConfirmCreate(data?: Data8, options: any = {}): FetchArgs {
+    passwordChangeCreate(data?: Data10, options: any = {}): FetchArgs {
+      const localVarPath = `/auth/password/change/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data10' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
+     * @summary Password reset e-mail link is confirmed, therefore
+     * @param {Data12} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordResetConfirmCreate(data?: Data12, options: any = {}): FetchArgs {
       const localVarPath = `/auth/password/reset/confirm/`;
       const localVarUrlObj = url.parse(localVarPath, true);
       const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -1911,7 +2723,7 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'Data8' !== 'string' ||
+        <any>'Data12' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
 
@@ -1923,11 +2735,11 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
     /**
      * Calls Django Auth PasswordResetForm save method.  Accepts the following POST parameters: email Returns the success/fail message.
      * @summary Calls Django Auth PasswordResetForm save method.
-     * @param {Data7} [data]
+     * @param {Data11} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    passwordResetCreate(data?: Data7, options: any = {}): FetchArgs {
+    passwordResetCreate(data?: Data11, options: any = {}): FetchArgs {
       const localVarPath = `/auth/password/reset/`;
       const localVarUrlObj = url.parse(localVarPath, true);
       const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -1946,7 +2758,105 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'Data7' !== 'string' ||
+        <any>'Data11' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data14} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userPartialUpdate(data?: Data14, options: any = {}): FetchArgs {
+      const localVarPath = `/auth/user/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data14' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userRead(options: any = {}): FetchArgs {
+      const localVarPath = `/auth/user/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data13} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userUpdate(data?: Data13, options: any = {}): FetchArgs {
+      const localVarPath = `/auth/user/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data13' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
 
@@ -1967,12 +2877,12 @@ export const AuthApiFp = function(configuration?: Configuration) {
     /**
      * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
      * @summary Check the credentials and return the REST Token
-     * @param {Data6} [data]
+     * @param {Data9} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     loginCreate(
-      data?: Data6,
+      data?: Data9,
       options?: any
     ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
       const localVarFetchArgs = AuthApiFetchParamCreator(configuration).loginCreate(data, options);
@@ -2023,14 +2933,39 @@ export const AuthApiFp = function(configuration?: Configuration) {
       };
     },
     /**
+     * Calls Django Auth SetPasswordForm save method.  Accepts the following POST parameters: new_password1, new_password2 Returns the success/fail message.
+     * @summary Calls Django Auth SetPasswordForm save method.
+     * @param {Data10} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordChangeCreate(
+      data?: Data10,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).passwordChangeCreate(
+        data,
+        options
+      );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
      * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
      * @summary Password reset e-mail link is confirmed, therefore
-     * @param {Data8} [data]
+     * @param {Data12} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     passwordResetConfirmCreate(
-      data?: Data8,
+      data?: Data12,
       options?: any
     ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
       const localVarFetchArgs = AuthApiFetchParamCreator(configuration).passwordResetConfirmCreate(
@@ -2050,18 +2985,83 @@ export const AuthApiFp = function(configuration?: Configuration) {
     /**
      * Calls Django Auth PasswordResetForm save method.  Accepts the following POST parameters: email Returns the success/fail message.
      * @summary Calls Django Auth PasswordResetForm save method.
-     * @param {Data7} [data]
+     * @param {Data11} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     passwordResetCreate(
-      data?: Data7,
+      data?: Data11,
       options?: any
     ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
       const localVarFetchArgs = AuthApiFetchParamCreator(configuration).passwordResetCreate(
         data,
         options
       );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data14} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userPartialUpdate(
+      data?: Data14,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).userPartialUpdate(
+        data,
+        options
+      );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userRead(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).userRead(options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data13} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userUpdate(
+      data?: Data13,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).userUpdate(data, options);
       return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
         return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
           if (response.status >= 200 && response.status < 300) {
@@ -2088,11 +3088,11 @@ export const AuthApiFactory = function(
     /**
      * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
      * @summary Check the credentials and return the REST Token
-     * @param {Data6} [data]
+     * @param {Data9} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    loginCreate(data?: Data6, options?: any) {
+    loginCreate(data?: Data9, options?: any) {
       return AuthApiFp(configuration).loginCreate(data, options)(fetch, basePath);
     },
     /**
@@ -2114,24 +3114,63 @@ export const AuthApiFactory = function(
       return AuthApiFp(configuration).logoutList(options)(fetch, basePath);
     },
     /**
-     * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
-     * @summary Password reset e-mail link is confirmed, therefore
-     * @param {Data8} [data]
+     * Calls Django Auth SetPasswordForm save method.  Accepts the following POST parameters: new_password1, new_password2 Returns the success/fail message.
+     * @summary Calls Django Auth SetPasswordForm save method.
+     * @param {Data10} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    passwordResetConfirmCreate(data?: Data8, options?: any) {
+    passwordChangeCreate(data?: Data10, options?: any) {
+      return AuthApiFp(configuration).passwordChangeCreate(data, options)(fetch, basePath);
+    },
+    /**
+     * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
+     * @summary Password reset e-mail link is confirmed, therefore
+     * @param {Data12} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordResetConfirmCreate(data?: Data12, options?: any) {
       return AuthApiFp(configuration).passwordResetConfirmCreate(data, options)(fetch, basePath);
     },
     /**
      * Calls Django Auth PasswordResetForm save method.  Accepts the following POST parameters: email Returns the success/fail message.
      * @summary Calls Django Auth PasswordResetForm save method.
-     * @param {Data7} [data]
+     * @param {Data11} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    passwordResetCreate(data?: Data7, options?: any) {
+    passwordResetCreate(data?: Data11, options?: any) {
       return AuthApiFp(configuration).passwordResetCreate(data, options)(fetch, basePath);
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data14} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userPartialUpdate(data?: Data14, options?: any) {
+      return AuthApiFp(configuration).userPartialUpdate(data, options)(fetch, basePath);
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userRead(options?: any) {
+      return AuthApiFp(configuration).userRead(options)(fetch, basePath);
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data13} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userUpdate(data?: Data13, options?: any) {
+      return AuthApiFp(configuration).userUpdate(data, options)(fetch, basePath);
     }
   };
 };
@@ -2146,12 +3185,12 @@ export class AuthApi extends BaseAPI {
   /**
    * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
    * @summary Check the credentials and return the REST Token
-   * @param {Data6} [data]
+   * @param {Data9} [data]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof AuthApi
    */
-  public loginCreate(data?: Data6, options?: any) {
+  public loginCreate(data?: Data9, options?: any) {
     return AuthApiFp(this.configuration).loginCreate(data, options)(this.fetch, this.basePath);
   }
 
@@ -2178,14 +3217,29 @@ export class AuthApi extends BaseAPI {
   }
 
   /**
-   * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
-   * @summary Password reset e-mail link is confirmed, therefore
-   * @param {Data8} [data]
+   * Calls Django Auth SetPasswordForm save method.  Accepts the following POST parameters: new_password1, new_password2 Returns the success/fail message.
+   * @summary Calls Django Auth SetPasswordForm save method.
+   * @param {Data10} [data]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof AuthApi
    */
-  public passwordResetConfirmCreate(data?: Data8, options?: any) {
+  public passwordChangeCreate(data?: Data10, options?: any) {
+    return AuthApiFp(this.configuration).passwordChangeCreate(data, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
+   * @summary Password reset e-mail link is confirmed, therefore
+   * @param {Data12} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public passwordResetConfirmCreate(data?: Data12, options?: any) {
     return AuthApiFp(this.configuration).passwordResetConfirmCreate(data, options)(
       this.fetch,
       this.basePath
@@ -2195,16 +3249,54 @@ export class AuthApi extends BaseAPI {
   /**
    * Calls Django Auth PasswordResetForm save method.  Accepts the following POST parameters: email Returns the success/fail message.
    * @summary Calls Django Auth PasswordResetForm save method.
-   * @param {Data7} [data]
+   * @param {Data11} [data]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof AuthApi
    */
-  public passwordResetCreate(data?: Data7, options?: any) {
+  public passwordResetCreate(data?: Data11, options?: any) {
     return AuthApiFp(this.configuration).passwordResetCreate(data, options)(
       this.fetch,
       this.basePath
     );
+  }
+
+  /**
+   * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+   * @summary Reads and updates UserModel fields
+   * @param {Data14} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public userPartialUpdate(data?: Data14, options?: any) {
+    return AuthApiFp(this.configuration).userPartialUpdate(data, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+   * @summary Reads and updates UserModel fields
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public userRead(options?: any) {
+    return AuthApiFp(this.configuration).userRead(options)(this.fetch, this.basePath);
+  }
+
+  /**
+   * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+   * @summary Reads and updates UserModel fields
+   * @param {Data13} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public userUpdate(data?: Data13, options?: any) {
+    return AuthApiFp(this.configuration).userUpdate(data, options)(this.fetch, this.basePath);
   }
 }
 
