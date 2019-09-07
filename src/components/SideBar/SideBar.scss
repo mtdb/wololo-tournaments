@@ -1,0 +1,50 @@
+.sidebar-wrapper {
+  .sidebar {
+    width: 70vw;
+
+    .avatar-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--px) * 20);
+      flex-direction: column;
+      img {
+        width: calc(var(--px) * 120);
+        height: calc(var(--px) * 120);
+        border-radius: 50%;
+        border: calc(var(--px) * 5) solid var(--grey);
+      }
+
+      .gold-box {
+        margin-top: 0.2em;
+        display: flex;
+        align-items: center;
+
+        img {
+          margin-left: 0.1em;
+          border: none;
+          width: 1em;
+          height: 1em;
+        }
+        color: var(--gold);
+      }
+    }
+
+    .list-item {
+      .list-icon {
+        svg {
+          font-size: 2em;
+          color: white;
+        }
+      }
+      .list-item-text {
+        span {
+          font-family: 'MedievalSharp', cursive;
+          color: white;
+          font-weight: bold;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}

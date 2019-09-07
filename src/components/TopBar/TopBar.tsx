@@ -1,5 +1,6 @@
 import { globalHistory } from '@reach/router';
 import React, { useEffect, useState } from 'react';
+import SideBar from '../SideBar';
 import './TopBar.scss';
 
 interface IProps {
@@ -13,7 +14,7 @@ export const useLocation = () => {
   };
 
   const [state, setState] = useState(newState);
-  useEffect(() => setState(newState), [newState, newState.location]);
+  useEffect(() => setState(newState), [globalHistory.location]);
 
   return state;
 };
@@ -25,13 +26,15 @@ const TopBar = ({ excludes }: IProps) => {
     <div />
   ) : (
     <header id="TopBar">
-      <div className="box">
-        <span>0</span>
-        <img src="/assets/gold.png" alt="gold" className="gold" />
-      </div>
-      <div className="user-icon">
-        <img src="/assets/profile_pics/villager.png" alt="" />
-      </div>
+      <SideBar>
+        <div className="box">
+          <span>0</span>
+          <img src="/assets/gold.png" alt="gold" className="gold" />
+        </div>
+        <div className="user-icon">
+          <img src="/assets/profile_pics/villager.png" alt="" />
+        </div>
+      </SideBar>
     </header>
   );
 };
