@@ -1,17 +1,26 @@
 import api from '../../contrib/api';
 import { IGame } from '../games/store';
-import { IActionGroup, IStore } from '../index';
+import { IStore } from '../index';
 import { ITournament } from './store';
 
-const actions: IActionGroup = {
-  list: async (_state: IStore) => {
-    const all: ITournament[] = await (await api.tournamentsList()()).json();
+export interface ITournamentsActions {
+  list(): Promise<{
+    tournaments: {
+      all: ITournament[];
+    };
+  }>;
+  listGames(tournament: string): Promise<{ tournaments: { games: { [key: string]: IGame[] } } }>;
+}
+
+const actions: any = {
+  list: async () => {
+    const all = await (await api.tournamentsList()()).json();
     return { tournaments: { all } };
   },
   listGames: async (_state: IStore, tournament: string) => {
-    const games: IGame[] = await (await api.gamesList(tournament)()).json();
+    const games = await (await api.gamesTList(tournament)()).json();
     return { tournaments: { games: { [tournament]: games } } };
   }
 };
 
-export default actions;
+export default actions as ITournamentsActions;

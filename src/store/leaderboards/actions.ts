@@ -1,12 +1,16 @@
 import api from '../../contrib/api';
-import { IActionGroup, IStore } from '../index';
-import { ILeaderboard } from './store';
+import { IStore } from '../index';
+import { ILeaderboardsStore } from './store';
 
-const actions: IActionGroup = {
+export interface ILeaderboardsActions {
+  get(key: string): Promise<{ leaderboards: ILeaderboardsStore }>;
+}
+
+const actions: any = {
   get: async (state: IStore, key: string) => {
-    const leaderboard: ILeaderboard = await (await api.leaderboardsList0(key)()).json();
+    const leaderboard = await (await api.leaderboardsList0(key)()).json();
     return { leaderboards: { ...state.leaderboards, [key]: leaderboard } };
   }
 };
 
-export default actions;
+export default actions as ILeaderboardsActions;

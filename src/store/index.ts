@@ -1,23 +1,27 @@
 import React from 'react';
-import gamesActions from './games/actions';
+import gamesActions, { IGamesActions } from './games/actions';
 import { gamesStore, IGamesStore } from './games/store';
-import leaderboardsActions from './leaderboards/actions';
+import leaderboardsActions, { ILeaderboardsActions } from './leaderboards/actions';
 import { ILeaderboardsStore, leaderboardsStore } from './leaderboards/store';
-import tournamentsActions from './tournaments/actions';
+import tournamentsActions, { ITournamentsActions } from './tournaments/actions';
 import { ITournamentsStore, tournamentsStore } from './tournaments/store';
-import userActions from './user/actions';
-import { IUserStore, userStore } from './user/store';
+import userActions, { IUserActions } from './user/actions';
+import { authStore, IAuthStore, IUserStore, userStore } from './user/store';
 
-export interface IActionGroup {
-  [key: string]: any;
+export interface IErrorsStore {
+  [key: string]: string[];
 }
 
 export interface IActions {
-  [key: string]: IActionGroup;
+  games: IGamesActions;
+  leaderboards: ILeaderboardsActions;
+  tournaments: ITournamentsActions;
+  user: IUserActions;
 }
 
 export interface IStore {
   actions: IActions;
+  auth: IAuthStore;
   games: IGamesStore;
   leaderboards: ILeaderboardsStore;
   tournaments: ITournamentsStore;
@@ -31,6 +35,7 @@ const store: IStore = {
     tournaments: tournamentsActions,
     user: userActions
   },
+  auth: authStore,
   games: gamesStore,
   leaderboards: leaderboardsStore,
   tournaments: tournamentsStore,

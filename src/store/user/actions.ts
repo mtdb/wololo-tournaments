@@ -1,13 +1,27 @@
-import { IActionGroup, IStore } from '../index';
-import { IUserStore } from './store';
+import { IErrorsStore } from '..';
+import { auth } from '../../contrib/api';
+import { IStore } from '../index';
+import { IAuthStore } from './store';
 
-const actions: IActionGroup = {
-  increment: (state: IStore): { user: IUserStore } => {
-    const { user } = state;
+export interface IUserActions {
+  login(username: string, password: string): Promise<{ auth: IAuthStore; erros: IErrorsStore }>;
+}
 
-    user.likes = user.likes + 1;
-    return { user };
+const actions: any = {
+  login: async (_state: IStore, username: string, password: string) => {
+    let errors = [] as string[];
+    const response = await auth
+      .loginCreate({
+        password,
+        username
+      })()
+      .catch(() => {
+        errors = ['Unable to log in with provided credentials.'];
+      });
+
+    const token = response ? (await response.json()).key : '';
+    return { auth: { token }, errors: { auth: errors } };
   }
 };
 
-export default actions;
+export default actions as IUserActions;

@@ -242,6 +242,78 @@ export interface Data5 {
 }
 
 /**
+ *
+ * @export
+ * @interface Data6
+ */
+export interface Data6 {
+  /**
+   *
+   * @type {string}
+   * @memberof Data6
+   */
+  username?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data6
+   */
+  email?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data6
+   */
+  password: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data7
+ */
+export interface Data7 {
+  /**
+   *
+   * @type {string}
+   * @memberof Data7
+   */
+  email: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data8
+ */
+export interface Data8 {
+  /**
+   *
+   * @type {string}
+   * @memberof Data8
+   */
+  newPassword1: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data8
+   */
+  newPassword2: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data8
+   */
+  uid: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data8
+   */
+  token: string;
+}
+
+/**
  * ApiApi - fetch parameter creator
  * @export
  */
@@ -249,21 +321,21 @@ export const ApiApiFetchParamCreator = function(_configuration?: Configuration) 
   return {
     /**
      *
-     * @param {string} tournament
+     * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gamesList(tournament: string, options: any = {}): FetchArgs {
-      // verify required parameter 'tournament' is not null or undefined
-      if (tournament === null || tournament === undefined) {
+    gamesRead(slug: string, options: any = {}): FetchArgs {
+      // verify required parameter 'slug' is not null or undefined
+      if (slug === null || slug === undefined) {
         throw new RequiredError(
-          'tournament',
-          'Required parameter tournament was null or undefined when calling gamesList.'
+          'slug',
+          'Required parameter slug was null or undefined when calling gamesRead.'
         );
       }
-      const localVarPath = `/api/games/t/{tournament}/`.replace(
-        `{${'tournament'}}`,
-        encodeURIComponent(String(tournament))
+      const localVarPath = `/api/games/{slug}/`.replace(
+        `{${'slug'}}`,
+        encodeURIComponent(String(slug))
       );
       const localVarUrlObj = url.parse(localVarPath, true);
       const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
@@ -287,21 +359,21 @@ export const ApiApiFetchParamCreator = function(_configuration?: Configuration) 
     },
     /**
      *
-     * @param {string} slug
+     * @param {string} tournament
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gamesRead(slug: string, options: any = {}): FetchArgs {
-      // verify required parameter 'slug' is not null or undefined
-      if (slug === null || slug === undefined) {
+    gamesTList(tournament: string, options: any = {}): FetchArgs {
+      // verify required parameter 'tournament' is not null or undefined
+      if (tournament === null || tournament === undefined) {
         throw new RequiredError(
-          'slug',
-          'Required parameter slug was null or undefined when calling gamesRead.'
+          'tournament',
+          'Required parameter tournament was null or undefined when calling gamesTList.'
         );
       }
-      const localVarPath = `/api/games/{slug}/`.replace(
-        `{${'slug'}}`,
-        encodeURIComponent(String(slug))
+      const localVarPath = `/api/games/t/{tournament}/`.replace(
+        `{${'tournament'}}`,
+        encodeURIComponent(String(tournament))
       );
       const localVarUrlObj = url.parse(localVarPath, true);
       const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
@@ -918,18 +990,15 @@ export const ApiApiFp = function(configuration?: Configuration) {
   return {
     /**
      *
-     * @param {string} tournament
+     * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gamesList(
-      tournament: string,
+    gamesRead(
+      slug: string,
       options?: any
     ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).gamesList(
-        tournament,
-        options
-      );
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).gamesRead(slug, options);
       return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
         return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
           if (response.status >= 200 && response.status < 300) {
@@ -942,15 +1011,18 @@ export const ApiApiFp = function(configuration?: Configuration) {
     },
     /**
      *
-     * @param {string} slug
+     * @param {string} tournament
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    gamesRead(
-      slug: string,
+    gamesTList(
+      tournament: string,
       options?: any
     ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
-      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).gamesRead(slug, options);
+      const localVarFetchArgs = ApiApiFetchParamCreator(configuration).gamesTList(
+        tournament,
+        options
+      );
       return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
         return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
           if (response.status >= 200 && response.status < 300) {
@@ -1332,21 +1404,21 @@ export const ApiApiFactory = function(
   return {
     /**
      *
-     * @param {string} tournament
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    gamesList(tournament: string, options?: any) {
-      return ApiApiFp(configuration).gamesList(tournament, options)(fetch, basePath);
-    },
-    /**
-     *
      * @param {string} slug
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     gamesRead(slug: string, options?: any) {
       return ApiApiFp(configuration).gamesRead(slug, options)(fetch, basePath);
+    },
+    /**
+     *
+     * @param {string} tournament
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    gamesTList(tournament: string, options?: any) {
+      return ApiApiFp(configuration).gamesTList(tournament, options)(fetch, basePath);
     },
     /**
      *
@@ -1504,17 +1576,6 @@ export const ApiApiFactory = function(
 export class ApiApi extends BaseAPI {
   /**
    *
-   * @param {string} tournament
-   * @param {*} [options] Override http request option.
-   * @throws {RequiredError}
-   * @memberof ApiApi
-   */
-  public gamesList(tournament: string, options?: any) {
-    return ApiApiFp(this.configuration).gamesList(tournament, options)(this.fetch, this.basePath);
-  }
-
-  /**
-   *
    * @param {string} slug
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
@@ -1522,6 +1583,17 @@ export class ApiApi extends BaseAPI {
    */
   public gamesRead(slug: string, options?: any) {
     return ApiApiFp(this.configuration).gamesRead(slug, options)(this.fetch, this.basePath);
+  }
+
+  /**
+   *
+   * @param {string} tournament
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof ApiApi
+   */
+  public gamesTList(tournament: string, options?: any) {
+    return ApiApiFp(this.configuration).gamesTList(tournament, options)(this.fetch, this.basePath);
   }
 
   /**
@@ -1713,6 +1785,426 @@ export class ApiApi extends BaseAPI {
    */
   public tournamentsRead(slug: string, options?: any) {
     return ApiApiFp(this.configuration).tournamentsRead(slug, options)(this.fetch, this.basePath);
+  }
+}
+
+/**
+ * AuthApi - fetch parameter creator
+ * @export
+ */
+export const AuthApiFetchParamCreator = function(_configuration?: Configuration) {
+  return {
+    /**
+     * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
+     * @summary Check the credentials and return the REST Token
+     * @param {Data6} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginCreate(data?: Data6, options: any = {}): FetchArgs {
+      const localVarPath = `/auth/login/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data6' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Calls Django logout method and delete the Token object assigned to the current User object.  Accepts/Returns nothing.
+     * @summary Calls Django logout method and delete the Token object
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    logoutCreate(options: any = {}): FetchArgs {
+      const localVarPath = `/auth/logout/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Calls Django logout method and delete the Token object assigned to the current User object.  Accepts/Returns nothing.
+     * @summary Calls Django logout method and delete the Token object
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    logoutList(options: any = {}): FetchArgs {
+      const localVarPath = `/auth/logout/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
+     * @summary Password reset e-mail link is confirmed, therefore
+     * @param {Data8} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordResetConfirmCreate(data?: Data8, options: any = {}): FetchArgs {
+      const localVarPath = `/auth/password/reset/confirm/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data8' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Calls Django Auth PasswordResetForm save method.  Accepts the following POST parameters: email Returns the success/fail message.
+     * @summary Calls Django Auth PasswordResetForm save method.
+     * @param {Data7} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordResetCreate(data?: Data7, options: any = {}): FetchArgs {
+      const localVarPath = `/auth/password/reset/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data7' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    }
+  };
+};
+
+/**
+ * AuthApi - functional programming interface
+ * @export
+ */
+export const AuthApiFp = function(configuration?: Configuration) {
+  return {
+    /**
+     * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
+     * @summary Check the credentials and return the REST Token
+     * @param {Data6} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginCreate(
+      data?: Data6,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).loginCreate(data, options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     * Calls Django logout method and delete the Token object assigned to the current User object.  Accepts/Returns nothing.
+     * @summary Calls Django logout method and delete the Token object
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    logoutCreate(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).logoutCreate(options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     * Calls Django logout method and delete the Token object assigned to the current User object.  Accepts/Returns nothing.
+     * @summary Calls Django logout method and delete the Token object
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    logoutList(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).logoutList(options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
+     * @summary Password reset e-mail link is confirmed, therefore
+     * @param {Data8} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordResetConfirmCreate(
+      data?: Data8,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).passwordResetConfirmCreate(
+        data,
+        options
+      );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     * Calls Django Auth PasswordResetForm save method.  Accepts the following POST parameters: email Returns the success/fail message.
+     * @summary Calls Django Auth PasswordResetForm save method.
+     * @param {Data7} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordResetCreate(
+      data?: Data7,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).passwordResetCreate(
+        data,
+        options
+      );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    }
+  };
+};
+
+/**
+ * AuthApi - factory interface
+ * @export
+ */
+export const AuthApiFactory = function(
+  configuration?: Configuration,
+  fetch?: FetchAPI,
+  basePath?: string
+) {
+  return {
+    /**
+     * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
+     * @summary Check the credentials and return the REST Token
+     * @param {Data6} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    loginCreate(data?: Data6, options?: any) {
+      return AuthApiFp(configuration).loginCreate(data, options)(fetch, basePath);
+    },
+    /**
+     * Calls Django logout method and delete the Token object assigned to the current User object.  Accepts/Returns nothing.
+     * @summary Calls Django logout method and delete the Token object
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    logoutCreate(options?: any) {
+      return AuthApiFp(configuration).logoutCreate(options)(fetch, basePath);
+    },
+    /**
+     * Calls Django logout method and delete the Token object assigned to the current User object.  Accepts/Returns nothing.
+     * @summary Calls Django logout method and delete the Token object
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    logoutList(options?: any) {
+      return AuthApiFp(configuration).logoutList(options)(fetch, basePath);
+    },
+    /**
+     * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
+     * @summary Password reset e-mail link is confirmed, therefore
+     * @param {Data8} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordResetConfirmCreate(data?: Data8, options?: any) {
+      return AuthApiFp(configuration).passwordResetConfirmCreate(data, options)(fetch, basePath);
+    },
+    /**
+     * Calls Django Auth PasswordResetForm save method.  Accepts the following POST parameters: email Returns the success/fail message.
+     * @summary Calls Django Auth PasswordResetForm save method.
+     * @param {Data7} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    passwordResetCreate(data?: Data7, options?: any) {
+      return AuthApiFp(configuration).passwordResetCreate(data, options)(fetch, basePath);
+    }
+  };
+};
+
+/**
+ * AuthApi - object-oriented interface
+ * @export
+ * @class AuthApi
+ * @extends {BaseAPI}
+ */
+export class AuthApi extends BaseAPI {
+  /**
+   * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
+   * @summary Check the credentials and return the REST Token
+   * @param {Data6} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public loginCreate(data?: Data6, options?: any) {
+    return AuthApiFp(this.configuration).loginCreate(data, options)(this.fetch, this.basePath);
+  }
+
+  /**
+   * Calls Django logout method and delete the Token object assigned to the current User object.  Accepts/Returns nothing.
+   * @summary Calls Django logout method and delete the Token object
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public logoutCreate(options?: any) {
+    return AuthApiFp(this.configuration).logoutCreate(options)(this.fetch, this.basePath);
+  }
+
+  /**
+   * Calls Django logout method and delete the Token object assigned to the current User object.  Accepts/Returns nothing.
+   * @summary Calls Django logout method and delete the Token object
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public logoutList(options?: any) {
+    return AuthApiFp(this.configuration).logoutList(options)(this.fetch, this.basePath);
+  }
+
+  /**
+   * Password reset e-mail link is confirmed, therefore this resets the user's password.  Accepts the following POST parameters: token, uid,     new_password1, new_password2 Returns the success/fail message.
+   * @summary Password reset e-mail link is confirmed, therefore
+   * @param {Data8} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public passwordResetConfirmCreate(data?: Data8, options?: any) {
+    return AuthApiFp(this.configuration).passwordResetConfirmCreate(data, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   * Calls Django Auth PasswordResetForm save method.  Accepts the following POST parameters: email Returns the success/fail message.
+   * @summary Calls Django Auth PasswordResetForm save method.
+   * @param {Data7} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public passwordResetCreate(data?: Data7, options?: any) {
+    return AuthApiFp(this.configuration).passwordResetCreate(data, options)(
+      this.fetch,
+      this.basePath
+    );
   }
 }
 

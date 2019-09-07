@@ -1,12 +1,12 @@
-import { IActions, store } from '../store';
+import { store } from '../store';
 
 export const bindActions = (app: any) => {
-  const actions: IActions = {};
+  const actions: any = {};
   Object.keys(store.actions).forEach(scope => {
     actions[scope] = {};
-    Object.keys(store.actions[scope]).forEach(action => {
+    Object.keys((store as any).actions[scope]).forEach(action => {
       actions[scope][action] = async (...args: any[]) => {
-        const result = await store.actions[scope][action](app.state, ...args);
+        const result = await (store as any).actions[scope][action](app.state, ...args);
         const newState: any = {};
         app.setState((state: any) => {
           Object.keys(result).forEach(key => {

@@ -3,7 +3,15 @@ export const userStore = {
   id: 0,
   lastName: '',
   likes: 0,
-  name: '',
+  name: ''
+};
+
+export const authStore = {
+  token: ''
+};
+
+export interface IAuthStore {
+  token: string;
 }
 
 export interface IUserStore {

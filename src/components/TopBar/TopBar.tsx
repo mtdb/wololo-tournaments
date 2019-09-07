@@ -25,12 +25,12 @@ const TopBar = ({ excludes }: IProps) => {
     <div />
   ) : (
     <header id="TopBar">
-      <div>
-        <i className="fas fa-coins" />
-        <span> 1000 </span>
+      <div className="box">
+        <span>0</span>
+        <img src="/assets/gold.png" alt="gold" className="gold" />
       </div>
       <div className="user-icon">
-        <i className="far fa-user" />
+        <img src="/assets/profile_pics/villager.png" alt="" />
       </div>
     </header>
   );

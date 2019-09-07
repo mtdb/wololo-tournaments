@@ -26,9 +26,9 @@ const GamesComponent = ({
 }) => {
   useEffect(() => {
     if (!tournament) {
-      listUpcoming();
+      void listUpcoming();
     } else {
-      listGames(tournament);
+      void listGames(tournament);
     }
   }, [listGames, listUpcoming, tournament]);
   const games = tournament ? tournamentGames[tournament] : upcomingGames;
