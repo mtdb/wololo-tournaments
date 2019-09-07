@@ -1,5 +1,5 @@
 import Button from '@material-ui/core/Button';
-import { navigate, RouteComponentProps } from '@reach/router';
+import { Link, navigate, RouteComponentProps } from '@reach/router';
 import React, { Component } from 'react';
 import { routes } from '../../App';
 import logo from '../../assets/logo.png';
@@ -75,6 +75,7 @@ class LoginComponent extends Component<IProps, {}> {
                 >
                   LOGIN
                 </Button>
+                <Link to={routes.register()}>Create account</Link>
               </div>
             </div>
           )}
