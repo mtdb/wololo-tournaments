@@ -1,13 +1,16 @@
 export const userStore = {
+  background_color: '',
+  date_joined: '',
   email: '',
-  id: 0,
-  lastName: '',
-  likes: 0,
-  name: ''
+  gold: 0,
+  icon: undefined,
+  is_active: false,
+  last_login: '',
+  username: ''
 };
 
 export const authStore = {
-  token: ''
+  token: localStorage.getItem('token') || ''
 };
 
 export interface IAuthStore {
@@ -15,9 +18,12 @@ export interface IAuthStore {
 }
 
 export interface IUserStore {
-  id: number;
+  background_color: string;
+  date_joined: string;
   email: string;
-  lastName: string;
-  likes: number;
-  name: string;
+  gold: number;
+  icon?: string;
+  is_active: boolean;
+  last_login: string;
+  username: string;
 }

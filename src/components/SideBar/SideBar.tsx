@@ -12,6 +12,8 @@ import KeyIcon from '@material-ui/icons/VpnKey';
 
 import React from 'react';
 import villager1 from '../../assets/images/villager1.png';
+import { withContext } from '../../contrib/context';
+import { IActions } from '../../store';
 import './SideBar.scss';
 
 const links = [
@@ -21,7 +23,15 @@ const links = [
   { name: 'Logout', icon: <ExitIcon /> }
 ];
 
-const SideBar = ({ children }: any) => {
+const SideBarComponent = ({
+  children,
+  actions: {
+    user: { logout }
+  }
+}: {
+  children: any;
+  actions: IActions;
+}) => {
   const [open, toggle] = React.useState(false);
 
   const toggleDrawer = (isOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -60,6 +70,14 @@ const SideBar = ({ children }: any) => {
         ))}
       </List>
       <Divider />
+      <button
+        type="button"
+        onClick={() => {
+          void logout();
+        }}
+      >
+        logout
+      </button>
     </div>
   );
 
@@ -78,5 +96,7 @@ const SideBar = ({ children }: any) => {
     </div>
   );
 };
+
+const SideBar = withContext(SideBarComponent, 'actions');
 
 export { SideBar };

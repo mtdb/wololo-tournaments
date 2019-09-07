@@ -1,6 +1,7 @@
 import Button from '@material-ui/core/Button';
 import { navigate, RouteComponentProps } from '@reach/router';
 import React, { Component } from 'react';
+import { routes } from '../../App';
 import logo from '../../assets/logo.png';
 import { FormConsumer, FormProvider, IFormAttributes } from '../../components/Forms';
 import Input from '../../components/Input';
@@ -16,13 +17,12 @@ class LoginComponent extends Component<IProps, {}> {
   public onSubmit = async ({ username, password }: { username: string; password: string }) => {
     const {
       actions: {
-        user: { login }
+        user: { login, me }
       }
     } = this.props;
-    void login(username, password);
-    if (false) {
-      navigate(`/tournaments`);
-    }
+    await login(username, password);
+    await me();
+    navigate(routes.upcoming());
   };
 
   public render(): JSX.Element {
