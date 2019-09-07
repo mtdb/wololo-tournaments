@@ -19,6 +19,7 @@ interface IState {
 
 interface IProps extends RouteComponentProps {
   actions: any;
+  isRegistered?: boolean;
 }
 
 class AvatarComponent extends Component<IProps, IState> {
@@ -38,23 +39,32 @@ class AvatarComponent extends Component<IProps, IState> {
   };
 
   public render(): JSX.Element {
-    // const { auth } = this.props;
-    return (
-      <FormProvider
-        defaultValues={{ acceptedToS: false, avatar: '' }}
-        onSubmit={this.onSubmit()}
-        validations={{
+    const { isRegistered } = this.props;
+    const defaultValues = isRegistered ? { avatar: '' } : { acceptedToS: false, avatar: '' };
+    const validations: any = isRegistered
+      ? {
+          avatar: 'required'
+        }
+      : {
           acceptedToS: 'isTrue',
           avatar: 'required'
-        }}
+        };
+
+    return (
+      <FormProvider
+        defaultValues={defaultValues}
+        onSubmit={this.onSubmit}
+        validations={validations}
       >
         <FormConsumer>
           {({ values, formActions: { setValue, toggleValue }, errors }: IFormAttributes) => (
             <div className="create-account form-account form">
-              <h1 className="title">Your Profile</h1>
-              <p className="help-text">
-                Choose your Profile Image, don't worry, you can change it later... ;)
-              </p>
+              <h1 className="title">Your Profile Avatar</h1>
+              {!isRegistered && (
+                <p className="help-text">
+                  Choose your Profile Image, don't worry, you can change it later... ;)
+                </p>
+              )}
               <div className="center">
                 <div className="starter-pics">
                   <button
@@ -72,32 +82,39 @@ class AvatarComponent extends Component<IProps, IState> {
                 </div>
               </div>
               <div className="bot">
-                <FormControlLabel
-                  classes={{ label: 'terms' }}
-                  control={
-                    <Checkbox
-                      classes={{ root: 'terms' }}
-                      checkedIcon={<CheckBoxIcon className="form-icon override" />}
-                      color="secondary"
-                      icon={<CheckBoxOutlineBlankIcon className="form-icon override" />}
-                      id="accepted-tos"
-                      onChange={toggleValue('acceptedToS')}
-                      value="on"
-                    />
-                  }
-                  label={
-                    <Fragment>
-                      Yeah! Sure! I have read the&nbsp;
-                      <a href="/legal/termsofservice" target="_blank">
-                        Terms of Service
-                      </a>
-                      &nbsp;and&nbsp;
-                      <a href="/legal/termsofservice" target="_blank">
-                        Privacy Policy
-                      </a>
-                    </Fragment>
-                  }
-                />
+                {!isRegistered && (
+                  <FormControlLabel
+                    classes={{ label: 'terms' }}
+                    control={
+                      <Checkbox
+                        classes={{ root: 'terms' }}
+                        checkedIcon={<CheckBoxIcon className="form-icon override" />}
+                        color="secondary"
+                        icon={<CheckBoxOutlineBlankIcon className="form-icon override" />}
+                        id="accepted-tos"
+                        onChange={toggleValue('acceptedToS')}
+                        value="on"
+                      />
+                    }
+                    label={
+                      <Fragment>
+                        Yeah! Sure! I have read the&nbsp;
+                        <a href="/legal/termsofservice" target="_blank">
+                          Terms of Service
+                        </a>
+                        &nbsp;and&nbsp;
+                        <a href="/legal/termsofservice" target="_blank">
+                          Privacy Policy
+                        </a>
+                      </Fragment>
+                    }
+                  />
+                )}
+                {isRegistered && (
+                  <Button className="form-button" color="primary" variant="contained">
+                    CANCEL
+                  </Button>
+                )}
                 <Button
                   className="form-button"
                   color="primary"
@@ -105,7 +122,7 @@ class AvatarComponent extends Component<IProps, IState> {
                   type="submit"
                   variant="contained"
                 >
-                  NEXT
+                  {isRegistered ? 'SAVE' : 'NEXT'}
                 </Button>
               </div>
             </div>
