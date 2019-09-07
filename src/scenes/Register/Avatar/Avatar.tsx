@@ -5,10 +5,10 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import { RouteComponentProps } from '@reach/router';
 import React, { Component, Fragment } from 'react';
-import { FormConsumer, FormProvider, IFormAttributes } from '../../../components/Forms';
-import { withContext } from '../../../contrib/utils';
 import villager1 from '../../../assets/images/villager1.png';
 import villager2 from '../../../assets/images/villager2.png';
+import { FormConsumer, FormProvider, IFormAttributes } from '../../../components/Forms';
+import { withContext } from '../../../contrib/utils';
 
 interface IState {
   invalidEmail: boolean;

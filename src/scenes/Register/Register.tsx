@@ -3,26 +3,15 @@ import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import logo from '../../assets/logo.png';
 import Stepper from '../../components/Stepper';
+import { withContext } from '../../contrib/utils';
 import Account from './Account';
 import Avatar from './Avatar';
 import CreationComplete from './CreationComplete';
 import Email from './Email';
-// import { navigate } from '@reach/router';
-import { withContext } from '../../contrib/utils';
 import './Register.scss';
+
+// import { navigate } from '@reach/router';
 // import { IAuthStore } from '../../store/auth/store';
-
-// enum STEP {
-//   'account',
-//   'info',
-//   'season',
-//   'complete'
-// }
-
-// interface IProps {
-//   // auth: IAuthStore;
-//   location: any;
-// }
 
 const RegisterComponent = () => {
   const theme = useTheme();
