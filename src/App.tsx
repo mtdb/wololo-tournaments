@@ -10,6 +10,7 @@ import Game from './scenes/Game';
 import Games from './scenes/Games';
 import Leaderboard from './scenes/Leaderboard';
 import Login from './scenes/Login';
+import Register from './scenes/Register';
 import Tournaments from './scenes/Tournaments';
 
 import { bindActions } from './contrib/store';
@@ -24,6 +25,7 @@ export const routes = {
   gamePredictions: (game = ':game') => `/games/${game}/predictions`,
   leaderboard: (name = ':name') => `/leaderboard/${name}`,
   login: () => '/login',
+  register: () => '/register',
   tournamentGames: (slug = ':slug') => `/tournaments/${slug}`,
   tournaments: () => '/tournaments',
   upcoming: () => '/'
@@ -40,8 +42,8 @@ class App extends Component<{}, IStore> {
     return (
       <Provider value={this.state}>
         <MuiThemeProvider theme={theme}>
-          <TopBar excludes={['/login']} />
-          <Navbar excludes={['/login']} />
+          <TopBar excludes={['/login', '/register']} />
+          <Navbar excludes={['/login', '/register']} />
           <Router>
             <Scene path={routes.upcoming()} component={Games} />
             <Scene path={routes.tournaments()} component={Tournaments} />
@@ -49,6 +51,7 @@ class App extends Component<{}, IStore> {
             <Scene path={routes.game()} component={Game} />
             <Scene path={routes.leaderboard()} component={Leaderboard} />
             <Scene path={routes.login()} component={Login} />
+            <Scene path={routes.register()} component={Register} />
           </Router>
         </MuiThemeProvider>
       </Provider>

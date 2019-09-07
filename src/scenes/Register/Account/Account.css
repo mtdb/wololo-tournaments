@@ -1,0 +1,56 @@
+.form-account {
+  h1 {
+    font-weight: normal;
+
+    &.title {
+      max-width: 36em;
+      margin: calc(var(--apx) * 35) 0 calc(var(--apx) * 12) 0;
+      font-size: calc(var(--apx) * 36);
+    }
+  }
+
+  p {
+    &.help-text {
+      max-width: 28em;
+      margin-top: 0;
+      margin-bottom: calc(var(--apx) * 34);
+      font-size: calc(var(--apx) * 18);
+
+      &.complete-text {
+        max-width: 20em;
+      }
+    }
+  }
+
+  .form-icon.override {
+    font-size: calc(var(--apx) * 32);
+  }
+
+  .form-button {
+    margin: calc(var(--apx) * 50) 0 calc(var(--apx) * 50) 0;
+
+    &.go-back {
+      margin: 0 0 calc(var(--apx) * 50) 0;
+    }
+
+    &.complete {
+      margin-bottom: calc(var(--apx) * 200);
+    }
+  }
+}
+
+.tos-checkbox-label-staff.override {
+  text-transform: uppercase;
+  font-family: 'DINNextLTPro-Heavy';
+  color: #000;
+  font-size: calc(var(--apx) * 20);
+  line-height: calc(var(--apx) * 30);
+
+  > a {
+    color: var(--mainColor);
+
+    &:hover {
+      color: var(--mainHoverColor);
+    }
+  }
+}
