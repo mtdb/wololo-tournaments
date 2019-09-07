@@ -1,6 +1,6 @@
 import React from 'react';
 import { withContext } from '../../contrib/utils';
-import Account from '../Register/Account';
+import ChangePassword from '../../components/ChangePassword';
 import Avatar from '../Register/Avatar';
 import Email from '../Register/Email';
 import '../Register/Register.scss';
@@ -17,7 +17,7 @@ const ProfileComponent = ({ page }: any) => {
 
   const pages = {
     avatar: <Avatar isRegistered={true} />,
-    'password-update': <Account />,
+    'password-update': <ChangePassword />,
     verify: <Email />
   };
 
