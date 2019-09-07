@@ -10,6 +10,7 @@ import Game from './scenes/Game';
 import Games from './scenes/Games';
 import Leaderboard from './scenes/Leaderboard';
 import Login from './scenes/Login';
+import Profile from './scenes/Profile';
 import Register from './scenes/Register';
 import Tournaments from './scenes/Tournaments';
 
@@ -25,6 +26,7 @@ export const routes = {
   gamePredictions: (game = ':game') => `/games/${game}/predictions`,
   leaderboard: (name = ':name') => `/leaderboard/${name}`,
   login: () => '/login',
+  profile: (page = ':page') => `/profile/${page}`,
   register: () => '/register',
   tournamentGames: (slug = ':slug') => `/tournaments/${slug}`,
   tournaments: () => '/tournaments',
@@ -47,6 +49,7 @@ class App extends Component<{}, IStore> {
           <Router>
             <Scene path={routes.upcoming()} component={Games} />
             <Scene path={routes.tournaments()} component={Tournaments} />
+            <Scene path={routes.profile()} component={Profile} />
             <Scene path={routes.tournamentGames()} component={Games} />
             <Scene path={routes.game()} component={Game} />
             <Scene path={routes.leaderboard()} component={Leaderboard} />
