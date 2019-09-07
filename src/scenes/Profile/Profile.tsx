@@ -1,6 +1,6 @@
 import React from 'react';
-import { withContext } from '../../contrib/utils';
 import ChangePassword from '../../components/ChangePassword';
+import { withContext } from '../../contrib/utils';
 import Avatar from '../Register/Avatar';
 import Email from '../Register/Email';
 import '../Register/Register.scss';
