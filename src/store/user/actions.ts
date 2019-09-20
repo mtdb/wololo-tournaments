@@ -39,6 +39,21 @@ const actions: any = {
   me: async ({ auth }: IStore) => {
     const user = await (await api.usersMe(using(auth))()).json();
     return { user };
+  },
+  register: async (
+    _state: IStore,
+    username: string,
+    email: string,
+    password1: string,
+    password2: string
+  ) => {
+    const response = await authApi.registrationCreate({
+      username,
+      email,
+      password1,
+      password2
+    })();
+    console.log('response1', response);
   }
 };
 

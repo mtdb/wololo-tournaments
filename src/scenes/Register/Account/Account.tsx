@@ -5,7 +5,7 @@ import { FormConsumer, FormProvider, IFormAttributes } from '../../../components
 import Input from '../../../components/Input';
 import { withContext } from '../../../contrib/utils';
 // import { IAuthActions } from '../../../../store/auth/actions';
-// import { IAuthStore } from '../../../../store/auth/store';
+import { IAuthStore } from '../../../store/user/store';
 // import { INotificationsActions } from '../../../../store/notification/actions';
 // import { IMessageNotification } from '../../../../store/notification/store';
 
@@ -33,28 +33,28 @@ class AccountComponent extends Component<IProps, IState> {
   }
 
   public onSubmit = () => {
-    // return async (data: IAuthStore) => {
-    //   const response = await this.props.actions.auth.register(data);
-    //   if (response.errors) {
-    //     await this.props.actions.notifications.push(({
-    //       status: 'unread',
-    //       text: response.errors.auth.msg,
-    //       type: 'error'
-    //     } as unknown) as IMessageNotification);
-    //   }
-    //   if (response.errors && response.errors.auth && response.errors.auth.el === 'password1') {
-    //     this.setState({
-    //       invalidPassword: true,
-    //       invalidPasswordMessage: response.errors.auth.msg || 'Error'
-    //     });
-    //   }
-    //   if (response.errors && response.errors.auth && response.errors.auth.el === 'email') {
-    //     this.setState({ invalidEmail: true, invalidEmailMessage: response.errors.auth.msg || '' });
-    //   }
-    //   if (response.auth && response.auth.isAuthenticated) {
-    //     navigate(`/staff/club/create/info`);
-    //   }
-    // };
+    return async (data: IAuthStore) => {
+      const response = await this.props.actions.user.register(data);
+      if (response.errors) {
+        // await this.props.actions.notifications.push(({
+        //   status: 'unread',
+        //   text: response.errors.auth.msg,
+        //   type: 'error'
+        // } as unknown) as IMessageNotification);
+      }
+      if (response.errors && response.errors.auth && response.errors.auth.el === 'password1') {
+        this.setState({
+          invalidPassword: true,
+          invalidPasswordMessage: response.errors.auth.msg || 'Error'
+        });
+      }
+      if (response.errors && response.errors.auth && response.errors.auth.el === 'email') {
+        this.setState({ invalidEmail: true, invalidEmailMessage: response.errors.auth.msg || '' });
+      }
+      if (response.auth && response.auth.isAuthenticated) {
+        // navigate(`/`);
+      }
+    };
   };
 
   public render(): JSX.Element {
@@ -132,6 +132,6 @@ class AccountComponent extends Component<IProps, IState> {
   }
 }
 
-const Account = withContext(AccountComponent, 'auth', 'notifications');
+const Account = withContext(AccountComponent, 'user');
 
 export { Account };

@@ -59,7 +59,8 @@ export interface FetchArgs {
  * @class BaseAPI
  */
 export class BaseAPI {
-  protected configuration!: Configuration;
+  // @ts-ignore
+  protected configuration: Configuration;
 
   constructor(
     configuration?: Configuration,
@@ -80,7 +81,8 @@ export class BaseAPI {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-  name!: 'RequiredError';
+  // @ts-ignore
+  name: 'RequiredError';
   constructor(public field: string, msg?: string) {
     super(msg);
   }
@@ -211,7 +213,7 @@ export interface Data12 {
  */
 export interface Data13 {
   /**
-   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+   *
    * @type {string}
    * @memberof Data13
    */
@@ -221,13 +223,19 @@ export interface Data13 {
    * @type {string}
    * @memberof Data13
    */
-  firstName?: string;
+  email: string;
   /**
    *
    * @type {string}
    * @memberof Data13
    */
-  lastName?: string;
+  password1: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data13
+   */
+  password2: string;
 }
 
 /**
@@ -237,21 +245,61 @@ export interface Data13 {
  */
 export interface Data14 {
   /**
-   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
-   * @type {string}
-   * @memberof Data14
-   */
-  username?: string;
-  /**
    *
    * @type {string}
    * @memberof Data14
+   */
+  key: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data15
+ */
+export interface Data15 {
+  /**
+   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+   * @type {string}
+   * @memberof Data15
+   */
+  username: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data15
    */
   firstName?: string;
   /**
    *
    * @type {string}
-   * @memberof Data14
+   * @memberof Data15
+   */
+  lastName?: string;
+}
+
+/**
+ *
+ * @export
+ * @interface Data16
+ */
+export interface Data16 {
+  /**
+   * Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+   * @type {string}
+   * @memberof Data16
+   */
+  username?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data16
+   */
+  firstName?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof Data16
    */
   lastName?: string;
 }
@@ -540,7 +588,8 @@ export interface Data9 {
  * ApiApi - fetch parameter creator
  * @export
  */
-export const ApiApiFetchParamCreator = function(_configuration?: Configuration) {
+// @ts-ignore
+export const ApiApiFetchParamCreator = function(configuration?: Configuration) {
   return {
     /**
      *
@@ -2569,7 +2618,8 @@ export class ApiApi extends BaseAPI {
  * AuthApi - fetch parameter creator
  * @export
  */
-export const AuthApiFetchParamCreator = function(_configuration?: Configuration) {
+// @ts-ignore
+export const AuthApiFetchParamCreator = function(configuration?: Configuration) {
   return {
     /**
      * Check the credentials and return the REST Token if the credentials are valid and authenticated. Calls Django Auth login method to register User ID in Django session framework  Accept the following POST parameters: username, password Return the REST Framework Token Object's key.
@@ -2768,13 +2818,81 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
       };
     },
     /**
-     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
-     * @summary Reads and updates UserModel fields
+     *
+     * @param {Data13} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    registrationCreate(data?: Data13, options: any = {}): FetchArgs {
+      const localVarPath = `/auth/registration/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data13' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     *
      * @param {Data14} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userPartialUpdate(data?: Data14, options: any = {}): FetchArgs {
+    registrationVerifyEmailCreate(data?: Data14, options: any = {}): FetchArgs {
+      const localVarPath = `/auth/registration/verify-email/`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = {} as any;
+      const localVarQueryParameter = {} as any;
+
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+
+      localVarUrlObj.query = Object.assign(
+        {},
+        localVarUrlObj.query,
+        localVarQueryParameter,
+        options.query
+      );
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      delete localVarUrlObj.search;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization =
+        <any>'Data14' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
+
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions
+      };
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data16} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userPartialUpdate(data?: Data16, options: any = {}): FetchArgs {
       const localVarPath = `/auth/user/`;
       const localVarUrlObj = url.parse(localVarPath, true);
       const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
@@ -2793,7 +2911,7 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'Data14' !== 'string' ||
+        <any>'Data16' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
 
@@ -2833,11 +2951,11 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
     /**
      * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
      * @summary Reads and updates UserModel fields
-     * @param {Data13} [data]
+     * @param {Data15} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userUpdate(data?: Data13, options: any = {}): FetchArgs {
+    userUpdate(data?: Data15, options: any = {}): FetchArgs {
       const localVarPath = `/auth/user/`;
       const localVarUrlObj = url.parse(localVarPath, true);
       const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
@@ -2856,7 +2974,7 @@ export const AuthApiFetchParamCreator = function(_configuration?: Configuration)
       delete localVarUrlObj.search;
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
       const needsSerialization =
-        <any>'Data13' !== 'string' ||
+        <any>'Data15' !== 'string' ||
         localVarRequestOptions.headers['Content-Type'] === 'application/json';
       localVarRequestOptions.body = needsSerialization ? JSON.stringify(data || {}) : data || '';
 
@@ -3008,14 +3126,61 @@ export const AuthApiFp = function(configuration?: Configuration) {
       };
     },
     /**
-     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
-     * @summary Reads and updates UserModel fields
+     *
+     * @param {Data13} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    registrationCreate(
+      data?: Data13,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(configuration).registrationCreate(
+        data,
+        options
+      );
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     *
      * @param {Data14} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userPartialUpdate(
+    registrationVerifyEmailCreate(
       data?: Data14,
+      options?: any
+    ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+      const localVarFetchArgs = AuthApiFetchParamCreator(
+        configuration
+      ).registrationVerifyEmailCreate(data, options);
+      return (fetch: FetchAPI = portableFetch, basePath: string = BASE_PATH) => {
+        return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then(response => {
+          if (response.status >= 200 && response.status < 300) {
+            return response;
+          } else {
+            throw response;
+          }
+        });
+      };
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data16} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userPartialUpdate(
+      data?: Data16,
       options?: any
     ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
       const localVarFetchArgs = AuthApiFetchParamCreator(configuration).userPartialUpdate(
@@ -3053,12 +3218,12 @@ export const AuthApiFp = function(configuration?: Configuration) {
     /**
      * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
      * @summary Reads and updates UserModel fields
-     * @param {Data13} [data]
+     * @param {Data15} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
     userUpdate(
-      data?: Data13,
+      data?: Data15,
       options?: any
     ): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
       const localVarFetchArgs = AuthApiFetchParamCreator(configuration).userUpdate(data, options);
@@ -3144,13 +3309,31 @@ export const AuthApiFactory = function(
       return AuthApiFp(configuration).passwordResetCreate(data, options)(fetch, basePath);
     },
     /**
-     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
-     * @summary Reads and updates UserModel fields
+     *
+     * @param {Data13} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    registrationCreate(data?: Data13, options?: any) {
+      return AuthApiFp(configuration).registrationCreate(data, options)(fetch, basePath);
+    },
+    /**
+     *
      * @param {Data14} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userPartialUpdate(data?: Data14, options?: any) {
+    registrationVerifyEmailCreate(data?: Data14, options?: any) {
+      return AuthApiFp(configuration).registrationVerifyEmailCreate(data, options)(fetch, basePath);
+    },
+    /**
+     * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+     * @summary Reads and updates UserModel fields
+     * @param {Data16} [data]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    userPartialUpdate(data?: Data16, options?: any) {
       return AuthApiFp(configuration).userPartialUpdate(data, options)(fetch, basePath);
     },
     /**
@@ -3165,11 +3348,11 @@ export const AuthApiFactory = function(
     /**
      * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
      * @summary Reads and updates UserModel fields
-     * @param {Data13} [data]
+     * @param {Data15} [data]
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    userUpdate(data?: Data13, options?: any) {
+    userUpdate(data?: Data15, options?: any) {
       return AuthApiFp(configuration).userUpdate(data, options)(fetch, basePath);
     }
   };
@@ -3262,14 +3445,42 @@ export class AuthApi extends BaseAPI {
   }
 
   /**
-   * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
-   * @summary Reads and updates UserModel fields
+   *
+   * @param {Data13} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public registrationCreate(data?: Data13, options?: any) {
+    return AuthApiFp(this.configuration).registrationCreate(data, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   *
    * @param {Data14} [data]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof AuthApi
    */
-  public userPartialUpdate(data?: Data14, options?: any) {
+  public registrationVerifyEmailCreate(data?: Data14, options?: any) {
+    return AuthApiFp(this.configuration).registrationVerifyEmailCreate(data, options)(
+      this.fetch,
+      this.basePath
+    );
+  }
+
+  /**
+   * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
+   * @summary Reads and updates UserModel fields
+   * @param {Data16} [data]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof AuthApi
+   */
+  public userPartialUpdate(data?: Data16, options?: any) {
     return AuthApiFp(this.configuration).userPartialUpdate(data, options)(
       this.fetch,
       this.basePath
@@ -3290,12 +3501,12 @@ export class AuthApi extends BaseAPI {
   /**
    * Reads and updates UserModel fields Accepts GET, PUT, PATCH methods.  Default accepted fields: username, first_name, last_name Default display fields: pk, username, email, first_name, last_name Read-only fields: pk, email  Returns UserModel fields.
    * @summary Reads and updates UserModel fields
-   * @param {Data13} [data]
+   * @param {Data15} [data]
    * @param {*} [options] Override http request option.
    * @throws {RequiredError}
    * @memberof AuthApi
    */
-  public userUpdate(data?: Data13, options?: any) {
+  public userUpdate(data?: Data15, options?: any) {
     return AuthApiFp(this.configuration).userUpdate(data, options)(this.fetch, this.basePath);
   }
 }
@@ -3304,7 +3515,8 @@ export class AuthApi extends BaseAPI {
  * DocsApi - fetch parameter creator
  * @export
  */
-export const DocsApiFetchParamCreator = function(_configuration?: Configuration) {
+// @ts-ignore
+export const DocsApiFetchParamCreator = function(configuration?: Configuration) {
   return {
     /**
      *
