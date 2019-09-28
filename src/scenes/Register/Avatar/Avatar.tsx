@@ -29,7 +29,7 @@ class AvatarComponent extends Component<IProps, {}> {
         user: { profile }
       }
     } = this.props;
-    profile({ icon });
+    void profile({ icon });
   };
 
   public goBack = () => {

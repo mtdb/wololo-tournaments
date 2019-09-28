@@ -16,6 +16,7 @@ export interface IUserActions {
   profile(user: IUserUpdateStore): Promise<{ user: IUserStore }>;
 }
 
+// tslint:disable-next-line
 const noop = () => {};
 
 const using = (s: IAuthStore) => ({ headers: { Authorization: `Token ${s.token}` } });

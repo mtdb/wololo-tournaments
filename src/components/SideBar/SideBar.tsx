@@ -38,7 +38,7 @@ const SideBarComponent = ({
       icon: <ExitIcon />,
       name: 'Logout',
       onClick: () => {
-        logout().then(() => navigate(routes.upcoming()));
+        void logout().then(() => navigate(routes.upcoming()));
       }
     }
   ];

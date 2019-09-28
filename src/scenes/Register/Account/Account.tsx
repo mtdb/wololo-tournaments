@@ -33,6 +33,7 @@ class AccountComponent extends Component<IProps, IState> {
   }
 
   public onSubmit = async ({ user: { username }, password1, password2 }: any) => {
+    // tslint:disable-next-line
     console.log('register', username, password1, password2);
     // await register(username, password1, password2);
 
