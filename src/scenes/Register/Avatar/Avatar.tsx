@@ -32,6 +32,10 @@ class AvatarComponent extends Component<IProps, {}> {
     profile({ icon });
   };
 
+  public goBack = () => {
+    (global as any).history.back();
+  };
+
   public render(): JSX.Element {
     const { user } = this.props;
     const { isRegistered } = this.props;
@@ -112,7 +116,12 @@ class AvatarComponent extends Component<IProps, {}> {
                   />
                 )}
                 {isRegistered && (
-                  <Button className="form-button" color="primary" variant="contained">
+                  <Button
+                    onClick={this.goBack}
+                    className="form-button"
+                    color="primary"
+                    variant="contained"
+                  >
                     CANCEL
                   </Button>
                 )}
