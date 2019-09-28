@@ -32,7 +32,17 @@ class AccountComponent extends Component<IProps, IState> {
     };
   }
 
-  public onSubmit = () => {
+  public onSubmit = async ({
+    user: { username },
+    password1,
+    password2
+  }: {
+    username: string;
+    password: string;
+  }) => {
+    console.log('register', username, password1, password2);
+    // await register(username, password1, password2);
+
     // return async (data: IAuthStore) => {
     //   const response = await this.props.actions.auth.register(data);
     //   if (response.errors) {
@@ -61,19 +71,17 @@ class AccountComponent extends Component<IProps, IState> {
     // const { auth } = this.props;
     return (
       <FormProvider
-        defaultValues={{ auth: {}, acceptedToS: false, user: {} }}
-        onSubmit={this.onSubmit()}
+        defaultValues={{ auth: {}, user: {} }}
+        onSubmit={this.onSubmit}
         validations={{
-          acceptedToS: 'isTrue',
           password1: 'password',
           password2: values => values.password1 === values.password2,
-          'user.email': 'required',
           'user.firstName': 'required',
           'user.lastName': 'required'
         }}
       >
         <FormConsumer>
-          {({ values, formActions: { setValue }, errors }: IFormAttributes) => (
+          {({ formActions: { setValue }, errors }: IFormAttributes) => (
             <div className="create-account form-account form">
               <h1 className="title">Your Account</h1>
               <p className="help-text">Give us your Battle Name and Password!</p>
@@ -82,7 +90,6 @@ class AccountComponent extends Component<IProps, IState> {
                   label="USERNAME"
                   id="username"
                   type="text"
-                  value={values.user.username}
                   onChange={setValue('user.username')}
                   hasError={errors['user.username']}
                   errorMessage="Username cannot be empty"

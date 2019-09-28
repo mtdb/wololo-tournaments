@@ -14,6 +14,8 @@ export interface IUserActions {
   me(): Promise<{ user: IUserStore }>;
 }
 
+const noop = () => {};
+
 const using = (s: IAuthStore) => ({ headers: { Authorization: `Token ${s.token}` } });
 
 const actions: any = {
@@ -37,7 +39,11 @@ const actions: any = {
     return { auth: initialAuthStore, user: initialUserStore };
   },
   me: async ({ auth }: IStore) => {
-    const user = await (await api.usersMe(using(auth))()).json();
+    const response = await api
+      .usersMe(using(auth))()
+      .catch(noop);
+
+    const user = response ? await response.json() : '';
     return { user };
   }
 };
