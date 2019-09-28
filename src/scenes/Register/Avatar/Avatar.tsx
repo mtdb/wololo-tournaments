@@ -45,6 +45,10 @@ class AvatarComponent extends Component<IProps, {}> {
           avatar: 'required'
         };
 
+    if (isRegistered && !user.icon) {
+      return <div>Loading</div>;
+    }
+
     return (
       <FormProvider
         defaultValues={defaultValues}
