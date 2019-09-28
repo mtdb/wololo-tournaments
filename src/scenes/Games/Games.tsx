@@ -3,11 +3,11 @@ import 'flag-icon-css/css/flag-icon.css';
 import moment from 'moment';
 import React, { useEffect } from 'react';
 import { routes } from '../../App';
+import NoFlag from '../../assets/images/NoFlag.png';
 import { withContext } from '../../contrib/context';
 import { IActions } from '../../store';
 import { IGamesStore } from '../../store/games/store';
 import { ITournamentsStore } from '../../store/tournaments/store';
-import NoFlag from '../../assets/images/NoFlag.png';
 import './Games.scss';
 
 const GamesComponent = ({
