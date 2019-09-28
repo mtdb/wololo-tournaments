@@ -3,11 +3,11 @@
     button {
       .MuiTab-wrapper {
         color: white;
-        font-family: MedievalSharp;
+        font-family: EnchantedLand;
         font-weight: bold;
       }
 
-      &.Mui-selected{
+      &.Mui-selected {
         .MuiTab-wrapper {
           color: var(--gold);
         }

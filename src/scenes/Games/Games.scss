@@ -4,59 +4,70 @@
   align-items: center;
   justify-content: flex-start;
 
+  padding-bottom: 5vh;
+
   .game-summary {
     text-align: center;
-    min-height: 92px;
+    height: calc(var(--px) * 80);
     width: calc(100% - 20px);
     background-color: var(--bg1);
     margin: 10px auto 0;
     border: 2px solid #2d2a23;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     padding: 5px;
-    padding-top: 7px;
     a {
+      display: flex;
+      height: 100%;
       color: black;
     }
 
     .header,
     .footer {
-      padding: 4px;
+      padding: 0 4px;
       font-size: 14px;
       font-weight: bold;
       width: 100%;
       text-align: center;
     }
 
-    .content {
-      display: flex;
-      width: 100%;
-      height: 6vh;
-      justify-content: space-between;
+    .header {
+      font-family: 'Old-London';
+      font-size: 16px;
+      a {
+        display: inline;
+      }
+    }
+    .footer {
+      line-height: 0.8em;
+    }
 
-      .inner-content {
+    .inner-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      flex: 1;
+
+      .players {
         display: flex;
         flex-direction: row;
+      }
+
+      .player-name {
+        font-weight: bold;
+        width: 30vw;
+        display: flex;
         align-items: center;
-        justify-content: space-evenly;
-        height: 100%;
-
-        .players {
-          display: flex;
-          flex-direction: row;
-        }
-
-        .player-name {
-          font-weight: bold;
-          width: 30vw;
-        }
+        justify-content: center;
       }
     }
 
     .flag-icon {
       height: 100%;
-      width: 5vh;
+      width: 6vh;
 
       &.left {
         margin-left: auto;
