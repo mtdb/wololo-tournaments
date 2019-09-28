@@ -5,6 +5,7 @@ import {
   authStore as initialAuthStore,
   IAuthStore,
   IUserStore,
+  IUserUpdateStore,
   userStore as initialUserStore
 } from './store';
 
@@ -12,6 +13,7 @@ export interface IUserActions {
   login(username: string, password: string): Promise<{ auth: IAuthStore; erros: IErrorsStore }>;
   logout(): Promise<{ auth: IAuthStore }>;
   me(): Promise<{ user: IUserStore }>;
+  profile(user: IUserUpdateStore): Promise<{ user: IUserStore }>;
 }
 
 const noop = () => {};
@@ -43,6 +45,13 @@ const actions: any = {
       .usersMe(using(auth))()
       .catch(noop);
 
+    const user = response ? await response.json() : '';
+    return { user };
+  },
+  profile: async ({ auth }: IStore, userData: IUserUpdateStore) => {
+    const response = await api
+      .usersUpdate('mauricio', { username: 'mauricio', ...userData }, using(auth))()
+      .catch(noop);
     const user = response ? await response.json() : '';
     return { user };
   }

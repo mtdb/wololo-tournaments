@@ -20,7 +20,8 @@ export const useLocation = () => {
   };
 
   const [state, setState] = useState(newState);
-  useEffect(() => setState(newState), [newState]);
+
+  useEffect(() => setState(newState), [globalHistory.location]);
 
   return state;
 };

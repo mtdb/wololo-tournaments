@@ -27,3 +27,10 @@ export interface IUserStore {
   last_login: string;
   username: string;
 }
+
+export interface IUserUpdateStore {
+  background_color?: string;
+  email?: string;
+  icon?: string;
+  username?: string;
+}

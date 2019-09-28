@@ -32,14 +32,7 @@ class AccountComponent extends Component<IProps, IState> {
     };
   }
 
-  public onSubmit = async ({
-    user: { username },
-    password1,
-    password2
-  }: {
-    username: string;
-    password: string;
-  }) => {
+  public onSubmit = async ({ user: { username }, password1, password2 }: any) => {
     console.log('register', username, password1, password2);
     // await register(username, password1, password2);
 
