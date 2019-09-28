@@ -8,20 +8,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 import CheckIcon from '@material-ui/icons/CheckCircleOutline';
 import ExitIcon from '@material-ui/icons/ExitToApp';
 import FaceIcon from '@material-ui/icons/Face';
+import HomeIcon from '@material-ui/icons/Home';
 import KeyIcon from '@material-ui/icons/VpnKey';
-
-import React from 'react';
+import { Link, navigate } from '@reach/router';
+import React, { Fragment } from 'react';
 import villager1 from '../../assets/images/villager1.png';
 import { withContext } from '../../contrib/context';
 import { IActions } from '../../store';
 import './SideBar.scss';
 
-const links = [
-  { name: 'Change Avatar', icon: <FaceIcon /> },
-  { name: 'Update Password', icon: <KeyIcon /> },
-  { name: 'Verify Account', icon: <CheckIcon /> },
-  { name: 'Logout', icon: <ExitIcon /> }
-];
+import { routes } from '../../App';
 
 const SideBarComponent = ({
   children,
@@ -33,6 +29,19 @@ const SideBarComponent = ({
   actions: IActions;
 }) => {
   const [open, toggle] = React.useState(false);
+  const links = [
+    { name: 'Home', icon: <HomeIcon />, to: routes.upcoming() },
+    { name: 'Change Avatar', icon: <FaceIcon />, to: routes.profile('avatar') },
+    { name: 'Update Password', icon: <KeyIcon />, to: routes.profile('password-update') },
+    { name: 'Verify Account', icon: <CheckIcon />, to: routes.profile('verify') },
+    {
+      icon: <ExitIcon />,
+      name: 'Logout',
+      onClick: () => {
+        logout().then(() => navigate(routes.upcoming()));
+      }
+    }
+  ];
 
   const toggleDrawer = (isOpen: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
@@ -62,22 +71,23 @@ const SideBarComponent = ({
       </div>
       <Divider />
       <List>
-        {links.map((link, index) => (
-          <ListItem button={true} key={`link-${index}`} className="list-item">
-            <ListItemIcon className="list-icon">{link.icon}</ListItemIcon>
-            <ListItemText primary={link.name} className="list-item-text" />
-          </ListItem>
+        {links.map(link => (
+          <Fragment key={`link-${link.name}`}>
+            {link.onClick ? (
+              <ListItem onClick={link.onClick} button={true} className="list-item">
+                <ListItemIcon className="list-icon">{link.icon}</ListItemIcon>
+                <ListItemText primary={link.name} className="list-item-text" />
+              </ListItem>
+            ) : (
+              <ListItem component={Link} to={link.to || '/'} button={true} className="list-item">
+                <ListItemIcon className="list-icon">{link.icon}</ListItemIcon>
+                <ListItemText primary={link.name} className="list-item-text" />
+              </ListItem>
+            )}
+          </Fragment>
         ))}
       </List>
       <Divider />
-      <button
-        type="button"
-        onClick={() => {
-          void logout();
-        }}
-      >
-        logout
-      </button>
     </div>
   );
 
