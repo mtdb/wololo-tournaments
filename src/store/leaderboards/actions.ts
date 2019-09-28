@@ -8,7 +8,8 @@ export interface ILeaderboardsActions {
 
 const actions: any = {
   get: async (state: IStore, key: string) => {
-    const leaderboard = await (await api.leaderboardsList0(key)()).json();
+    const endpoint = key === 'global' ? api.leaderboardsList() : api.leaderboardsList0(key);
+    const leaderboard = await (await endpoint()).json();
     return { leaderboards: { ...state.leaderboards, [key]: leaderboard } };
   }
 };
