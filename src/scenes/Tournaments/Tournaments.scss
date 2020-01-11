@@ -10,14 +10,14 @@
     background-color: var(--bg1);
     margin: 10px auto 0;
     border: 2px solid var(--wood);
-    height: 15vh;
+    height: calc(var(--px) * 100);
     box-sizing: border-box;
     display: flex;
 
-    .logo {
-      width: 30%;
+    .icon {
+      width: calc(var(--px) * 100 - 4px);
       height: 100%;
-      background-size: cover;
+      background-size: contain;
       background-repeat: no-repeat;
       background-position: 50%;
     }
@@ -25,7 +25,7 @@
     .content {
       padding: 5px;
       display: flex;
-      width: 100%;
+      flex: 1;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
@@ -50,7 +50,10 @@
 
       li {
         display: inline-block;
+        width: 30%;
+
         a {
+          cursor: pointer;
           padding: 5px;
         }
       }

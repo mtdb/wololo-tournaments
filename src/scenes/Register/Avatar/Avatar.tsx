@@ -9,38 +9,37 @@ import villager1 from '../../../assets/images/villager1.png';
 import villager2 from '../../../assets/images/villager2.png';
 import { FormConsumer, FormProvider, IFormAttributes } from '../../../components/Forms';
 import { withContext } from '../../../contrib/utils';
-
-interface IState {
-  invalidEmail: boolean;
-  invalidEmailMessage: string;
-  invalidPassword: boolean;
-  invalidPasswordMessage: string;
-}
+import { IActions } from '../../../store';
+import { IUserStore } from '../../../store/user/store';
 
 interface IProps extends RouteComponentProps {
-  actions: any;
+  actions: IActions;
+  user: IUserStore;
   isRegistered?: boolean;
 }
 
-class AvatarComponent extends Component<IProps, IState> {
+class AvatarComponent extends Component<IProps, {}> {
   constructor(props: IProps) {
     super(props);
-
-    this.state = {
-      invalidEmail: false,
-      invalidEmailMessage: '',
-      invalidPassword: false,
-      invalidPasswordMessage: ''
-    };
   }
 
-  public onSubmit = () => {
-    return true;
+  public onSubmit = ({ avatar: icon }: { avatar: string }) => {
+    const {
+      actions: {
+        user: { profile }
+      }
+    } = this.props;
+    void profile({ icon });
+  };
+
+  public goBack = () => {
+    (global as any).history.back();
   };
 
   public render(): JSX.Element {
+    const { user } = this.props;
     const { isRegistered } = this.props;
-    const defaultValues = isRegistered ? { avatar: '' } : { acceptedToS: false, avatar: '' };
+    const defaultValues = isRegistered ? { avatar: user.icon } : { acceptedToS: false, avatar: '' };
     const validations: any = isRegistered
       ? {
           avatar: 'required'
@@ -49,6 +48,10 @@ class AvatarComponent extends Component<IProps, IState> {
           acceptedToS: 'isTrue',
           avatar: 'required'
         };
+
+    if (isRegistered && !user.icon) {
+      return <div>Loading</div>;
+    }
 
     return (
       <FormProvider
@@ -68,12 +71,14 @@ class AvatarComponent extends Component<IProps, IState> {
               <div className="center">
                 <div className="starter-pics">
                   <button
+                    type="button"
                     className={`avatar-picker ${values.avatar === 'villager1' ? 'active' : ''}`}
                     onClick={() => setValue('avatar')('villager1')}
                   >
                     <img src={villager1} alt="villager1" />
                   </button>
                   <button
+                    type="button"
                     className={`avatar-picker ${values.avatar === 'villager2' ? 'active' : ''}`}
                     onClick={() => setValue('avatar')('villager2')}
                   >
@@ -111,7 +116,12 @@ class AvatarComponent extends Component<IProps, IState> {
                   />
                 )}
                 {isRegistered && (
-                  <Button className="form-button" color="primary" variant="contained">
+                  <Button
+                    onClick={this.goBack}
+                    className="form-button"
+                    color="primary"
+                    variant="contained"
+                  >
                     CANCEL
                   </Button>
                 )}
@@ -133,6 +143,6 @@ class AvatarComponent extends Component<IProps, IState> {
   }
 }
 
-const Avatar = withContext(AvatarComponent, 'auth', 'notifications');
+const Avatar = withContext(AvatarComponent, 'user', 'actions');
 
 export { Avatar };

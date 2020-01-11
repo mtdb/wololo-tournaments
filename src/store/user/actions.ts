@@ -5,6 +5,7 @@ import {
   authStore as initialAuthStore,
   IAuthStore,
   IUserStore,
+  IUserUpdateStore,
   userStore as initialUserStore
 } from './store';
 
@@ -12,7 +13,11 @@ export interface IUserActions {
   login(username: string, password: string): Promise<{ auth: IAuthStore; erros: IErrorsStore }>;
   logout(): Promise<{ auth: IAuthStore }>;
   me(): Promise<{ user: IUserStore }>;
+  profile(user: IUserUpdateStore): Promise<{ user: IUserStore }>;
 }
+
+// tslint:disable-next-line
+const noop = () => {};
 
 const using = (s: IAuthStore) => ({ headers: { Authorization: `Token ${s.token}` } });
 
@@ -37,7 +42,18 @@ const actions: any = {
     return { auth: initialAuthStore, user: initialUserStore };
   },
   me: async ({ auth }: IStore) => {
-    const user = await (await api.usersMe(using(auth))()).json();
+    const response = await api
+      .usersMe(using(auth))()
+      .catch(noop);
+
+    const user = response ? await response.json() : '';
+    return { user };
+  },
+  profile: async ({ auth }: IStore, userData: IUserUpdateStore) => {
+    const response = await api
+      .usersUpdate('mauricio', { username: 'mauricio', ...userData }, using(auth))()
+      .catch(noop);
+    const user = response ? await response.json() : '';
     return { user };
   },
   register: async (

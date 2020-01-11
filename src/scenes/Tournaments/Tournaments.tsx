@@ -1,6 +1,7 @@
 import { Link } from '@reach/router';
 import React, { useEffect } from 'react';
 import { routes } from '../../App';
+import trophy from '../../assets/images/trophy.png';
 import { withContext } from '../../contrib/context';
 import { IActions } from '../../store';
 import { ITournamentsStore } from '../../store/tournaments/store';
@@ -15,9 +16,12 @@ const TournamentsComponent = ({
   actions: IActions;
   tournaments: ITournamentsStore;
 }) => {
-  useEffect(() => {
-    void listTournaments();
-  }, [listTournaments]);
+  useEffect(
+    () => {
+      void listTournaments();
+    },
+    [listTournaments]
+  );
   return (
     <div id="Tournaments">
       {tournamentList &&
@@ -25,7 +29,7 @@ const TournamentsComponent = ({
           <div className="tournament-summary" key={tournament.slug}>
             <div
               className="icon"
-              style={{ backgroundImage: `url(${tournament.icon})`, backgroundColor: 'green' }}
+              style={{ backgroundImage: `url(${tournament.icon || trophy})` }}
             />
             <div className="content">
               <div className="title">{tournament.name}</div>
@@ -37,10 +41,10 @@ const TournamentsComponent = ({
                   </a>
                 </li>
                 <li>
-                  <Link to={routes.tournamentGames(tournament.slug)}>Games</Link>
+                  <Link to={routes.leaderboard(tournament.slug)}>Leaderboard</Link>
                 </li>
                 <li>
-                  <Link to={routes.leaderboard(tournament.slug)}>Leaderboard</Link>
+                  <Link to={routes.tournamentGames(tournament.slug)}>Games</Link>
                 </li>
               </ul>
             </div>
