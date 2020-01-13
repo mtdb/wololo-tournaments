@@ -9,7 +9,7 @@ import './Profile.scss';
 import { navigate } from '@reach/router';
 // import { IAuthStore } from '../../store/auth/store';
 
-export const ProfileComponent = ({ page }: any) => {
+const ProfileComponent = ({ page }: any) => {
   const options = ['avatar', 'password-update', 'verify'];
   if (options.indexOf(page) < 0) {
     navigate('/');

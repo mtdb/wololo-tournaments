@@ -19,10 +19,6 @@ interface IProps extends RouteComponentProps {
 }
 
 class AvatarComponent extends Component<IProps, {}> {
-  constructor(props: IProps) {
-    super(props);
-  }
-
   public onSubmit = ({ avatar: icon }: { avatar: string }) => {
     const {
       actions: {
