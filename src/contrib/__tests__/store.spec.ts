@@ -1,19 +1,27 @@
 import { bindActions } from '../store';
+import { authApi } from '../../contrib/api';
+
+jest.mock('../../contrib/api', () => {
+  const json = new Promise(resolve => resolve({ key: 'authtoken' }));
+  const loginResponse = new Promise(resolve => resolve({ json: () => json }));
+  const loginCreate = () => () => new Promise(resolve => resolve(loginResponse));
+  return { authApi: { loginCreate } };
+});
 
 const app = {
-  setState: (updateState: any) => updateState(app.state),
+  setState: jest.fn(),
   state: {
-    user: {
-      likes: 999
+    auth: {
+      token: 'mock'
     }
   }
 };
 
 describe('contrib.store.bindStore', () => {
-  it('Should update the App state for user likes from 999 to 1000', async () => {
+  it('Should call setState after execute login action', async () => {
     const actions = bindActions(app);
-    actions.user.increment();
-
-    expect(app.state.user.likes).toBe(1000);
+    expect(app.setState).not.toBeCalled();
+    await actions.user.login('username', 'password');
+    expect(app.setState).toBeCalled();
   });
 });

@@ -10,7 +10,7 @@ import { IGamesStore } from '../../store/games/store';
 import { ITournamentsStore } from '../../store/tournaments/store';
 import './Games.scss';
 
-const GamesComponent = ({
+export const GamesComponent = ({
   actions: {
     games: { listUpcoming },
     tournaments: { listGames }
@@ -24,16 +24,13 @@ const GamesComponent = ({
   tournaments: ITournamentsStore;
   slug: string;
 }) => {
-  useEffect(
-    () => {
-      if (!tournament) {
-        void listUpcoming();
-      } else {
-        void listGames(tournament);
-      }
-    },
-    [listGames, listUpcoming, tournament]
-  );
+  useEffect(() => {
+    if (!tournament) {
+      void listUpcoming();
+    } else {
+      void listGames(tournament);
+    }
+  }, [listGames, listUpcoming, tournament]);
   const games = tournament ? tournamentGames[tournament] : upcomingGames;
   return (
     <div id="Games">

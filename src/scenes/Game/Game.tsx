@@ -41,7 +41,7 @@ const predictions = [
 
 type ModalState = false | 'predictions' | 'scores';
 
-const GameComponent = ({
+export const GameComponent = ({
   actions: {
     games: { get: getGame }
   },

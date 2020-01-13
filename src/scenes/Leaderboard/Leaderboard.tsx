@@ -4,7 +4,7 @@ import { IActions } from '../../store';
 import { ILeaderboardsStore } from '../../store/leaderboards/store';
 import './Leaderboard.scss';
 
-const LeaderboardComponent = ({
+export const LeaderboardComponent = ({
   actions: {
     leaderboards: { get: getLeaderboard }
   },

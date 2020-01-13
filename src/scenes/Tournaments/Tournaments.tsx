@@ -7,7 +7,7 @@ import { IActions } from '../../store';
 import { ITournamentsStore } from '../../store/tournaments/store';
 import './Tournaments.scss';
 
-const TournamentsComponent = ({
+export const TournamentsComponent = ({
   actions: {
     tournaments: { list: listTournaments }
   },
@@ -16,12 +16,9 @@ const TournamentsComponent = ({
   actions: IActions;
   tournaments: ITournamentsStore;
 }) => {
-  useEffect(
-    () => {
-      void listTournaments();
-    },
-    [listTournaments]
-  );
+  useEffect(() => {
+    void listTournaments();
+  }, [listTournaments]);
   return (
     <div id="Tournaments">
       {tournamentList &&

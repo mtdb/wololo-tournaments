@@ -1,11 +1,61 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Games } from '../Games';
+import { render } from '@testing-library/react';
+import { Games, GamesComponent } from '../Games';
 
-describe('Games Scene', () => {
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Games />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
+const TOURNAMENT_NAME = 'tournament-name';
+const PLAYER_1 = 'player one';
+const PLAYER_2 = 'player two';
+const SLUG = 'tournament-slug';
+
+const actions = {
+  games: {
+    listUpcoming: jest.fn()
+  },
+  tournaments: { listGames: jest.fn() }
+};
+
+const games = {};
+
+const tournaments = {
+  games: {
+    [SLUG]: [
+      {
+        tournament: { name: TOURNAMENT_NAME },
+        players: [
+          { player: { name: PLAYER_1, country: 'de' } },
+          { player: { name: PLAYER_2, country: 'us' } }
+        ]
+      }
+    ]
+  }
+};
+
+test('Games component render the tournament name', () => {
+  const { getByText } = render(
+    <GamesComponent actions={actions} games={games} tournaments={tournaments} slug={SLUG} />
+  );
+  const re = new RegExp(TOURNAMENT_NAME, 'i');
+  const title = getByText(re);
+  expect(title).toBeInTheDocument();
+});
+
+test('Game component call listGames', () => {
+  render(<GamesComponent actions={actions} games={games} tournaments={tournaments} slug={SLUG} />);
+  expect(actions.games.listUpcoming).not.toBeCalled();
+  expect(actions.tournaments.listGames).toBeCalled();
+});
+
+test('Game component call listUpcoming if no slug given', () => {
+  render(<GamesComponent actions={actions} games={games} tournaments={tournaments} />);
+  expect(actions.games.listUpcoming).toBeCalled();
+});
+
+test('Game component render the player names', () => {
+  const { getByText } = render(
+    <GamesComponent actions={actions} games={games} tournaments={tournaments} slug={SLUG} />
+  );
+  const p1 = new RegExp(PLAYER_1, 'i');
+  const p2 = new RegExp(PLAYER_2, 'i');
+  expect(getByText(p1)).toBeInTheDocument();
+  expect(getByText(p2)).toBeInTheDocument();
 });

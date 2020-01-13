@@ -13,7 +13,7 @@ interface IProps extends RouteComponentProps {
   actions: IActions;
 }
 
-class LoginComponent extends Component<IProps, {}> {
+export class LoginComponent extends Component<IProps, {}> {
   public onSubmit = async ({ username, password }: { username: string; password: string }) => {
     const {
       actions: {
