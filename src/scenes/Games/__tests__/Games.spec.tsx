@@ -7,16 +7,16 @@ const PLAYER_1 = 'player one';
 const PLAYER_2 = 'player two';
 const SLUG = 'tournament-slug';
 
-const actions = {
+const actions: any = {
   games: {
     listUpcoming: jest.fn()
   },
   tournaments: { listGames: jest.fn() }
 };
 
-const games = {};
+const games: any = {};
 
-const tournaments = {
+const tournaments: any = {
   games: {
     [SLUG]: [
       {
@@ -46,7 +46,7 @@ test('Game component call listGames', () => {
 });
 
 test('Game component call listUpcoming if no slug given', () => {
-  render(<GamesComponent actions={actions} games={games} tournaments={tournaments} />);
+  render(<GamesComponent actions={actions} games={games} tournaments={tournaments} slug={''} />);
   expect(actions.games.listUpcoming).toBeCalled();
 });
 

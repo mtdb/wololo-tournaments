@@ -1,4 +1,3 @@
-import { authApi } from '../../contrib/api';
 import { bindActions } from '../store';
 
 jest.mock('../../contrib/api', () => {

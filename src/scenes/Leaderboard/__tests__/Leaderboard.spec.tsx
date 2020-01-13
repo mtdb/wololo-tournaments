@@ -3,15 +3,14 @@ import React from 'react';
 import { LeaderboardComponent } from '../Leaderboard';
 
 const NAME = 'leaderboard-name';
-const USERNAME = 'username';
-const u = x => `USERNAME${x}`;
+const u = (x: number) => `USERNAME${x}`;
 
-const actions = {
+const actions: any = {
   leaderboards: {
     get: jest.fn()
   }
 };
-const leaderboards = {
+const leaderboards: any = {
   [NAME]: [{ username: u(1) }, { username: u(2) }, { username: u(3) }]
 };
 
@@ -29,5 +28,5 @@ test('Games component render as many rows as players', () => {
     <LeaderboardComponent actions={actions} leaderboards={leaderboards} name={NAME} />
   );
   const rows = document.querySelector('.row');
-  expect(rows.children.length).toBe(leaderboards[NAME].length);
+  expect(rows ? rows.children.length : 0).toBe(leaderboards[NAME].length);
 });

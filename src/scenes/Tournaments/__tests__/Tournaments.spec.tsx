@@ -1,17 +1,14 @@
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { TournamentsComponent } from '../Tournaments';
 
-const PLAYER_1 = 'player one';
-const PLAYER_2 = 'player two';
-const SLUG = 'tournament-slug';
-const t = x => `TOURNAMENT${x}`;
+const t = (x: number) => `TOURNAMENT${x}`;
 
-const actions = {
+const actions: any = {
   tournaments: { list: jest.fn() }
 };
 
-const tournaments = {
+const tournaments: any = {
   all: [{ name: t(1), slug: t(1) }, { name: t(2), slug: t(2) }]
 };
 
@@ -29,5 +26,5 @@ test('Tournaments component render as many rows as tournaments', () => {
     <TournamentsComponent actions={actions} tournaments={tournaments} />
   );
   const rows = document.querySelector('.tournament-summary');
-  expect(rows.children.length).toBe(tournaments.all.length);
+  expect(rows ? rows.children.length : 0).toBe(tournaments.all.length);
 });

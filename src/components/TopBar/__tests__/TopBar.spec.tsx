@@ -5,7 +5,7 @@ import { TopBar } from '../TopBar';
 const user = {
   username: 'username'
 };
-const excludes = [];
+const excludes = [] as string[];
 
 describe('TopBar Component', () => {
   it('renders without crashing', () => {

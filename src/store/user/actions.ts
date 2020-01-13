@@ -63,7 +63,7 @@ const actions: any = {
     password1: string,
     password2: string
   ) => {
-    const response = await authApi.registrationCreate({
+    await authApi.registrationCreate({
       email,
       password1,
       password2,
