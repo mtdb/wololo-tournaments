@@ -1,6 +1,6 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import { Games, GamesComponent } from '../Games';
+import React from 'react';
+import { GamesComponent } from '../Games';
 
 const TOURNAMENT_NAME = 'tournament-name';
 const PLAYER_1 = 'player one';
@@ -20,11 +20,11 @@ const tournaments = {
   games: {
     [SLUG]: [
       {
-        tournament: { name: TOURNAMENT_NAME },
         players: [
           { player: { name: PLAYER_1, country: 'de' } },
           { player: { name: PLAYER_2, country: 'us' } }
-        ]
+        ],
+        tournament: { name: TOURNAMENT_NAME }
       }
     ]
   }

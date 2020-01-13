@@ -1,5 +1,5 @@
-import { bindActions } from '../store';
 import { authApi } from '../../contrib/api';
+import { bindActions } from '../store';
 
 jest.mock('../../contrib/api', () => {
   const json = new Promise(resolve => resolve({ key: 'authtoken' }));

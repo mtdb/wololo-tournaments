@@ -1,5 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
 import { LeaderboardComponent } from '../Leaderboard';
 
 const NAME = 'leaderboard-name';

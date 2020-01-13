@@ -64,12 +64,11 @@ const actions: any = {
     password2: string
   ) => {
     const response = await authApi.registrationCreate({
-      username,
       email,
       password1,
-      password2
+      password2,
+      username
     })();
-    console.log('response1', response);
   }
 };
 

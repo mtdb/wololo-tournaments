@@ -1,6 +1,6 @@
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import { Game, GameComponent } from '../Game';
+import { GameComponent } from '../Game';
 
 const TOURNAMENT_NAME = 'tournament-name';
 const slug = 'tournament-slug';
